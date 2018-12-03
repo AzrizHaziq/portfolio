@@ -1,0 +1,15 @@
+
+.avatar-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  object-fit: contain;
+  border: 5px solid #181818;
+}
+
+.tag-name {
+  width: 250px;
+  left: -50px;
+  bottom: -56px;
+  z-index: -1;
+}
