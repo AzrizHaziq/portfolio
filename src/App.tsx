@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Footer } from './components/footer/footer'
+import { Avatar } from './components/avatar/avatar'
+import { Navbar } from './components/navbar/navbar'
+import { AboutMe } from './components/about-me/about-me'
+import { ContactForm } from './components/contract-form/contact-form'
+import { SocialLinks } from './components/social-links/social-links'
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+    return <>
+      <Navbar/>
+      <div className="bg-dark d-flex justify-content-center align-items-center flex-column"
+           style={{ height: '600px' }}>
+        <Avatar/>
+        <div className="p-4"></div>
+        <div className="p-4"></div>
+        <div className="d-flex">
+          <SocialLinks/>
+        </div>
       </div>
-    );
+      <div className="p-4">
+        <AboutMe/>
+      </div>
+      <div className="p-4">
+        <ContactForm/>
+      </div>
+      <Footer/>
+    </>;
   }
 }
 
 export default App;
+
