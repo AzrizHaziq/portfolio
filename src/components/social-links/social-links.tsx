@@ -6,7 +6,7 @@ const iconSize = { width: 40, height: 40 }
 export const SocialLinks = () => {
   return <>
     <ButtonSocialIcon
-        className="scale-up mr-4"
+        className="btn-icon mr-4 btn-light"
         href='https://medium.com/@azrizhaziq'
     >
       {/* Medium */}
@@ -18,7 +18,7 @@ export const SocialLinks = () => {
     </ButtonSocialIcon>
 
     <ButtonSocialIcon
-        className="scale-up mr-4"
+        className="btn-icon mr-4 btn-light"
         href='https://github.com/AzrizHaziq'
     >
       {/* Github */}
@@ -30,7 +30,7 @@ export const SocialLinks = () => {
     </ButtonSocialIcon>
 
     <ButtonSocialIcon
-        className="scale-up"
+        className="btn-icon btn-light"
         href='https://www.linkedin.com/in/azriz-haziq-jasni-5876ab143/'
     >
       {/* LinkedIn */}
