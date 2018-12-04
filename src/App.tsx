@@ -23,7 +23,11 @@ class App extends Component {
           <h2 className="text-uppercase">Contact Me</h2>
         </div>
         <div className="container">
-          <ContactForm/>
+          <div className="row justify-content-md-center">
+            <div className="col-md-8">
+              <ContactForm/>
+            </div>
+          </div>
         </div>
       </div>
       <Footer/>
