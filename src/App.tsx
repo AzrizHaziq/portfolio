@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Footer } from './components/about-me/footer'
+import { Footer } from './components/footer/footer'
 import { Avatar } from './components/avatar/avatar'
 import { Navbar } from './components/navbar/navbar'
+import { AboutMe } from './components/about-me/about-me'
 import { ContactForm } from './components/contract-form/contact-form'
 import { SocialLinks } from './components/social-links/social-links'
 
@@ -19,16 +20,10 @@ class App extends Component {
         </div>
       </div>
       <div className="p-4">
-        <div className="text-center">
-          <h2 className="text-uppercase">Contact Me</h2>
-        </div>
-        <div className="container">
-          <div className="row justify-content-md-center">
-            <div className="col-md-8">
-              <ContactForm/>
-            </div>
-          </div>
-        </div>
+        <AboutMe/>
+      </div>
+      <div className="p-4">
+        <ContactForm/>
       </div>
       <Footer/>
     </>;
