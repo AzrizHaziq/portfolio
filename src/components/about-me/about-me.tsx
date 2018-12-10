@@ -22,7 +22,4 @@ I have about 2+ years of experience as Software Engineer.
 My skill is more towards Web Development.
 I also keep myself updated in Javascript Ecosystem(ESNext) so that I can improve my programming skills.
 Checkout my LinkedIn here for more information.
-
-
-
 * */
