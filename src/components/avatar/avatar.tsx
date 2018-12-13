@@ -1,7 +1,7 @@
 import React from 'react';
 import './avatar.scss';
 
-const splitter = (str: string) => str.split('').map((char, key) => console.log(char) || (
+const splitter = (str: string) => str.split('').map((char, key) => (
     <span className={`d-inline-block jump ${char === ' ' ? 'mr-3' : ''}`}
           key={key}>
       {char}
