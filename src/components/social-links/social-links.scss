@@ -2,6 +2,9 @@
 @import "~bootstrap-scss/mixins";
 @import "~bootstrap-scss/variables";
 
-a.text-white:hover {
-  color: $text-muted !important;
+a.text-white {
+  &:focus,
+  &:hover {
+    color: $text-muted !important;
+  }
 }

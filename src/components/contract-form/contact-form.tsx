@@ -10,9 +10,9 @@ class ContactForm extends Component {
 
   render() {
     return <>
-      <div className="text-center">
-        <h2 className="text-uppercase">Contact Me</h2>
-      </div>
+      <a id='contact-me'>
+        <h1 className="text-center text-uppercase mb-4">Contact Me</h1>
+      </a>
       <div className="container">
         <div className="row justify-content-md-center">
           <div className="col-md-8">
