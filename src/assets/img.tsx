@@ -1,5 +1,4 @@
-const avatarPng = require('./avatar.png');
 
-export const IMG =  {
-  avatarPng
-}
+// export const IMG =  {
+//   avatarPng
+// }

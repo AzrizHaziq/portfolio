@@ -1,14 +1,25 @@
+@import "~bootstrap-scss/functions";
+@import "~bootstrap-scss/mixins";
+@import "~bootstrap-scss/variables";
 
-.avatar-img {
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-  object-fit: contain;
-  border: 5px solid #181818;
+.my {
+  &-email {
+    font-size: 2.5em;
+    font-weight: 500;
+  }
+
+  &-name {
+    font-size: 5em;
+    font-weight: 900;
+  }
 }
 
-.tag-name {
-  width: 250px;
-  left: -50px;
-  bottom: -56px;
+.jump {
+  transition: all .2s ease-out;
+}
+
+.jump:hover {
+  color: $yellow !important;
+  transition: all .2s ease-in;
+  transform: translateY(-5px);
 }

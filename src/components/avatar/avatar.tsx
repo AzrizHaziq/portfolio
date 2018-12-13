@@ -1,13 +1,20 @@
 import React from 'react';
 import './avatar.scss';
-import { IMG } from '../../assets/img';
+
+const splitter = (str: string) => str.split('').map((char, key) => console.log(char) || (
+    <span className={`d-inline-block jump ${char === ' ' ? 'mr-3' : ''}`}
+          key={key}>
+      {char}
+    </span>
+));
+
+const myName = splitter('Mohd Azriz Haziq Bin Jasni');
+const myEmail = splitter('azrizhaziq@gmail.com');
 
 export const Avatar = () => {
-  return <div className="position-relative">
-    <img alt="avatar" className="avatar-img shadow" src={IMG.avatarPng}/>
-    <div className="position-absolute tag-name bg-warning p-2 text-center">
-      Mohd Azriz Haziq Bin Jasni <br/>
-      azrizhaziq@gmail.com
-    </div>
+  return <div className='text-center text-white mb-4'>
+    <p className='my-name mb-0'>{myName}</p>
+    <p className="my-email text-underline">{myEmail}</p>
   </div>
 }
+
