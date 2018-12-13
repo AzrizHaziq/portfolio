@@ -12,10 +12,8 @@ class App extends Component {
     return <>
       <Navbar/>
       <div className="bg-dark d-flex justify-content-center align-items-center flex-column"
-           style={{ height: '600px' }}>
+           style={{ height: '100vh' }}>
         <Avatar/>
-        <div className="p-4"></div>
-        <div className="p-4"></div>
         <div className="d-flex">
           <SocialLinks/>
         </div>
