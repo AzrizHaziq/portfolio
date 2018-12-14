@@ -23,7 +23,7 @@ class App extends Component {
       <div className="p-4">
         <AboutMe/>
       </div>
-      <div className="p-4 bg-dark text-white">
+      <div className="p-4 bg-pattern text-white">
         <Project/>
       </div>
       <div className="p-4">

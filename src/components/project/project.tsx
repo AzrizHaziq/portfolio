@@ -17,7 +17,7 @@ export const Project = () => {
 
 
 const projectList = projects.map(({ name, projectTime, description, details }) => (
-    <div className="col-xs-12 col-sm-6 col-md-4" key={uuid()}>
+    <div className="col-xs-12 col-sm-6 col-md-4 bg-dark" key={uuid()}>
       <div className="border shadow p-4 rounded mb-4">
         <div className='d-flex align-items-center justify-content-between mb-4'>
           <h3 className="d-inline-block mr-2 mb-0">{name}</h3>
