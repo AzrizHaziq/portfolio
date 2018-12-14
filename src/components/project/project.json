@@ -1,7 +1,7 @@
 [
     {
         "name": "Droids",
-        "projectTime": "November 2018 - Present",
+        "projectTime": "Nov 2018 - Present",
         "description": "Analytics for Admin dashboard in Oil and Gas",
         "details": [
             "Technology stack use Angular 5, and help migrate to Angular 6. Other than that, fully utilise RxJS, scss, Bs4 and Typescript",
@@ -44,7 +44,7 @@
     {
         "name": "IPI",
         "description": "solution to find the best ambassadors for a product/service.",
-        "projectTime": "July 2017 - October 2017",
+        "projectTime": "July 2017 - Oct 2017",
         "details": [
             "Maintaining the project for about 3 month.",
             "Build with AngularJS.",
@@ -55,7 +55,7 @@
     {
         "name": "MotherBoard",
         "description": "A solution for, sales and marketing department to plan their strategies.",
-        "projectTime": "April 2017 - Jun 2017",
+        "projectTime": "Apr 2017 - Jun 2017",
         "details": [
             "Maintaining the project for about 4 month.",
             "React, Redux, ES6.",
@@ -66,7 +66,7 @@
     {
         "name": "Savi",
         "description": "Lately drivers have difficulty when finding a park in mall. Savi provide a solution for high density parking in city/mall.",
-        "projectTime": "Nov 2016 - March 2017",
+        "projectTime": "Nov 2016 - Mar 2017",
         "details": [
             "A Hybrid mobile application.",
             "End to End development with Senior guidance.",
