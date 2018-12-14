@@ -11,16 +11,20 @@
     "gh-pages": "^2.0.1",
     "node-sass": "^4.10.0",
     "react": "^16.6.3",
+    "react-app-rewire-hot-loader": "^1.0.3",
+    "react-app-rewired": "^1.6.2",
     "react-dom": "^16.6.3",
+    "react-hot-loader": "^4.3.12",
     "react-scripts": "2.1.1",
-    "typescript": "3.2.1"
+    "typescript": "3.2.1",
+    "uuid": "^3.3.2"
   },
   "homepage": "https://azrizhaziq.github.io/portfolio/",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
