@@ -49,8 +49,7 @@ export const SocialLinks = () => {
 
 const ButtonSocialIcon = ({ href, className, children }: { href: string, className: string, children: any }) => {
   return (
-      <a type="button"
-         href={href}
+      <a href={href}
          target="_blank"
          rel='noreferrer noopener'
          className={`d-flex flex-column align-items-center btn ${className}`}>
