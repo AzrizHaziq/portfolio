@@ -27,9 +27,9 @@ const projectList = projects.map(({ name, projectTime, description, details }) =
 
         <hr className='mb-4'/>
         <h4>HighLights</h4>
-        <ul className="list-group pl-4">
+        <ul className="pl-4">
           {details.map((detail, i) =>
-              <li className="list-group-item" key={i}>{detail}</li>
+              <li className="" key={i}>{detail}</li>
           )}
         </ul>
       </div>
