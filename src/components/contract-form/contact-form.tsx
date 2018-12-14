@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { splitter } from '../../helpers/char-jump'
 
 class ContactForm extends Component {
 
@@ -11,10 +12,10 @@ class ContactForm extends Component {
   render() {
     return <>
       <a id='contact-me'>
-        <h1 className="text-center text-uppercase mb-4">Contact Me</h1>
+        <h1 className="text-center text-uppercase mb-4">{splitter('Contact Me')}</h1>
       </a>
       <div className="container">
-        <div className="row justify-content-md-center">
+        <div className="row justify-content-md-center mb-4">
           <div className="col-md-8">
             <form>
               <div className="form-group mb-4">

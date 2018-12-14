@@ -1,12 +1,6 @@
 import React from 'react';
 import './avatar.scss';
-
-const splitter = (str: string) => str.split('').map((char, key) => (
-    <span className={`d-inline-block jump ${char === ' ' ? 'mr-3' : ''}`}
-          key={key}>
-      {char}
-    </span>
-));
+import { splitter } from '../../helpers/char-jump'
 
 const myName = splitter('Mohd Azriz Haziq Bin Jasni');
 const myEmail = splitter('azrizhaziq@gmail.com');

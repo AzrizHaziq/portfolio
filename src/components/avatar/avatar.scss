@@ -1,7 +1,3 @@
-@import "~bootstrap-scss/functions";
-@import "~bootstrap-scss/mixins";
-@import "~bootstrap-scss/variables";
-
 .my {
   &-email {
     font-size: 2.5em;
@@ -12,14 +8,4 @@
     font-size: 5em;
     font-weight: 900;
   }
-}
-
-.jump {
-  transition: all .2s ease-out;
-}
-
-.jump:hover {
-  color: $yellow !important;
-  transition: all .2s ease-in;
-  transform: translateY(-5px);
 }
