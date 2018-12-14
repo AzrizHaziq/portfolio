@@ -6,7 +6,7 @@ import { splitter } from '../../helpers/char-jump'
 export const Project = () => {
   return <>
     <a id='project'>
-      <h1 className="text-center text-uppercase mb-4 text-warning">{splitter('Project')}</h1>
+      <h1 className="text-center text-uppercase mb-4 text-warning">{splitter('Projects')}</h1>
     </a>
     <div className="container">
       <div className="row">
