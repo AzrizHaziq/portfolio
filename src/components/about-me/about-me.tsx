@@ -8,7 +8,7 @@ export const AboutMe = () => {
     </a>
     <div className="container">
       <div className="row justify-content-md-center">
-        <div className="col" style={{ fontSize: '1.5em' }}>
+        <div className="col">
           <p>I'm graduate from Universiti Teknologi Malaysia Skudai(UTM) Johor in Bachelor Degree Computer Science (2016).</p>
           <p>I have about 2+ years of experience as Software Engineer.</p>
           <p>I have experience working on Web and Mobile(Hybrid) Development</p>

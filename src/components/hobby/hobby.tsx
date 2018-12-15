@@ -34,7 +34,7 @@ export const Hobby = () => {
     </a>
     <div className="container">
       <div className="row justify-content-md-center">
-        <div className="col-xs-12 col-md-6" style={{ fontSize: '1.5em' }}>
+        <div className="col-xs-12 col-md-6">
           <h4 className='d-none d-md-block'>Hobby</h4>
 
           <ul className="list-group mb-4">
@@ -42,7 +42,7 @@ export const Hobby = () => {
             <li className="list-group-item">Playing Games</li>
           </ul>
         </div>
-        <div className="col-xs-12 col-md-6" style={{ fontSize: '1.5em' }}>
+        <div className="col-xs-12 col-md-6">
           <hr className='d-block d-md-none'/>
           <h4>Personal Blog</h4>
           <p>In my free time, I write some blog to share my knowledge. Any feedback are most welcome 😁.</p>

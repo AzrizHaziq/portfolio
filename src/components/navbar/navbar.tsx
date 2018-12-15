@@ -1,26 +1,27 @@
 import React from 'react'
+import './navbar.scss';
 
 export const Navbar = () => (
-    <nav className="navbar navbar-expand-sm bg-warning navbar-light justify-content-center border-bottom shadow-sm p-0 p-md-2">
+    <nav className="custom-navbar navbar navbar-expand bg-warning navbar-light justify-content-center border-bottom shadow-sm p-0 p-md-2">
       <ul className="navbar-nav">
         <li className="nav-item">
           <a className="nav-link" href="#about-me">
-            <h3>About Me</h3>
+            <h5>About Me</h5>
           </a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#project">
-            <h3>Projects</h3>
+            <h5>Projects</h5>
           </a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#hobby">
-            <h3>Hobby</h3>
+            <h5>Hobby</h5>
           </a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#contact-me">
-            <h3>Contact Me</h3>
+            <h5>Contact Me</h5>
           </a>
         </li>
       </ul>
