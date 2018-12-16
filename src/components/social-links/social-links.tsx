@@ -6,7 +6,7 @@ const iconSize = { width: 40, height: 40 }
 export const SocialLinks = () => {
   return <>
     <ButtonSocialIcon
-        className="btn-icon mr-4 text-success"
+        className="btn-icon mr-0 mr-md-4 text-success"
         href='https://medium.com/@azrizhaziq'
     >
       {/* Medium */}
@@ -19,7 +19,7 @@ export const SocialLinks = () => {
     </ButtonSocialIcon>
 
     <ButtonSocialIcon
-        className="btn-icon mr-4 text-white"
+        className="btn-icon mr-0 mr-md-4 text-white"
         href='https://github.com/AzrizHaziq'
     >
       {/* Github */}
