@@ -1,0 +1,32 @@
+{
+    "advanced": [
+        "reactJs",
+        "redux",
+        "angular 7+",
+        "rxJS",
+        "bootstrap 4",
+        "scss",
+        "css",
+        "html",
+        "javascript (ES Next)",
+        "Chrome Devtool",
+        "Git",
+        "npm",
+        "webpack",
+        "typescript"
+    ],
+    "intermediate": [
+        "unit testing",
+        "functional programming",
+        "object-oriented programming",
+        "laravel",
+        "webpack",
+        "Nodejs"
+    ],
+    "basic": [
+        "docker",
+        "graphql",
+        "sql",
+        "linux"
+    ]
+}

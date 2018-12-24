@@ -1,7 +1,8 @@
+import './hobby.scss'
 import React from 'react'
 import uuid from 'uuid/v1'
 import hobby from './hobby-list.json'
-import './hobby.scss'
+import { splitter } from '../../helpers/char-jump'
 
 const Icon = ({ blog }) => blog === 'Devto'
     ? devtoIcon
@@ -29,8 +30,8 @@ const blog = Object.keys(hobby).map((blog: string) => {
 
 export const Hobby = () => {
   return <>
-    <a id='hobby'>
-      <h1 className="text-center text-uppercase mb-4">Hobby</h1>
+    <a id='hobbies'>
+      <h1 className="text-center text-uppercase mb-4">{splitter('Hobbies')}</h1>
     </a>
     <div className="container">
       <div className="row justify-content-md-center">

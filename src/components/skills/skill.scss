@@ -1,0 +1,13 @@
+.square {
+  width: 25px;
+  height: 25px;
+}
+
+.badge:hover {
+  transform: scale(1.1) rotateZ(4deg);
+  transition: transform .75s ease-in-out;
+}
+
+.badge {
+  cursor: default;
+}
