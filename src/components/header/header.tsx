@@ -10,13 +10,18 @@ export const Header = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link text-center" href="#project">
+            <a className="nav-link text-center" href="#projects">
               Projects
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link text-center" href="#hobby">
-              Hobby
+            <a className="nav-link text-center" href="#hobbies">
+              Hobbies
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link text-center" href="#skills">
+              Skills
             </a>
           </li>
           <li className="nav-item">
