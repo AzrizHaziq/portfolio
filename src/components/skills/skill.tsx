@@ -68,7 +68,7 @@ export class Skill extends Component {
           <form>
             <div className="form-group">
               <label hidden>Search skills</label>
-              <input className="form-control" type="text" value={search} onChange={this.handleSearch}
+              <input className="form-control p-4" type="text" value={search} onChange={this.handleSearch}
                      placeholder='typescript, webpack, ...etc'/>
             </div>
           </form>
