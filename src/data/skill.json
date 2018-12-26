@@ -28,5 +28,27 @@
         "graphql",
         "sql",
         "linux"
+    ],
+    "terms": [
+        "code-splitting",
+        "img-fallback",
+        "form validation",
+        "empty-state",
+        "loading-state",
+        "web-responsive",
+        "css-grid/flex",
+        "curry",
+        "partial application",
+        "compose",
+        "pipe",
+        "set, map, weak set, weak map",
+        "service worker",
+        "javascript fallback",
+        ".filter, .reduce, .map",
+        "jwt",
+        "date-fns",
+        "2 spaces",
+        "mac(brew, fish) & linux",
+        ""
     ]
 }
