@@ -1,8 +1,8 @@
 import './hobby.scss'
 import React from 'react'
 import uuid from 'uuid/v1'
-import hobby from './hobby-list.json'
-import { splitter } from '../../helpers/char-jump'
+import hobby from './../../data/hobby-list.json'
+import { splitter } from './../../helpers/char-jump'
 
 const Icon = ({ blog }) => blog === 'Devto'
     ? devtoIcon
