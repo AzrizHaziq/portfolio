@@ -32,7 +32,7 @@ class ContactForm extends Component {
               </div>
               <div className="form-group mb-4">
                 <label htmlFor="message">Message</label>
-                <textarea className="form-control p-4" id="message" placeholder="write an essay for me"></textarea>
+                <textarea className="form-control" id="message" placeholder="write an essay for me"></textarea>
               </div>
               <button type="submit" className="btn btn-warning">Submit</button>
             </form>

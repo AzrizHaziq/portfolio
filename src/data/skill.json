@@ -27,7 +27,8 @@
         "docker",
         "graphql",
         "sql",
-        "linux"
+        "linux",
+        "puppeteer"
     ],
     "terms": [
         "code-splitting",

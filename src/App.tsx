@@ -13,8 +13,8 @@ import { ContactForm } from './components/contract-form/contact-form'
 function App() {
   return <>
     <Header/>
-    <section className="bg-dark d-flex justify-content-center align-items-center flex-column"
-             style={{ height: '100vh' }}>
+    <section className="d-flex justify-content-center align-items-center flex-column"
+             style={{ height: '100vh', backgroundColor: '#47494b' }}>
       <Avatar/>
       <div className="d-flex flex-column flex-md-row">
         <SocialLinks/>
