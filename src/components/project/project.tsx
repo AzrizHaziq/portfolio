@@ -1,7 +1,7 @@
 import React from 'react'
 import uuid from 'uuid/v1'
-import projects from './project.json'
-import { splitter } from '../../helpers/char-jump'
+import projects from './../../data/project.json'
+import { splitter } from './../../helpers/char-jump'
 
 export const Project = () => {
   return <>
