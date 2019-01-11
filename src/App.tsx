@@ -18,11 +18,9 @@ function App() {
     </div>
     <Header/>
     <section className="d-flex justify-content-center align-items-center flex-column bg-main">
-      <div style={{ zIndex: 10 }}>
-        <Avatar/>
-        <div className="d-flex flex-column flex-md-row">
-          <SocialLinks/>
-        </div>
+      <Avatar/>
+      <div className="d-flex flex-column flex-md-row">
+        <SocialLinks/>
       </div>
     </section>
     <section className="p-4 w-100">
@@ -40,7 +38,7 @@ function App() {
     <section className="p-4 w-100">
       <ContactForm/>
     </section>
-    <Footer />
+    <Footer/>
   </>
 }
 

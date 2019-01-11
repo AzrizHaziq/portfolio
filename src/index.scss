@@ -19,6 +19,10 @@
 .bg-main {
   height: 100vh;
   background-color: #47494b;
+
+  > * {
+    z-index: 10;
+  }
 }
 
 .flex-all-center {
