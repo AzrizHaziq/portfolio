@@ -1,5 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader'
+import Particles from 'react-particles-js';
 import { Hobby } from './components/hobby/hobby'
 import { Skill } from './components/skills/skill'
 import { Avatar } from './components/avatar/avatar'
@@ -12,9 +13,11 @@ import { ContactForm } from './components/contract-form/contact-form'
 
 function App() {
   return <>
+    <div id='particle-js'>
+      <Particles/>
+    </div>
     <Header/>
-    <section className="d-flex justify-content-center align-items-center flex-column"
-             style={{ height: '100vh', backgroundColor: '#47494b' }}>
+    <section className="d-flex justify-content-center align-items-center flex-column bg-main">
       <Avatar/>
       <div className="d-flex flex-column flex-md-row">
         <SocialLinks/>
@@ -35,7 +38,7 @@ function App() {
     <section className="p-4 w-100">
       <ContactForm/>
     </section>
-    <Footer />
+    <Footer/>
   </>
 }
 
