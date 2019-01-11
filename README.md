@@ -26,3 +26,5 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 
 Screen shot below: 
+
+![alt text](https://raw.githubusercontent.com/AzrizHaziq/portfolio/master/public/screnshot.png)
