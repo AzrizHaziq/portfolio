@@ -16,7 +16,7 @@
     "react-dom": "^16.6.3",
     "react-hot-loader": "^4.3.12",
     "react-particles-js": "^2.4.2",
-    "react-scripts": "2.1.1",
+    "react-scripts": "3.0.1",
     "typescript": "3.2.1",
     "uuid": "^3.3.2"
   },
