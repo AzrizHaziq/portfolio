@@ -11,6 +11,7 @@ export default {
     tailwindConfig: './tailwind.config.js'
   },
   renderers: [
-    '@astrojs/renderer-preact'
+    // '@astrojs/renderer-preact',
+    '@astrojs/renderer-react'
   ]
 };

@@ -1,30 +1,29 @@
 ---
 // Component Imports
 import nightwind from "nightwind/helper";
+import Nav from '../../components/Nav.jsx';
 import BaseHead from '../../components/BaseHead.astro';
 import BlogHeader from '../../components/BlogHeader.astro';
 import BlogPostPreview from '../../components/BlogPostPreview.astro';
 
-const title = 'Example Blog';
-const permalink = 'https://example.com/';
-const description = 'The perfect starter for your perfect blog.';
+
+const title = 'My posts'
+const permalink = 'http://locahost:3000'
+const description = 'Hope you enjoy reading few of my posts. All is just my opinion do make your own conclusion'
 
 const allPosts = Astro.fetchContent('./*.md');
 allPosts = allPosts.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
 ---
 <html>
-  <!-- <head>
-    <link rel="stylesheet" href="/global.css">
+  <head>
     <BaseHead title={title} description={description} permalink={permalink} />
-    <link rel="stylesheet" href="/blog.css" />
-
-    <script dangerouslySetInnerHTML={{ __html: nightwind.init() }} />
-  </head> -->
+  </head>
 
   <body>
+    <Nav />
     <BlogHeader />
     <div class="layout">
-      <article class="content text-red-700">
+      <article class="content">
         <section class="intro">
           <h1 class="latest">{title}</h1>
           <p>{description}</p>
