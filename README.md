@@ -1,30 +1,51 @@
-You can fork this repo for your portfolio. Feel free to make a pull request.
+# Astro Starter Kit: Blog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```
+npm init astro --template blog
+```
 
-## Available Scripts
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-In the project directory, you can run:
+Features:
 
-### `npm start`
+- ✅ SEO-friendly setup with canonical URLs and OpenGraph data
+- ✅ Full Markdown support
+- ✅ RSS 2.0 generation
+- ✅ Sitemap.xml generation
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🚀 Project Structure
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Inside of your Astro project, you'll see the following folders and files:
 
-### `npm run build`
+```
+/
+├── public/
+│   ├── robots.txt
+│   └── favicon.ico
+├── src/
+│   ├── components/
+│   │   └── Tour.astro
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Any static assets, like images, can be placed in the `public/` directory.
 
+## 🧞 Commands
 
-Screen shot below: 
+All commands are run from the root of the project, from a terminal:
 
-![alt text](https://raw.githubusercontent.com/AzrizHaziq/portfolio/master/public/screnshot.png)
+| Command         | Action                                      |
+|:----------------|:--------------------------------------------|
+| `npm install`   | Installs dependencies                       |
+| `npm run start` | Starts local dev server at `localhost:3000` |
+| `npm run build` | Build your production site to `./dist/`     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://github.com/snowpackjs/astro) or jump into our [Discord server](https://astro.build/chat).
