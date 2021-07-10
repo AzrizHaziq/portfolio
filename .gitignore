@@ -1,5 +1,6 @@
 # build output
 dist
+.idea
 
 # dependencies
 node_modules/
