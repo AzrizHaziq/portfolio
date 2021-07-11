@@ -1,11 +1,24 @@
----
-export interface Props {
-  post: any;
+export function BlogPostPreview(post: any) {
+  return (
+    <article className='post-preview'>
+      <header>
+        <h3 className='publish-date'>{post.publishDate}</h3>
+        <a href={post.url}>
+          <h1 className='title'>{post.title}</h1>
+        </a>
+      </header>
+      <main>
+        <p>{post.description}</p>
+        <a href={post.url}>Read more</a>
+      </main>
+    </article>
+  )
 }
 
-const { post } = Astro.props;
----
-<article class="post-preview">
+/*
+
+
+ <article class="post-preview">
   <header>
     <h3 class="publish-date">{post.publishDate}</h3>
     <a href={post.url}><h1 class="title">{post.title}</h1></a>
@@ -55,3 +68,5 @@ header {
   color: var(--theme-text);
 }
 </style>
+
+   */

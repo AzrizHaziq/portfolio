@@ -1,11 +1,11 @@
 module.exports = {
-  purge: ['./public/**/*.html', './src/**/*.{astro,js,jsx,ts,tsx}'],
+  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
       fontFamily: {
-        'zen': ['zen-tokyo']
-      }
+        Anton: ['Anton'],
+      },
     },
   },
   variants: {

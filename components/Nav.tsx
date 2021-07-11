@@ -20,7 +20,7 @@ function Logo() {
       href='/'
       className='px-2 py-1 text-indigo-600 hover:text-indigo-700 dark:text-indigo-300 dark:hover:text-indigo-200'>
       <span className='sr-only'>Azriz Haziq Jasni</span>
-      <h1 className='font-zen text-2xl'>AJ</h1>
+      <h1 className='font-Anton text-2xl'>AJ</h1>
     </a>
   )
 }

@@ -6,12 +6,4 @@ module.exports = {
   printWidth: 120,
   jsxBracketSameLine: true,
   jsxSingleQuote: true,
-  overrides: [
-    {
-      files: "*.astro",
-      options: {
-        parser: "html",
-      },
-    },
-  ],
 }

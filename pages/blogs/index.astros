@@ -1,0 +1,34 @@
+---
+//   console.log('asdads')
+// import { Nav, BaseHead, BlogHeader, BlogPostPreview } from './../../components/index.ts';
+//   console.log('2222', Nav, BaseHead, BlogHeader, BlogPostPreview)
+
+const title = 'My posts'
+const permalink = 'http://locahost:3000'
+const description = 'Hope you enjoy reading few of my posts. All is just my opinion do make your own conclusion'
+
+const allPosts = Astro.fetchContent('./*.md');
+allPosts = allPosts.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+---
+<html class="dark">
+<!--
+  <head>
+    <BaseHead title={title} description={description} permalink={permalink} />
+  </head>
+
+  <body class="bg-indigo-200 dark:bg-gray-900">
+    <Nav client:visible />
+    <BlogHeader />
+    <div class="layout">
+      <article class="content">
+        <section class="intro">
+          <h1 class="latest">{title}</h1>
+          <p>{description}</p>
+        </section>
+        <section>
+          {allPosts.map(p => <BlogPostPreview post={p} />)}
+        </section>
+      </article>
+    </div>
+  </body> -->
+</html>

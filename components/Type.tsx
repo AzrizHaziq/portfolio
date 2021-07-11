@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
+import Typewriter from 'typewriter-effect/dist/core'
 
-export function Type({ texts }) {
+export function Type({ texts }: { texts: string[] }) {
   useEffect(() => {
-    // @ts-ignore
     new Typewriter('#typewriter', {
       strings: texts,
       autoStart: true,
