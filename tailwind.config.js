@@ -1,12 +1,16 @@
 module.exports = {
-  mode: 'jit',
+  // mode: '',
   purge: ['./public/**/*.html', './src/**/*.{astro,js,jsx,ts,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'zen': ['zen-tokyo']
+      }
+    },
   },
   variants: {
     extend: {},
   },
-  plugins: [require('nightwind')],
+  plugins: [],
 }

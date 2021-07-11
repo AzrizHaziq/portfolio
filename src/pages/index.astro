@@ -1,5 +1,5 @@
 ---
-import Nav from '../components/Nav.jsx';
+import Nav from '../components/Nav.tsx';
 import BaseHead from '../components/BaseHead.astro';
 
 const title = 'Azriz Haziq'
@@ -7,13 +7,13 @@ const permalink = 'http://locahost:3000'
 const description = 'Always bet on Deno, Rust, Typescript'
 
 ---
-<html>
+<html class="dark">
   <head>
     <BaseHead title={title} description={description} permalink={permalink} />
   </head>
 
   <body>
-    <Nav />
+    <Nav client:visible />
     All my posts
     <a href="/posts">List of posts</a>
   </body>
