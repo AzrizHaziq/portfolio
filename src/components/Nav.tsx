@@ -25,7 +25,7 @@ function Logo() {
   )
 }
 
-export default function Nav() {
+export function Nav() {
   return (
     <div className='sticky top-0'>
       <Popover className='relative bg-gradient-to-r from-gray-300 to-gray-50 dark:from-indigo-900 dark:to-indigo-700 border-b-2 border-gray-400 dark:border-indigo-400'>

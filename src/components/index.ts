@@ -1,1 +1,10 @@
-export * from './Author.astro';
+export { default as Author } from './Author.astro'
+export { default as BaseHead } from './BaseHead.astro'
+export { default as BlogHeader } from './BlogHeader.astro'
+export { default as BlogPost } from './BlogPost.astro'
+export { default as BlogPostPreview } from './BlogPostPreview.astro'
+export { default as HeroSection } from './HeroSection.astro'
+
+export * from './Type'
+export * from './Nav'
+export * from './Icons'
