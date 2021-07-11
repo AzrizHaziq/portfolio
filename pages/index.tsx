@@ -1,4 +1,4 @@
-import { Nav, HeroSection } from '../components'
+import { Nav, HeroSection } from '@components'
 
 const title = 'Azriz Haziq Jasni'
 const permalink = 'http://locahost:3000'
