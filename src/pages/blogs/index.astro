@@ -18,7 +18,7 @@ allPosts = allPosts.sort((a, b) => new Date(b.publishDate) - new Date(a.publishD
     <BaseHead title={title} description={description} permalink={permalink} />
   </head>
 
-  <body>
+  <body class="bg-indigo-200 dark:bg-gray-900">
     <ThemeProvider client:visible>
       <Nav client:visible />
       <BlogHeader />

@@ -1,20 +1,20 @@
 ---
 import Nav from '../components/Nav.tsx';
 import BaseHead from '../components/BaseHead.astro';
+import HeroSection from '../components/HeroSection.astro';
 
-const title = 'Azriz Haziq'
+const title = 'Azriz Haziq Jasni'
 const permalink = 'http://locahost:3000'
 const description = 'Always bet on Deno, Rust, Typescript'
-
 ---
+
 <html class="dark">
   <head>
-    <BaseHead title={title} description={description} permalink={permalink} />
+    <BaseHead title="{title}" description="{description}" permalink="{permalink}" />
   </head>
 
-  <body>
+  <body class="bg-indigo-200 dark:bg-gray-900">
     <Nav client:visible />
-    All my posts
-    <a href="/posts">List of posts</a>
+    <HeroSection />
   </body>
 </html>
