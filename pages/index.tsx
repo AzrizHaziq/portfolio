@@ -24,9 +24,9 @@ export default function Home({ data }: InferGetStaticPropsType<typeof getStaticP
         <link href='https://fonts.googleapis.com/css2?family=Anton&display=swap' rel='stylesheet' />
       </Head>
       <Nav />
-      <main className='max-w-7xl mx-auto space-y-6'>
+      <main className='max-w-7xl mx-auto'>
         <div
-          className='flex flex-col justify-center mx-auto space-y-2 max-w-4xl'
+          className='flex flex-col justify-center items-center mx-auto space-y-4 max-w-4xl'
           style={{ height: `calc(100vh - ${arrowHeight} - ${navHeader})` }}>
           <HeroSection />
         </div>
