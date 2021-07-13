@@ -1,6 +1,6 @@
 import { IconBox } from './Icons'
-import { PersonalDataContext } from '@helpers'
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment } from 'react'
+import { usePersonalData } from '@helpers'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
@@ -16,7 +16,7 @@ const navs: Navs[] = [
 ]
 
 function Logo() {
-  const { email } = useContext(PersonalDataContext)
+  const { email } = usePersonalData()
 
   return (
     <a

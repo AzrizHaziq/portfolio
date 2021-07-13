@@ -1,13 +1,11 @@
 import { Type } from './Type'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { SocialLink, Langs } from './SocialLink'
-import { PersonalDataContext, useHi } from '@helpers'
-
-const { whoami } = { whoami: [] }
+import { useHi, usePersonalData } from '@helpers'
 
 export function HeroSection() {
   const hi = useHi()
-  const { alias } = useContext(PersonalDataContext)
+  const { alias, whoami } = usePersonalData()
   const [isShown, setShown] = useState<boolean>(false)
 
   return (
