@@ -1,5 +1,6 @@
 import { IconBox } from './Icons'
-import React, { Fragment } from 'react'
+import { PersonalDataContext } from '@helpers'
+import React, { Fragment, useContext } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
@@ -15,12 +16,14 @@ const navs: Navs[] = [
 ]
 
 function Logo() {
+  const { email } = useContext(PersonalDataContext)
+
   return (
     <a
-      href='mailto:azrizhaziq@gmail.com'
-      className='px-2 py-1 flex items-center text-indigo-600 hover:text-indigo-700 dark:text-indigo-300 dark:hover:text-indigo-200 uppercase font-bold font-mono space-x-1'>
+      href={`mailto:${email}`}
+      className='px-2 py-1 flex items-center text-gray-300 hover:text-gray-200 dark:text-indigo-300 dark:hover:text-indigo-200 uppercase font-bold font-mono space-x-1'>
       <IconBox icon='email' />
-      <span>azrizhaziq@gmail.com</span>
+      <span>{email}</span>
     </a>
   )
 }
@@ -28,7 +31,7 @@ function Logo() {
 export function Nav() {
   return (
     <div className='sticky top-0'>
-      <Popover className='relative bg-gradient-to-r from-gray-300 to-gray-50 dark:from-indigo-900 dark:to-indigo-700 border-b-2 border-gray-400 dark:border-indigo-400'>
+      <Popover className='relative bg-gradient-to-r from-indigo-900 to-indigo-700 border-b-4 border-indigo-300'>
         {({ open }) => (
           <>
             <div className='max-w-7xl mx-auto px-4 sm:px-6'>
@@ -47,7 +50,7 @@ export function Nav() {
                     <a
                       href={nav.href}
                       key={nav.id}
-                      className='text-base font-medium font-mono text-indigo-400  hover:text-indigo-600 dark:text-indigo-300 dark:hover:text-indigo-200'>
+                      className='text-base font-medium font-mono text-gray-300 hover:text-gray-200 dark:text-indigo-300 dark:hover:text-indigo-200'>
                       {nav.title}
                     </a>
                   ))}
@@ -86,7 +89,7 @@ export function Nav() {
                         <a
                           href={nav.href}
                           key={nav.id}
-                          className='text-base font-medium text-indigo-400  hover:text-indigo-600 dark:text-indigo-300 dark:hover:text-indigo-200'>
+                          className='text-base font-medium text-gray-400 hover:text-gray-300 dark:text-indigo-300 dark:hover:text-indigo-200'>
                           {nav.title}
                         </a>
                       ))}

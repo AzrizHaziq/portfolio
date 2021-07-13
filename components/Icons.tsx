@@ -2,7 +2,7 @@ import { MdEmail } from 'react-icons/md'
 import React, { ReactChildren } from 'react'
 import type { IconBaseProps } from 'react-icons'
 import { SiDeno, SiRust, SiTypescript, SiJavascript } from 'react-icons/si'
-import { FaMediumM, FaStackOverflow, FaGithub, FaDev, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { FaMediumM, FaStackOverflow, FaGithub, FaDev, FaLinkedin, FaTwitter, FaArrowDown } from 'react-icons/fa'
 
 /**
  * <Icons.Medium class="fill-current text-black dark:text-white" />
@@ -24,6 +24,7 @@ export const Icons: { [k: string]: any } = {
   Rust: ({ props }: { props: IconBaseProps }) => <SiRust title='Rust' {...props} />,
   TS: ({ props }: { props: IconBaseProps }) => <SiTypescript title='TS' {...props} />,
   JS: ({ props }: { props: IconBaseProps }) => <SiJavascript title='JS' {...props} />,
+  ArrowDown: ({ props }: { props: IconBaseProps }) => <FaArrowDown title='Look more bellow' {...props} />,
 }
 
 /**

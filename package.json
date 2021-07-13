@@ -17,10 +17,12 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
-    "typewriter-effect": "^2.18.0"
+    "typewriter-effect": "^2.18.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/react": "17.0.14",
+    "@types/uuid": "^8.3.1",
     "autoprefixer": "^10.2.6",
     "eslint": "7.30.0",
     "eslint-config-next": "11.0.1",
