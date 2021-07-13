@@ -1,6 +1,7 @@
 import { MdEmail } from 'react-icons/md'
 import React, { ReactChildren } from 'react'
 import type { IconBaseProps } from 'react-icons'
+import { HiOutlineRefresh } from 'react-icons/Hi'
 import { SiDeno, SiRust, SiTypescript, SiJavascript } from 'react-icons/si'
 import { FaMediumM, FaStackOverflow, FaGithub, FaDev, FaLinkedin, FaTwitter, FaArrowDown } from 'react-icons/fa'
 
@@ -25,6 +26,7 @@ export const Icons: { [k: string]: any } = {
   TS: ({ props }: { props: IconBaseProps }) => <SiTypescript title='TS' {...props} />,
   JS: ({ props }: { props: IconBaseProps }) => <SiJavascript title='JS' {...props} />,
   ArrowDown: ({ props }: { props: IconBaseProps }) => <FaArrowDown title='Look more bellow' {...props} />,
+  Refresh: ({ props }: { props: IconBaseProps }) => <HiOutlineRefresh title='Look more bellow' {...props} />,
 }
 
 /**
@@ -39,7 +41,7 @@ export const IconBox = ({
   ...props
 }: {
   icon: string
-  children?: ReactChildren
+  children?: any
   pre?: boolean
   className?: string
 }) => {
