@@ -1,14 +1,34 @@
-import React, { useEffect } from 'react'
-import Typewriter from 'typewriter-effect/dist/core'
+import React from 'react'
+import Typewriter, { TypewriterClass } from 'typewriter-effect'
 
-export function Type({ texts }: { texts: string[] }) {
-  useEffect(() => {
-    new Typewriter('#typewriter', {
-      strings: texts,
-      autoStart: true,
-      loop: true,
-    })
-  }, [])
+export function Type({
+  texts,
+  showCallBack = () => {},
+  hideCallBack = () => {},
+}: {
+  texts: string[]
+  showCallBack?: () => void
+  hideCallBack?: () => void
+}) {
+  return (
+    <Typewriter
+      options={{
+        autoStart: true,
+        loop: true,
+      }}
+      onInit={(typewriter: TypewriterClass) => {
+        texts.forEach(text => {
+          typewriter.typeString(text).pauseFor(3000).deleteAll()
+        })
 
-  return <h1 id='typewriter' className='text-gray-500 dark:text-gray-400'></h1>
+        typewriter
+          .typeString('Always bet on')
+          .callFunction(showCallBack)
+          .pauseFor(3000)
+          .callFunction(hideCallBack)
+          .deleteAll()
+          .start()
+      }}
+    />
+  )
 }

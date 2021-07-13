@@ -1,38 +1,38 @@
 import { Type } from './Type'
-import { SocialLink } from './SocialLink'
+import { SocialLink, Langs } from './SocialLink'
+import { useState } from 'react'
 
 const whoami: string[] = [
   'programmer',
   '❤️ cats',
   'I hate JS',
   'Just kidding 🙂',
-  'Always bet on Deno, Rust, Typescript',
   '❤️  unit and e2e test',
   'Non stop learn something new',
 ]
 
 export function HeroSection() {
+  const [isShown, setShown] = useState<boolean>(false)
+
   return (
-    <main className='hero-section'>
+    <main className='flex' style={{ height: 'calc(100vh - 88px)' }}>
       <div className='flex flex-col justify-center mx-auto space-y-2 p-5'>
-        <h1 className='text-5xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl'>
-          <span className='block text-black: dark:text-white xl:mr-2'>Hi 👋,</span>
-          <div className='block text-indigo-600'>Azriz Haziq Jasni</div>
+        <h1
+          className='tracking-tight font-extrabold text-gray-900'
+          style={{ fontSize: 'clamp(3em, calc(9 / 80 * 100vw), 5em)' }}>
+          <span className='block text-black dark:text-white'>Hi 👋,</span>
+          <div className='space-x-4'>
+            <span className='inline text-black dark:text-white'>I'm</span>
+            <div className='inline text-indigo-600'>Azriz Haziq Jasni</div>
+          </div>
         </h1>
-        <span>
-          <a
-            className='inline-block bg-indigo-50 px-4 py-1 rounded-full text-indigo-500 font-semibold text-sm hover:text-indigo-600'
-            href='mailto:azrizhaziq@gmail.com'>
-            azrizhaziq@gmail.com
-          </a>
-        </span>
-        <p className='mt-3 text-base text-gray-500'>
-          <Type texts={whoami} />
-        </p>
+        <div className='flex space-x-3 mt-3 text-base text-gray-500'>
+          <Type texts={whoami} showCallBack={() => setShown(true)} hideCallBack={() => setShown(false)} />
+          <span className={`${isShown ? 'block' : 'hidden'}`}>
+            <Langs />
+          </span>
+        </div>
         <SocialLink />
-      </div>
-      <div>
-        <div className='m-auto p-10 bg-indigo-500'></div>
       </div>
     </main>
   )

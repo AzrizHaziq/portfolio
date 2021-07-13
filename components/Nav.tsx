@@ -1,4 +1,4 @@
-/* This example requires Tailwind CSS v2.0+ */
+import { IconBox } from './Icons'
 import React, { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
@@ -17,10 +17,10 @@ const navs: Navs[] = [
 function Logo() {
   return (
     <a
-      href='/'
-      className='px-2 py-1 text-indigo-600 hover:text-indigo-700 dark:text-indigo-300 dark:hover:text-indigo-200'>
-      <span className='sr-only'>Azriz Haziq Jasni</span>
-      <h1 className='font-Anton text-2xl'>AJ</h1>
+      href='mailto:azrizhaziq@gmail.com'
+      className='px-2 py-1 flex items-center text-indigo-600 hover:text-indigo-700 dark:text-indigo-300 dark:hover:text-indigo-200 uppercase font-bold font-mono space-x-1'>
+      <IconBox icon='email' />
+      <span>azrizhaziq@gmail.com</span>
     </a>
   )
 }
@@ -47,7 +47,7 @@ export function Nav() {
                     <a
                       href={nav.href}
                       key={nav.id}
-                      className='text-base font-medium text-indigo-400  hover:text-indigo-600 dark:text-indigo-300 dark:hover:text-indigo-200'>
+                      className='text-base font-medium font-mono text-indigo-400  hover:text-indigo-600 dark:text-indigo-300 dark:hover:text-indigo-200'>
                       {nav.title}
                     </a>
                   ))}

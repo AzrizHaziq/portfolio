@@ -1,4 +1,6 @@
+import { MdEmail } from 'react-icons/md'
 import React, { ReactChildren } from 'react'
+import type { IconBaseProps } from 'react-icons'
 import { SiDeno, SiRust, SiTypescript, SiJavascript } from 'react-icons/si'
 import { FaMediumM, FaStackOverflow, FaGithub, FaDev, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
@@ -7,20 +9,21 @@ import { FaMediumM, FaStackOverflow, FaGithub, FaDev, FaLinkedin, FaTwitter } fr
  */
 export const Icons: { [k: string]: any } = {
   // Social
-  Github: FaGithub,
-  Linkedin: FaLinkedin,
-  Twitter: FaTwitter,
-  SO: FaStackOverflow,
+  Github: ({ props }: { props: IconBaseProps }) => <FaGithub title='Github' {...props} />,
+  Linkedin: ({ props }: { props: IconBaseProps }) => <FaLinkedin title='Linkedin' {...props} />,
+  Twitter: ({ props }: { props: IconBaseProps }) => <FaTwitter title='Twitter' {...props} />,
+  SO: ({ props }: { props: IconBaseProps }) => <FaStackOverflow title='StackOverflow' {...props} />,
+  email: ({ props }: { props: IconBaseProps }) => <MdEmail title='email' {...props} />,
 
   // blogs
-  Medium: FaMediumM,
-  Devto: FaDev,
+  Medium: ({ props }: { props: IconBaseProps }) => <FaMediumM title='Medium' {...props} />,
+  Devto: ({ props }: { props: IconBaseProps }) => <FaDev title='Devto' {...props} />,
 
   // lang
-  Deno: SiDeno,
-  Rust: SiRust,
-  TS: SiTypescript,
-  JS: SiJavascript,
+  Deno: ({ props }: { props: IconBaseProps }) => <SiDeno title='Deno' {...props} />,
+  Rust: ({ props }: { props: IconBaseProps }) => <SiRust title='Rust' {...props} />,
+  TS: ({ props }: { props: IconBaseProps }) => <SiTypescript title='TS' {...props} />,
+  JS: ({ props }: { props: IconBaseProps }) => <SiJavascript title='JS' {...props} />,
 }
 
 /**
@@ -40,12 +43,11 @@ export const IconBox = ({
   className?: string
 }) => {
   const IC = Icons[icon]
-  const { className = '' } = props
 
   return (
     <>
       {!pre && children}
-      <IC {...props} className={`${className}`} />
+      {IC({ props })}
       {pre && children}
     </>
   )
