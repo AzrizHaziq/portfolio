@@ -14,8 +14,7 @@ export function BaseHead({ title, description, permalink, children }: Partial<Ba
 
   title = title ?? personalData.alias
   description = description ?? `I'm Azriz Haziq Jasni, a web developer`
-  permalink = permalink ?? 'asdasd' //`${process.env.HOSTNAME}`
-  console.log(process.env.HOSTNAME, process.env.NEXT_PUBLIC_ANALYTICS_ID)
+  permalink = permalink ?? process.env.NEXT_PUBLIC_HOSTNAME
 
   return (
     <Head>

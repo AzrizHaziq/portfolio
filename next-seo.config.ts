@@ -1,14 +1,13 @@
-console.log(process.env.NEXT_PUBLIC_ANALYTICS_ID)
 export default {
   openGraph: {
     type: 'website',
-    locale: 'en_IE',
-    url: 'https://www.url.ie/',
-    site_name: 'SiteName',
+    locale: 'en_us',
+    url: `${process.env.NEXT_PUBLIC_HOSTNAME}`,
+    site_name: '',
   },
   twitter: {
-    handle: '@handle',
-    site: '@site',
+    handle: '@azrizhaziq',
+    site: '@',
     cardType: 'summary_large_image',
   },
 }
