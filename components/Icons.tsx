@@ -6,7 +6,17 @@ import { FcCheckmark } from 'react-icons/fc'
 import { HiOutlineRefresh } from 'react-icons/Hi'
 import type { IconType, IconBaseProps } from 'react-icons'
 import { SiDeno, SiRust, SiTypescript, SiJavascript } from 'react-icons/si'
-import { FaMediumM, FaStackOverflow, FaGithub, FaDev, FaLinkedin, FaTwitter, FaArrowDown } from 'react-icons/fa'
+import {
+  FaMediumM,
+  FaStackOverflow,
+  FaSun,
+  FaGithub,
+  FaDev,
+  FaLinkedin,
+  FaMoon,
+  FaTwitter,
+  FaArrowDown,
+} from 'react-icons/fa'
 
 const Icons: { [k: string]: IconType } = {
   // Social
@@ -31,6 +41,8 @@ const Icons: { [k: string]: IconType } = {
   CheckMark: FcCheckmark,
 
   Home: GoHome,
+  Moon: FaMoon,
+  Sun: FaSun,
 }
 
 /**

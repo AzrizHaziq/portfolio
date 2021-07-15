@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { IconBox } from './Icons'
 import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'
+import { UseToggle } from './useToggle'
 import { usePersonalData } from '@helpers'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
@@ -78,6 +79,7 @@ export function Nav() {
                 </div>
                 <Popover.Group as='nav' className='hidden md:flex space-x-10'>
                   <PageLinks navs={navs} />
+                  <UseToggle />
                 </Popover.Group>
               </div>
             </div>
