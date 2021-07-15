@@ -1,8 +1,10 @@
 import { v4 as uuid } from 'uuid'
 import data from 'personal-data.json'
+import { useEvent } from 'react-use'
 import { PersonalDataProvider } from '@helpers'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { Nav, HeroSection, Skills, IconBox } from '@components'
+import { HeroSection, IconBox, Nav, Skills } from '@components'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 export const getStaticProps: GetStaticProps = async () => {
   const colors = [
@@ -29,9 +31,24 @@ export const getStaticProps: GetStaticProps = async () => {
   return { props: { data: { ...data, skills: mergedSkills } } }
 }
 
+const navHeader = '88px'
+const arrowHeight = '6vh'
 export default function Home({ data }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const navHeader = '88px'
-  const arrowHeight = '6vh'
+  const [arrowTop, setArrowTop] = useState<number>(0)
+  const [showArrow, setShowArrow] = useState<boolean>(true)
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setArrowTop(scrollRef.current?.getBoundingClientRect().top as number)
+  }, [])
+
+  const onScroll = useCallback(() => {
+    const offset = 30
+    const shouldHide = (scrollRef.current?.getBoundingClientRect().top as number) + offset > arrowTop
+    setShowArrow(shouldHide)
+  }, [arrowTop])
+
+  useEvent('scroll', onScroll)
 
   return (
     <PersonalDataProvider value={data}>
@@ -42,14 +59,17 @@ export default function Home({ data }: InferGetStaticPropsType<typeof getStaticP
           style={{ height: `calc(100vh - ${arrowHeight} - ${navHeader})` }}>
           <HeroSection />
         </div>
-        <div className='flex justify-center' style={{ height: arrowHeight }}>
+        <div
+          ref={scrollRef}
+          className={`flex justify-center ${showArrow ? 'visible' : 'invisible'}`}
+          style={{ height: arrowHeight }}>
           <IconBox icon='ArrowDown' className={'w-6 h-6 animate-bounce text-black dark:text-white'} />
         </div>
         <div className='mx-5'>
           <Skills />
         </div>
       </main>
-      <div className='mb-[200px]' />
+      <div className='mb-[400px]' />
     </PersonalDataProvider>
   )
 }
