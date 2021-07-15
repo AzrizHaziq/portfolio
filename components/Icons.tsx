@@ -1,4 +1,5 @@
 import React from 'react'
+import { GoHome } from 'react-icons/go'
 import { MdEmail } from 'react-icons/md'
 import { BsClipboard } from 'react-icons/bs'
 import { FcCheckmark } from 'react-icons/fc'
@@ -28,6 +29,8 @@ const Icons: { [k: string]: IconType } = {
   Refresh: HiOutlineRefresh,
   Copy: BsClipboard,
   CheckMark: FcCheckmark,
+
+  Home: GoHome,
 }
 
 /**

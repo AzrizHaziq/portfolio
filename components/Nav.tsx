@@ -1,30 +1,61 @@
+import Link from 'next/link'
 import { IconBox } from './Icons'
+import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'
 import { usePersonalData } from '@helpers'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
-interface Navs {
+interface Nav {
   id: number
   href: string
   title: string
 }
 
-const navs: Navs[] = [
+const navs: Nav[] = [
   { id: 1, href: '/side-projects', title: 'Side Projects' },
   { id: 2, href: '/blogs', title: 'Blogs' },
 ]
 
 function Logo() {
+  const router = useRouter()
   const { email } = usePersonalData()
 
   return (
-    <a
-      href={`mailto:${email}`}
-      className='px-2 py-1 flex items-center text-gray-300 hover:text-gray-200 dark:text-indigo-300 dark:hover:text-indigo-200 uppercase font-bold font-mono space-x-1'>
-      <IconBox icon='email' />
-      <span>{email}</span>
-    </a>
+    <div className='font-mono text-indigo-200 hover:text-indigo-300 dark:text-indigo-300 dark:hover:text-indigo-200 cursor-pointer'>
+      {router.pathname === '/' ? (
+        <a href={`mailto:${email}`} className='px-2 py-1 flex items-center uppercase font-bold font-mono space-x-1'>
+          <IconBox icon='email' />
+          <span>{email}</span>
+        </a>
+      ) : (
+        <Link href={'/'}>
+          <a>
+            <IconBox icon='Home' title='Home' className={'mr-2 w-8 h-8 '} />
+          </a>
+        </Link>
+      )}
+    </div>
+  )
+}
+
+function PageLinks({ navs, isMobile = false }: { navs: Nav[]; isMobile?: boolean }): JSX.Element {
+  const router = useRouter()
+
+  const classNames = isMobile
+    ? 'text-indigo-600 hover:text-indigo-800 dark:text-indigo-300 dark:hover:text-indigo-200'
+    : 'text-gray-300 hover:text-gray-200 dark:text-indigo-300 dark:hover:text-indigo-200'
+
+  const isActive = ({ href }: Nav): string => (router.pathname === href ? 'font-extrabold' : '')
+
+  return (
+    <>
+      {navs.map(nav => (
+        <Link key={nav.id} href={nav.href}>
+          <a className={`text-base font-mono ${classNames} ${isActive(nav)}`}>{nav.title}</a>
+        </Link>
+      ))}
+    </>
   )
 }
 
@@ -40,20 +71,13 @@ export function Nav() {
                   <Logo />
                 </div>
                 <div className='-mr-2 -my-2 md:hidden'>
-                  <Popover.Button className='rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-600 fill-current dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
+                  <Popover.Button className='rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-100 hover:bg-indigo-600 dark:hover:bg-indigo-600 fill-current dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
                     <span className='sr-only'>Open menu</span>
                     <MenuIcon className='h-6 w-6' aria-hidden='true' />
                   </Popover.Button>
                 </div>
                 <Popover.Group as='nav' className='hidden md:flex space-x-10'>
-                  {navs.map(nav => (
-                    <a
-                      href={nav.href}
-                      key={nav.id}
-                      className='text-base font-medium font-mono text-gray-300 hover:text-gray-200 dark:text-indigo-300 dark:hover:text-indigo-200'>
-                      {nav.title}
-                    </a>
-                  ))}
+                  <PageLinks navs={navs} />
                 </Popover.Group>
               </div>
             </div>
@@ -71,7 +95,7 @@ export function Nav() {
                 focus
                 static
                 className='absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden'>
-                <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-gradient-to-r from-gray-300 to-gray-50 dark:from-indigo-900 dark:to-indigo-700 border-2 border-indigo-400'>
+                <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-gradient-to-r from-indigo-300 to-indigo-100 dark:from-indigo-900 dark:to-indigo-600 border-2 border-indigo-400'>
                   <div className='pt-5 pb-6 px-5 relative'>
                     <div className='flex items-center justify-center'>
                       <Logo />
@@ -85,14 +109,7 @@ export function Nav() {
                   </div>
                   <div className='py-6 px-5 space-y-6'>
                     <div className='grid grid-cols-2 gap-y-4 gap-x-8'>
-                      {navs.map(nav => (
-                        <a
-                          href={nav.href}
-                          key={nav.id}
-                          className='text-base font-medium text-gray-400 hover:text-gray-300 dark:text-indigo-300 dark:hover:text-indigo-200'>
-                          {nav.title}
-                        </a>
-                      ))}
+                      <PageLinks navs={navs} isMobile />
                     </div>
                   </div>
                 </div>

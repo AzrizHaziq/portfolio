@@ -57,79 +57,46 @@
   ],
   "projects": [
     {
-      "name": "Droids",
-      "projectTime": "Nov 2018 - Present",
-      "description": "Analytics for Admin dashboard in Oil and Gas",
-      "details": [
-        "Technology stack use Angular 5, and help migrate to Angular 6. Other than that, fully utilise RxJS, scss, Bs4 and Typescript",
-        "Make a custom NPM scripts and setup different development environment to help better Developer Experience(DX).",
-        "Utilise streaming library(RXJS)",
-        "Dealing a lot with various type of charts and was built with AmchartJS.",
-        "Build a custom print layout with css.",
-        "Setup every form html to be accessible and its validation."
-      ]
+      "name": "Portfolio",
+      "github_url": "https://github.com/AzrizHaziq/portfolio",
+      "web_url": "",
+      "descriptions": "nothing exited here",
+      "build_with": "NextJS, Tailwind"
     },
     {
-      "name": "WellWar",
-      "projectTime": "July 2018 - Present",
-      "description": "Analytics for Admin dashboard in Oil and Gas",
-      "details": [
-        "Still on going project and currently develop actively.",
-        "Technology stack use Angular 6, which uses ESNext, Bs4, Lodash, RxJS, SCSS, and Typescript.",
-        "Setup every form html to be accessible and its validation.",
-        "Using Dhtmlx Gantt chart library for Rig Management.",
-        "Setup every form html to be accessible and its validation."
-      ]
+      "name": "Tradingview Shariah Indicator",
+      "github_url": "https://github.com/AzrizHaziq/tradingview-syariah-indicator",
+      "web_url": "https://azrizhaziq.github.io/tradingview-syariah-indicator",
+      "descriptions": "Display Shariah Indicator to indicate certain stocks is a Shariah Compliant(currently only support Malaysia)",
+      "build_with": "React, Webpack, Vanilla JS, Puppeteer"
     },
     {
-      "name": "VEGA",
-      "projectTime": "Nov 2017 - Present",
-      "description": "Single-sign on(SSO) Application for internal Malaysia Agency",
-      "details": [
-        "Build with Angular 6.",
-        "Implement code-splitting.",
-        "Utilise streaming library(RXJS).",
-        "Manage error-handling and error state.",
-        "Display empty-state interface.",
-        "Build a local deployment tool.",
-        "Web accessibility.",
-        "Improve security feature.",
-        "Jasmine & Mocha framework for unit testing to ensure expected code and good quality.",
-        "Split environment features between staging, and production were implemented.",
-        "Use NodeJs for auto deploy scripts to push to server."
-      ]
+      "name": "Typescript & Angular tips",
+      "github_url": "https://github.com/AzrizHaziq/ts-angular-tips",
+      "web_url": "https://ts-angular-tips.vercel.app/",
+      "descriptions": "Slide ",
+      "build_with": "Vite, Tailwind, RevealJS"
     },
     {
-      "name": "IPI",
-      "description": "solution to find the best ambassadors for a product/service.",
-      "projectTime": "July 2017 - Oct 2017",
-      "details": [
-        "Maintaining the project for about 3 month.",
-        "Build with AngularJS.",
-        "Involve in frontend development.",
-        "Suggest and use JSONPlaceholder for mock data."
-      ]
+      "name": "BNM Consumer Alert",
+      "github_url": "https://github.com/AzrizHaziq/bnm-consumer-alert",
+      "web_url": "https://azrizhaziq.github.io/bnm-consumer-alert/",
+      "descriptions": "List potential scammer or huge Red flag in Malaysia",
+      "build_with": "Vite, Tailwind, RevealJS"
     },
     {
-      "name": "MotherBoard",
-      "description": "A solution for, sales and marketing department to plan their strategies.",
-      "projectTime": "Apr 2017 - Jun 2017",
-      "details": [
-        "Maintaining the project for about 4 month.",
-        "React, Redux, ES6.",
-        "Help improve runtime performance for development.",
-        "Highlight testing environment was using development build."
-      ]
+      "name": "BNM Consumer Alert",
+      "github_url": "",
+      "web_url": "https://dapurkayangan.com/",
+      "descriptions": "My mother website for her business online",
+      "build_with": "Gatsby, Tailwind"
     },
     {
-      "name": "Savi",
-      "description": "Lately drivers have difficulty when finding a park in mall. Savi provide a solution for high density parking in city/mall.",
-      "projectTime": "Nov 2016 - Mar 2017",
-      "details": [
-        "A Hybrid mobile application.",
-        "End to End development with Senior guidance.",
-        "Use ionic 1, Laravel 5, AWS LightSail, OneSignal, iSMS."
-      ]
+      "name": "Automate",
+      "github_url": "https://github.com/AzrizHaziq/automate",
+      "web_url": "",
+      "descriptions": "Archived, doesn't work anymore since I had trouble using Github Action",
+      "build_with": "Playwright"
     }
   ]
 }

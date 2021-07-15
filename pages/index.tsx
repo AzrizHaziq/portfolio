@@ -27,7 +27,6 @@ export default function Home() {
           <HeroSection />
         </div>
         <div
-          id='abc'
           ref={scrollRef}
           className={`flex justify-center ${showArrow ? 'visible' : 'invisible'}`}
           style={{ height: arrowHeight }}>
