@@ -2,14 +2,14 @@
 //@import "~bootstrap-scss/mixins";
 //@import "~bootstrap-scss/variables";
 
-@include media-breakpoint-up(sm) {
-  .jump {
-    transition: all .2s ease-out;
-  }
-
-  .jump:hover {
-    color: $yellow !important;
-    transition: all .2s ease-in;
-    transform: translateY(-5px);
-  }
-}
+//@include media-breakpoint-up(sm) {
+//  .jump {
+//    transition: all .2s ease-out;
+//  }
+//
+//  .jump:hover {
+//    color: $yellow !important;
+//    transition: all .2s ease-in;
+//    transform: translateY(-5px);
+//  }
+//}

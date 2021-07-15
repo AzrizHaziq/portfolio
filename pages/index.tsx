@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { PersonalData, PersonalDataProvider } from '@helpers'
-import { Nav, HeroSection, Skills, IconBox } from '@components'
+import { Nav, HeroSection, Skills, IconBox, BaseHead } from '@components'
 
 const revalidate = 60 * 60
 
@@ -17,12 +17,7 @@ export default function Home({ data }: InferGetStaticPropsType<typeof getStaticP
 
   return (
     <PersonalDataProvider value={data}>
-      <Head>
-        <title>{data.alias}</title>
-        <link rel='preconnect' href='https://fonts.googleapis.com' />
-        <link rel='preconnect' href='https://fonts.gstatic.com' />
-        <link href='https://fonts.googleapis.com/css2?family=Anton&display=swap' rel='stylesheet' />
-      </Head>
+      {/*<BaseHead />*/}
       <Nav />
       <main className='max-w-7xl mx-auto'>
         <div

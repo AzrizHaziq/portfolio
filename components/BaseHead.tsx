@@ -1,14 +1,24 @@
+import Head from 'next/head'
 import * as React from 'react'
+import { usePersonalData } from '@helpers'
 
 interface BaseHead {
   title: string
   description: string
   permalink: string
+  children?: JSX.Element
 }
 
-export function BaseHead({ title, description, permalink }: BaseHead) {
+export function BaseHead({ title, description, permalink, children }: Partial<BaseHead>) {
+  const personalData = usePersonalData()
+
+  title = title ?? personalData.alias
+  description = description ?? `I'm Azriz Haziq Jasni, a web developer`
+  permalink = permalink ?? 'asdasd' //`${process.env.HOSTNAME}`
+  console.log(process.env.HOSTNAME, process.env.NEXT_PUBLIC_ANALYTICS_ID)
+
   return (
-    <>
+    <Head>
       <meta charSet='utf-8' />
       <meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover' />
 
@@ -29,7 +39,6 @@ export function BaseHead({ title, description, permalink }: BaseHead) {
       <meta name='msapplication-TileImage' content='/favicons/ms-icon-144x144.png' />
       <meta name='theme-color' content='#ffffff' />
       <meta name='theme-color' content='#000000' />
-      <link rel='manifest' href='/manifest.json' />
 
       <title>{title}</title>
       <meta name='title' content={title} />
@@ -46,27 +55,7 @@ export function BaseHead({ title, description, permalink }: BaseHead) {
       <meta property='twitter:title' content={title} />
       <meta property='twitter:description' content={description} />
       <meta property='twitter:image' content='https://astro.build/social.jpg?v=1' />
-    </>
+      {children}
+    </Head>
   )
 }
-
-//
-//   {/*<style>*/
-// }
-// {/*  @font-face {*/
-// }
-// {/*  font - family: zen-tokyo;*/
-// }
-// {/*  src: url(/fonts/zen-tokyo-regular.ttf);*/
-// }
-// {/*  font-display: block;*/
-// }
-// {/*}*/
-// }
-// {/*</style>*/
-// }
-// {/*<script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>*/
-// }
-//
-// {/*<link rel="stylesheet" href="/global.css">*/
-// }
