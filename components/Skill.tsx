@@ -1,41 +1,47 @@
-import { IconBox } from '@components'
 import React, { useState } from 'react'
 import { usePersonalData } from '@helpers'
+import { CopyClipboard, IconBox } from '@components'
 
 export const Skills = (): JSX.Element => {
   const { skills } = usePersonalData()
-  const [ids, setIds] = useState<string[]>([])
+  const [selectedSkills, setSelectedSkills] = useState<string[]>([])
 
-  function toggle(selectedId: string) {
-    if (ids.includes(selectedId)) {
-      setIds(ids.filter(id => id !== selectedId))
+  function toggle(skill: string) {
+    if (selectedSkills.includes(skill)) {
+      setSelectedSkills(selectedSkills.filter(i => i !== skill))
     } else {
-      setIds([...ids, selectedId])
+      setSelectedSkills([...selectedSkills, skill])
     }
   }
 
   function clear() {
-    setIds([])
+    setSelectedSkills([])
   }
 
-  const setColorSkill = (id: string): string => (ids.includes(id) ? 'font-bold' : ids.length > 0 ? 'opacity-20' : '')
+  const setColorSkill = (skill: string): string =>
+    selectedSkills.includes(skill) ? '' : selectedSkills.length > 0 ? 'opacity-30' : ''
 
   return (
     <>
-      <div className={`text-right ${ids.length > 0 || 1 ? 'block' : 'hidden'}`}>
-        <div onClick={clear}>
-          <IconBox icon='Refresh' className={`w-6 h-6 cursor-pointer hover:text-red-700`}>
-            You have selected {ids.length}
-          </IconBox>
+      <div
+        className={`space-x-2 text-black dark:text-white mb-3 cursor-default ${
+          selectedSkills.length > 0 ? 'flex justify-end' : 'hidden'
+        }`}>
+        <span>{selectedSkills.length}</span>
+        <div className={`hover:text-indigo-500 dark:hover:text-indigo-500 cursor-pointer`} onClick={clear}>
+          <IconBox icon='Refresh' className={`refresh-spin w-6 h-6 `} title={'Clear'} />
+        </div>
+        <div className='hover:text-indigo-500 dark:hover:text-indigo-500 cursor-pointer'>
+          <CopyClipboard texts={selectedSkills.join(', ')} />
         </div>
       </div>
       <div className='font-mono flex gap-2 flex-wrap justify-center'>
         {skills.map(item => (
           <span
-            onClick={() => toggle(item.id)}
+            onClick={() => toggle(item.skill)}
             key={item.id}
             className={`cursor-pointer select-none rounded px-2 py-1 shadow hover:shadow-md hover:opacity-90
-           ${setColorSkill(item.id)} ${item.color}`}>
+           ${setColorSkill(item.skill)} ${item.color}`}>
             {item.skill}
           </span>
         ))}

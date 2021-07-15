@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { Nav, HeroSection, Skills, Icons } from '@components'
 import { PersonalData, PersonalDataProvider } from '@helpers'
+import { Nav, HeroSection, Skills, IconBox } from '@components'
 
 const revalidate = 60 * 60
 
@@ -31,10 +31,13 @@ export default function Home({ data }: InferGetStaticPropsType<typeof getStaticP
           <HeroSection />
         </div>
         <div className='flex justify-center' style={{ height: arrowHeight }}>
-          {Icons.ArrowDown({ props: { className: 'w-6 h-6 animate-bounce text-black dark:text-white' } })}
+          <IconBox icon='ArrowDown' className={'w-6 h-6 animate-bounce text-black dark:text-white'} />
         </div>
-        <Skills />
+        <div className='mx-5'>
+          <Skills />
+        </div>
       </main>
+      <div className='mb-[200px]' />
     </PersonalDataProvider>
   )
 }

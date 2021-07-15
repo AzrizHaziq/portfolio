@@ -1,15 +1,17 @@
 import * as React from 'react'
 
+export type Skills = {
+  id: string
+  skill: string
+  color: string
+}
+
 export type PersonalData = {
   alias: string
   name: string
   email: string
   whoami: string[]
-  skills: {
-    id: string
-    skill: string
-    color: string
-  }[]
+  skills: Skills[]
   projects: {
     name: string
     projectTime: string
