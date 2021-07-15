@@ -2,9 +2,9 @@ import { v4 as uuid } from 'uuid'
 import data from 'personal-data.json'
 import { useEvent } from 'react-use'
 import { PersonalDataProvider } from '@helpers'
+import { useCallback, useRef, useState } from 'react'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { HeroSection, IconBox, Nav, Skills } from '@components'
-import { useCallback, useEffect, useRef, useState } from 'react'
 
 export const getStaticProps: GetStaticProps = async () => {
   const colors = [
@@ -34,19 +34,14 @@ export const getStaticProps: GetStaticProps = async () => {
 const navHeader = '88px'
 const arrowHeight = '6vh'
 export default function Home({ data }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [arrowTop, setArrowTop] = useState<number>(0)
-  const [showArrow, setShowArrow] = useState<boolean>(true)
   const scrollRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    setArrowTop(scrollRef.current?.getBoundingClientRect().top as number)
-  }, [])
+  const [showArrow, setShowArrow] = useState<boolean>(true)
 
   const onScroll = useCallback(() => {
-    const offset = 30
-    const shouldHide = (scrollRef.current?.getBoundingClientRect().top as number) + offset > arrowTop
+    const shouldHide =
+      (scrollRef.current?.getBoundingClientRect().top as number) - document.documentElement.scrollTop > 200
     setShowArrow(shouldHide)
-  }, [arrowTop])
+  }, [])
 
   useEvent('scroll', onScroll)
 
@@ -60,6 +55,7 @@ export default function Home({ data }: InferGetStaticPropsType<typeof getStaticP
           <HeroSection />
         </div>
         <div
+          id='abc'
           ref={scrollRef}
           className={`flex justify-center ${showArrow ? 'visible' : 'invisible'}`}
           style={{ height: arrowHeight }}>

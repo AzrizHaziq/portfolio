@@ -30,7 +30,7 @@ function Logo() {
 
 export function Nav() {
   return (
-    <div className='sticky top-0'>
+    <div className='sticky top-0 z-10'>
       <Popover className='relative bg-gradient-to-r from-indigo-900 to-indigo-700 border-b-4 border-indigo-300'>
         {({ open }) => (
           <>

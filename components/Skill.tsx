@@ -24,8 +24,8 @@ export const Skills = (): JSX.Element => {
   return (
     <>
       <div
-        className={`space-x-2 text-black dark:text-white mb-3 cursor-default ${
-          selectedSkills.length > 0 ? 'flex justify-end' : 'hidden'
+        className={`flex justify-center md:justify-end space-x-2 text-black dark:text-white mb-3 cursor-default ${
+          selectedSkills.length > 0 ? '' : 'invisible'
         }`}>
         <span>{selectedSkills.length}</span>
         <div className={`hover:text-indigo-500 dark:hover:text-indigo-500 cursor-pointer`} onClick={clear}>
