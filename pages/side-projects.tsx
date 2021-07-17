@@ -5,7 +5,6 @@ export default function SideProjects() {
     <>
       <Nav />
       <main className='max-w-7xl mx-auto'>SideProjects</main>
-      <div className='mb-[400px]' />
     </>
   )
 }
