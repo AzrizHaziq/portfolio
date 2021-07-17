@@ -1,3 +1,4 @@
+import '../scripts/wdyr'
 import '../styles/globals.scss'
 
 import App from 'next/app'
