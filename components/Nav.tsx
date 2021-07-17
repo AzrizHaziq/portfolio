@@ -30,7 +30,7 @@ function Logo() {
           <span>{email}</span>
         </a>
       ) : (
-        <Link href={'/'}>
+        <Link href='/'>
           <a>
             <IconBox icon='Home' title='Home' className={'mr-2 w-8 h-8 '} />
           </a>

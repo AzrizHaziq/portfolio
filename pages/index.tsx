@@ -32,11 +32,12 @@ export default function Home() {
           style={{ height: arrowHeight }}>
           <IconBox icon='ArrowDown' className={'w-6 h-6 animate-bounce text-black dark:text-white'} />
         </div>
-        <div className='mx-5'>
+        <div
+          className='mx-5 flex items-center flex-col justify-center'
+          style={{ height: `calc(100vh - ${arrowHeight} - ${navHeader})` }}>
           <Skills />
         </div>
       </main>
-      <div className='mb-[400px]' />
     </>
   )
 }
