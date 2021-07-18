@@ -3,6 +3,8 @@ import { DefaultSeoProps } from 'next-seo/lib/types'
 
 const NextSeo: DefaultSeoProps = {
   openGraph: {
+    title: "Hi, 'm Azriz Haziq Jasni",
+    description: 'Welcome to my website, hope you enjoy',
     type: 'website',
     locale: 'en_us',
     url: process.env.NEXT_PUBLIC_HOSTNAME,
