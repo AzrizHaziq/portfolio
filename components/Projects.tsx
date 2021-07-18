@@ -10,8 +10,6 @@ export const Projects = ({
 }: {
   project: Project
 }) => {
-  // console.log({ name, build_with, img, web_url, github_url, descriptions })
-  const url = web_url ?? github_url
   return (
     <>
       <style jsx>{`
@@ -24,12 +22,12 @@ export const Projects = ({
         }
       `}</style>
       <a
-        href={url}
+        href={web_url ?? github_url}
         target='_blank'
         rel='noopener noreferrer'
         className='project h-56 relative w-full overflow-hidden rounded-lg shadow-lg hover:border-2 text-white'>
         <div className='project--image absolute inset-0 w-full h-full object-fill object-center filter blur md:blur-none'>
-          <Image layout='fill' className='w-full h-full' src={img} alt={name} />
+          <Image layout='fill' className='w-full h-full' src={img} alt={name} objectFit='cover' />
         </div>
         <div className='project--detail flex md:hidden absolute font-mono inset-0 h-full justify-end p-6 flex-col gap-2 bg-gradient-to-b from-transparent  to-gray-900'>
           <h4 className='w-full text-xs flex gap-1 flex-wrap'>

@@ -4,6 +4,7 @@ import { HeroSection, IconBox, Nav, Skills } from '@components'
 
 const navHeader = '88px'
 const arrowHeight = '6vh'
+const minHeight = `calc(100vh - ${arrowHeight} - ${navHeader})`
 
 export default function Home() {
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -21,9 +22,7 @@ export default function Home() {
     <>
       <Nav />
       <main className='max-w-7xl mx-auto'>
-        <div
-          className='flex flex-col justify-center items-center mx-auto space-y-4 max-w-4xl'
-          style={{ minHeight: `calc(100vh - ${arrowHeight} - ${navHeader})` }}>
+        <div className='flex flex-col justify-center items-center mx-auto space-y-4 max-w-4xl' style={{ minHeight }}>
           <HeroSection />
         </div>
         <div
@@ -32,9 +31,7 @@ export default function Home() {
           style={{ height: arrowHeight }}>
           <IconBox icon='ArrowDown' className={'w-6 h-6 animate-bounce text-black dark:text-white'} />
         </div>
-        <div
-          className='mx-5 flex items-center flex-col justify-center'
-          style={{ height: `calc(100vh - ${arrowHeight} - ${navHeader})` }}>
+        <div className='mx-5 mb-10 md:mb-0 flex items-center flex-col justify-center' style={{ minHeight }}>
           <Skills />
         </div>
       </main>

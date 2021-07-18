@@ -68,7 +68,7 @@
       "name": "Tradingview Shariah Indicator",
       "github_url": "https://github.com/AzrizHaziq/tradingview-syariah-indicator",
       "web_url": "https://azrizhaziq.github.io/tradingview-syariah-indicator",
-      "descriptions": "Display Shariah Indicator to indicate certain stocks is a Shariah Compliant(Malaysia only)",
+      "descriptions": "Display Shariah Indicator to Shariah stocks(Malaysia only)",
       "build_with": ["React", "Webpack", "Vanilla JS", "Puppeteer"],
       "img": "/assets/projects/Tradingview Shariah Indicator.png"
     },
