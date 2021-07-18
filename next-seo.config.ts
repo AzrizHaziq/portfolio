@@ -1,11 +1,13 @@
+import data from './personal-data.json'
 import { DefaultSeoProps } from 'next-seo/lib/types'
 
 const NextSeo: DefaultSeoProps = {
   openGraph: {
     type: 'website',
     locale: 'en_us',
-    url: `${process.env.NEXT_PUBLIC_HOSTNAME}`,
-    site_name: '',
+    url: process.env.NEXT_PUBLIC_HOSTNAME,
+    site_name: data.alias,
+    images: [{ url: `${process.env.NEXT_PUBLIC_HOSTNAME}/routes/home.png`, alt: 'Azriz Haziq Jasni' }],
   },
   twitter: {
     handle: '@azrizhaziq',

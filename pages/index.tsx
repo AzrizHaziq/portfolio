@@ -1,6 +1,7 @@
 import { useEvent } from 'react-use'
 import { useCallback, useRef, useState } from 'react'
 import { HeroSection, IconBox, Nav, Skills } from '@components'
+import { NextSeo } from 'next-seo'
 
 const navHeader = '88px'
 const arrowHeight = '6vh'
@@ -20,6 +21,7 @@ export default function Home() {
 
   return (
     <>
+      <NextSeo title={`Hi, I'm Azriz Haziq Jasni`} description={'Welcome to my website, hope you enjoy'} />
       <Nav />
       <main className='max-w-7xl mx-auto'>
         <div className='flex flex-col justify-center items-center mx-auto space-y-4 max-w-4xl' style={{ minHeight }}>
