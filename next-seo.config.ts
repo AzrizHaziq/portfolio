@@ -7,7 +7,7 @@ const NextSeo: DefaultSeoProps = {
     locale: 'en_us',
     url: process.env.NEXT_PUBLIC_HOSTNAME,
     site_name: data.alias,
-    images: [{ url: `${process.env.NEXT_PUBLIC_HOSTNAME}/routes/home.png`, alt: 'Azriz Haziq Jasni' }],
+    images: [{ url: `${process.env.NEXT_PUBLIC_HOSTNAME}/assets/routes/Home.png`, alt: 'Azriz Haziq Jasni' }],
   },
   twitter: {
     handle: '@azrizhaziq',
@@ -23,12 +23,12 @@ const NextSeo: DefaultSeoProps = {
     {
       rel: 'icon',
       type: 'image/png',
-      href: '/favicon-192x192.png',
+      href: '/android-chrome-192x192.png',
     },
     {
       rel: 'icon',
       type: 'image/png',
-      href: '/favicon-512x512.png',
+      href: '/android-chrome-512x512.png',
     },
     {
       rel: 'icon',

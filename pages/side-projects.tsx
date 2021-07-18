@@ -1,13 +1,22 @@
+import { NextSeo } from 'next-seo'
 import { usePersonalData } from '@helpers'
 import { Nav, Projects } from '@components'
 
 const navHeader = '88px'
-
 export default function SideProjects() {
   const { projects } = usePersonalData()
 
   return (
     <>
+      <NextSeo
+        openGraph={{
+          title: 'List of my side projects',
+          description: 'Hopefully you find something interesting',
+          images: [
+            { url: `${process.env.NEXT_PUBLIC_HOSTNAME}/assets/routes/side-projects.png`, alt: 'Side Projects' },
+          ],
+        }}
+      />
       <Nav />
       <main
         className='flex items-center justify-center mx-auto md:max-w-5xl'

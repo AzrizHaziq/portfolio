@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <>
-      <NextSeo title={`Hi, I'm Azriz Haziq Jasni`} description={'Welcome to my website, hope you enjoy'} />
+      <NextSeo title="Hi, 'm Azriz Haziq Jasni" description='Welcome to my website, hope you enjoy' />
       <Nav />
       <main className='max-w-7xl mx-auto'>
         <div className='flex flex-col justify-center items-center mx-auto space-y-4 max-w-4xl' style={{ minHeight }}>
