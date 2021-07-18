@@ -1,11 +1,10 @@
 import { useEvent } from 'react-use'
 import { useCallback, useRef, useState } from 'react'
-import { HeroSection, IconBox, Nav, Skills } from '@components'
-import { NextSeo } from 'next-seo'
+import { SocialLink, HeroSection, IconBox, Nav, Skills } from '@components'
 
 const navHeader = '88px'
 const arrowHeight = '6vh'
-const minHeight = `calc(100vh - ${arrowHeight} - ${navHeader})`
+const minHeight = `calc(100vh - ${arrowHeight} - ${navHeader} - 40px)`
 
 export default function Home() {
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -23,8 +22,13 @@ export default function Home() {
     <>
       <Nav />
       <main className='max-w-7xl mx-auto'>
-        <div className='flex flex-col justify-center items-center mx-auto space-y-4 max-w-4xl' style={{ minHeight }}>
-          <HeroSection />
+        <div style={{ minHeight }} className='flex flex-col justify-evenly'>
+          <div className='flex justify-center mt-10'>
+            <SocialLink />
+          </div>
+          <div className='flex flex-col items-center justify-center'>
+            <HeroSection />
+          </div>
         </div>
         <div
           ref={scrollRef}

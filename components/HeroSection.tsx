@@ -1,6 +1,6 @@
 import { Type } from './Type'
 import { useState } from 'react'
-import { SocialLink, Langs } from './SocialLink'
+import { Langs } from '@components'
 import { useHi, usePersonalData } from '@helpers'
 
 export function HeroSection() {
@@ -25,7 +25,6 @@ export function HeroSection() {
           <Langs />
         </span>
       </div>
-      <SocialLink />
     </>
   )
 }
