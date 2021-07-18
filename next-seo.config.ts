@@ -1,4 +1,6 @@
-export default {
+import { DefaultSeoProps } from 'next-seo/lib/types'
+
+const NextSeo: DefaultSeoProps = {
   openGraph: {
     type: 'website',
     locale: 'en_us',
@@ -10,4 +12,42 @@ export default {
     site: '@',
     cardType: 'summary_large_image',
   },
+  additionalLinkTags: [
+    {
+      rel: 'shortcut icon',
+      type: 'image/x-icon',
+      href: '/favicon.ico',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: '/favicon-192x192.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: '/favicon-512x512.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: '/favicon-32x32.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: '/favicon-16x16.png',
+    },
+    {
+      rel: 'apple-touch-icon',
+      href: '/apple-touch-icon.png',
+      sizes: '76x76',
+    },
+    {
+      rel: 'manifest',
+      href: '/manifest.json',
+    },
+  ],
 }
+
+export default NextSeo
