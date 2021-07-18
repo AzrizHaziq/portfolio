@@ -31,8 +31,8 @@ export const Projects = ({
         </div>
         <div className='project--detail flex md:hidden absolute font-mono inset-0 h-full justify-end p-6 flex-col gap-2 bg-gradient-to-b from-transparent  to-gray-900'>
           <h4 className='w-full text-xs flex gap-1 flex-wrap'>
-            {build_with.map(i => (
-              <Tag>{i}</Tag>
+            {build_with.map((i, index) => (
+              <Tag key={index}>{i}</Tag>
             ))}
           </h4>
           <h3 className='w-full font-bold text-2xl opacity-90 leading-tight'>{name}</h3>
