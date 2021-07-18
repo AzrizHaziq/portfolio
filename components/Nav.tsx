@@ -22,7 +22,7 @@ function Logo() {
   const { email } = usePersonalData()
 
   return (
-    <div className='font-mono text-indigo-200 hover:text-indigo-300 dark:text-indigo-300 dark:hover:text-indigo-200 cursor-pointer'>
+    <div className='font-mono cursor-pointer'>
       {router.pathname === '/' ? (
         <a href={`mailto:${email}`} className='px-2 py-1 flex items-center uppercase font-bold font-mono space-x-1'>
           <IconBox icon='email' />
@@ -67,7 +67,7 @@ export function Nav() {
           <>
             <div className='max-w-7xl mx-auto px-4 sm:px-6'>
               <div className='flex justify-between items-center border-gray-100 py-6 md:justify-start md:space-x-10'>
-                <div className='flex justify-start lg:w-0 lg:flex-1'>
+                <div className='flex justify-start lg:w-0 lg:flex-1 text-indigo-200 hover:text-indigo-300 dark:text-indigo-300 dark:hover:text-indigo-200'>
                   <Logo />
                 </div>
                 <div className='-mr-2 -my-2 md:hidden'>
@@ -98,7 +98,7 @@ export function Nav() {
                 className='absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden'>
                 <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-gradient-to-r from-indigo-300 to-indigo-100 dark:from-indigo-900 dark:to-indigo-600 border-2 border-indigo-400'>
                   <div className='pt-5 pb-6 px-5 relative'>
-                    <div className='flex items-center justify-center'>
+                    <div className='flex items-center justify-center text-indigo-500 hover:text-indigo-600 dark:text-indigo-300 dark:hover:text-indigo-200'>
                       <Logo />
                     </div>
                     <div className='absolute mr-2 top-1/4 right-0'>
