@@ -23,7 +23,7 @@ export default function Home() {
       <main className='max-w-7xl mx-auto'>
         <div
           className='flex flex-col justify-center items-center mx-auto space-y-4 max-w-4xl'
-          style={{ height: `calc(100vh - ${arrowHeight} - ${navHeader})` }}>
+          style={{ minHeight: `calc(100vh - ${arrowHeight} - ${navHeader})` }}>
           <HeroSection />
         </div>
         <div

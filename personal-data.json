@@ -60,16 +60,16 @@
       "name": "Portfolio",
       "github_url": "https://github.com/AzrizHaziq/portfolio",
       "web_url": "",
-      "descriptions": "nothing exited here",
-      "build_with": "NextJS, Tailwind",
+      "descriptions": "this website made from this repo",
+      "build_with": ["nextjs", "tailwind", "playwright"],
       "img": "https://opengraph.githubassets.com/ba273df6296b124300a37ae0589a1f90c96ccc1bbe5699ec2bcc33930593f6f3/AzrizHaziq/portfolio"
     },
     {
       "name": "Tradingview Shariah Indicator",
       "github_url": "https://github.com/AzrizHaziq/tradingview-syariah-indicator",
       "web_url": "https://azrizhaziq.github.io/tradingview-syariah-indicator",
-      "descriptions": "Display Shariah Indicator to indicate certain stocks is a Shariah Compliant(currently only support Malaysia)",
-      "build_with": "React, Webpack, Vanilla JS, Puppeteer",
+      "descriptions": "Display Shariah Indicator to indicate certain stocks is a Shariah Compliant(Malaysia only)",
+      "build_with": ["React", "Webpack", "Vanilla JS", "Puppeteer"],
       "img": "/assets/projects/Tradingview Shariah Indicator.png"
     },
     {
@@ -77,7 +77,7 @@
       "github_url": "https://github.com/AzrizHaziq/ts-angular-tips",
       "web_url": "https://ts-angular-tips.vercel.app/#/0/0/6",
       "descriptions": "Slide ",
-      "build_with": "Vite, Tailwind, RevealJS",
+      "build_with": ["Vite", "tailwind", "RevealJS"],
       "img": "/assets/projects/Typescript & Angular tips.png"
     },
     {
@@ -85,7 +85,7 @@
       "github_url": "https://github.com/AzrizHaziq/bnm-consumer-alert",
       "web_url": "https://azrizhaziq.github.io/bnm-consumer-alert/",
       "descriptions": "List potential scammer or huge Red flag in Malaysia",
-      "build_with": "Vite, Tailwind, RevealJS",
+      "build_with": ["create-react-app", "react"],
       "img": "/assets/projects/BNM Consumer Alert.png"
     },
     {
@@ -93,15 +93,15 @@
       "github_url": "",
       "web_url": "https://dapurkayangan.com/",
       "descriptions": "My mother website for her business online",
-      "build_with": "Gatsby, Tailwind",
+      "build_with": ["Gatsby", "tailwind"],
       "img": "/assets/projects/Dapur Kayangan.png"
     },
     {
       "name": "Automate",
       "github_url": "https://github.com/AzrizHaziq/automate",
       "web_url": "",
-      "descriptions": "Archived, doesn't work anymore since I had trouble using Github Action",
-      "build_with": "Playwright",
+      "descriptions": "Archived, it's for my personal interest",
+      "build_with": ["playwright"],
       "img": "https://opengraph.githubassets.com/0acf8ffb53c30dc3c10b876838f879efc5fde74b4d59b7f1d402a25a841dc454/AzrizHaziq/automate"
     }
   ]

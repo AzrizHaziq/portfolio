@@ -5,7 +5,6 @@ import React, { Fragment } from 'react'
 import { UseToggle } from './useToggle'
 import { usePersonalData } from '@helpers'
 import { Popover, Transition } from '@headlessui/react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
 interface Nav {
   id: number
@@ -32,7 +31,7 @@ function Logo() {
       ) : (
         <Link href='/'>
           <a>
-            <IconBox icon='Home' title='Home' className={'mr-2 w-8 h-8 '} />
+            <IconBox icon='Home' title='Home' className={'mr-2 w-8 h-8'} />
           </a>
         </Link>
       )}
@@ -74,7 +73,7 @@ export function Nav() {
                 <div className='-mr-2 -my-2 md:hidden'>
                   <Popover.Button className='rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-100 hover:bg-indigo-600 dark:hover:bg-indigo-600 fill-current dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
                     <span className='sr-only'>Open menu</span>
-                    <MenuIcon className='h-6 w-6' aria-hidden='true' />
+                    <IconBox icon='Menu' />
                   </Popover.Button>
                 </div>
                 <Popover.Group as='nav' className='hidden md:flex space-x-10'>
@@ -105,13 +104,14 @@ export function Nav() {
                     <div className='absolute mr-2 top-1/4 right-0'>
                       <Popover.Button className='rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-indigo-600 fill-current dark:hover:text-indigo-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
                         <span className='sr-only'>Close menu</span>
-                        <XIcon className='h-6 w-6' aria-hidden='true' />
+                        <IconBox icon='XMark' className='text-indigo-400 w-6 h-6' />
                       </Popover.Button>
                     </div>
                   </div>
                   <div className='py-6 px-5 space-y-6'>
-                    <div className='grid grid-cols-2 gap-y-4 gap-x-8'>
+                    <div className='grid grid-cols-1 gap-y-4 gap-x-8'>
                       <PageLinks navs={navs} isMobile />
+                      <UseToggle />
                     </div>
                   </div>
                 </div>

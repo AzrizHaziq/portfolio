@@ -1,9 +1,18 @@
 import * as React from 'react'
 
-export type Skills = {
+export type Skill = {
   id: string
   skill: string
   color: string
+}
+
+export type Project = {
+  name: string
+  github_url: string
+  web_url: string
+  descriptions: string
+  build_with: string[]
+  img: string
 }
 
 export type PersonalData = {
@@ -11,13 +20,8 @@ export type PersonalData = {
   name: string
   email: string
   whoami: string[]
-  skills: Skills[]
-  projects: {
-    name: string
-    projectTime: string
-    description: string
-    details: string[]
-  }[]
+  skills: Skill[]
+  projects: Project[]
 }
 
 const PersonalDataContext = React.createContext<PersonalData | null>(null)
