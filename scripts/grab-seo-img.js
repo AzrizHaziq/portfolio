@@ -20,7 +20,7 @@ const useSEOImg = async (browser, url) => {
       }
     })
   } catch (err) {
-    console.error('Unable to obtain github seo image at:', url, err)
+    throw new Error('Unable to obtain github seo image at')
   }
 }
 
@@ -35,7 +35,7 @@ const useScreenshot = async (browser, p, screenshotOptions, outputPath) => {
     await page.screenshot(screenshotOptions)
     return outputPath
   } catch (err) {
-    console.error('Unable to take screenshot', p.web_url, err)
+    throw new Error('Unable to take screenshot')
   }
 }
 
@@ -59,7 +59,8 @@ async function getRoutesImages(browser) {
       ),
     )
   } catch (e) {
-    console.error('Failed to getRoutesImages', e)
+    throw new Error('Failed to get Devto', e)
+    throw new Error('Failed to getRoutesImages', e)
   }
 }
 
@@ -81,7 +82,7 @@ async function generateSideProjectImg(browser) {
 
     await fs.writeFile('./personal-data.json', JSON.stringify({ ...data, projects: newProjects }, null, 2), 'utf-8')
   } catch (e) {
-    console.error('Failed to generateSideProjectImg', e)
+    throw new Error('Failed to generate SideProjectImg')
   }
 }
 
@@ -93,7 +94,7 @@ async function generateSideProjectImg(browser) {
     await getRoutesImages(browser)
     await generateSideProjectImg(browser)
   } catch (e) {
-    console.error('Whole process gone wrong')
+    throw new Error('Whole process gone wrong')
   } finally {
     await browser.close()
   }

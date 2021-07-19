@@ -1,9 +1,6 @@
+import { Tag } from './Tag'
 import Image from 'next/image'
 import { Project } from '@helpers'
-
-const Tag = ({ children }: { children: string }) => (
-  <span className='px-2 py-1 bg-indigo-100 text-indigo-600 border rounded-full border-indigo-600'>{children}</span>
-)
 
 export const Projects = ({
   project: { name, build_with, img, web_url, github_url, descriptions },

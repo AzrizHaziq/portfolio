@@ -1,7 +1,23 @@
-import { Nav } from '@components'
 import { NextSeo } from 'next-seo'
+import { GetStaticProps } from 'next'
+import { DevToPost, Nav } from '@components'
+import { Devto_Post, getDevto } from '@helpers'
 
-export default function Blogs() {
+export async function getStaticProps(context: GetStaticProps) {
+  const data = await getDevto(({ id, title, description, slug, published_timestamp, tag_list, cover_image }) => ({
+    id,
+    title,
+    description,
+    slug,
+    published_timestamp,
+    tag_list,
+    cover_image,
+  }))
+
+  return { props: { data } }
+}
+
+export default function Blogs({ data }: { data: Devto_Post[] }) {
   return (
     <>
       <NextSeo
@@ -12,8 +28,17 @@ export default function Blogs() {
         }}
       />
       <Nav />
-      <main className='max-w-7xl mx-auto'>Blogs</main>
-      <div className='mb-[400px]' />
+      <main className='max-w-3xl container mx-auto px-5'>
+        <section className='py-10'>
+          <ul className='-my-8 divide-y-2 divide-gray-300 dark:divide-gray-800'>
+            {data.map(post => (
+              <li key={post.id}>
+                <DevToPost post={post} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
     </>
   )
 }

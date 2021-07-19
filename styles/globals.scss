@@ -7,7 +7,7 @@ html body {
 }
 
 html.dark body {
-  @apply bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700;
+  @apply bg-gray-900;
 }
 
 .refresh-spin:hover {
