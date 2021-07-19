@@ -4,13 +4,14 @@ import { DevToPost, Nav } from '@components'
 import { Devto_Post, getDevto } from '@helpers'
 
 export async function getStaticProps(context: GetStaticProps) {
-  const data = await getDevto(({ id, title, description, slug, published_timestamp, tag_list, cover_image }) => ({
+  const data = await getDevto(({ id, title, url, description, slug, published_timestamp, tag_list, cover_image }) => ({
     id,
     title,
     description,
     slug,
     published_timestamp,
     tag_list,
+    url,
     cover_image,
   }))
 

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Tag } from '../Tag'
+import { IconBox } from '../Icons'
 import { Devto_Post } from '@helpers'
 
 export function DevToPost({ post }: { post: Devto_Post }): JSX.Element {
@@ -10,7 +11,12 @@ export function DevToPost({ post }: { post: Devto_Post }): JSX.Element {
       <time className='text-xs text-gray-400'>{date}</time>
       <Link href={'/'}>
         <a className={'space-y-2 text-gray-700 dark:text-indigo-300 opacity-80 hover:opacity-100'}>
-          <h2 className='text-2xl text-bold font-medium mb-2'>{post.title}</h2>
+          <h2 className='flex items-center text-2xl text-bold font-medium mb-2'>
+            <a href={post.url} onClick={e => e.stopPropagation()} target='_blank' rel='noopener noreferrer'>
+              <IconBox icon='Devto' className='w-6 h-6 text-black dark:text-white mr-2' />
+            </a>
+            {post.title}
+          </h2>
           <p className='line-clamp-2 leading-relaxed'>{post.description}</p>
           <div className='flex flex-wrap space-x-1'>
             {post.tag_list.map((tag, i) => (
