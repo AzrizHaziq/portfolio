@@ -3,7 +3,7 @@ import { IconBox } from './Icons'
 import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'
 import { UseToggle } from './useToggle'
-import { usePersonalData } from '@helpers'
+import { usePersonalData } from '@feHelpers'
 import { Popover, Transition } from '@headlessui/react'
 
 interface Nav {

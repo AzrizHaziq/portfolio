@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { Tag } from '../Tag'
 import { IconBox } from '../Icons'
-import { Devto_Post } from '@helpers'
 import format from 'date-fns/format'
 import formatDistance from 'date-fns/formatDistance'
 
@@ -18,7 +17,7 @@ const DevToPostTimeStamp = ({ time }: { time: string }): JSX.Element => {
   )
 }
 
-export function DevToPost({ post }: { post: Devto_Post }): JSX.Element {
+export function DevToPost({ post }: { post: any }): JSX.Element {
   return (
     <article className='relative py-8 flex flex-col'>
       <a
@@ -39,7 +38,7 @@ export function DevToPost({ post }: { post: Devto_Post }): JSX.Element {
           <h2 className='flex items-center text-2xl text-bold font-medium'>{post.title}</h2>
           <p className='hidden! md:block line-clamp-0 leading-relaxed'>{post.description}</p>
           <div className='flex flex-wrap space-x-1'>
-            {post.tag_list.map((tag, i) => (
+            {post.tag_list.map((tag: string, i: number) => (
               <Tag key={i}>{tag}</Tag>
             ))}
           </div>

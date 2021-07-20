@@ -49,8 +49,8 @@ export const getDevto = async (mapper?: any): Promise<Devto.Post[]> => {
   mapper ??= Identity
 
   try {
-    if (new Date().getTime() - timestamp > _5min) {
-      console.log('Trigger http to Devto')
+    if (new Date().getTime() - timestamp < _5min) {
+      console.log('>>>> Hit Devto Api')
       const { data: response }: { data: Devto.FromResponse[] } = await axios.get('https://dev.to/api/articles/me/all', {
         headers: {
           'Content-Type': 'application/json',
@@ -61,6 +61,9 @@ export const getDevto = async (mapper?: any): Promise<Devto.Post[]> => {
       data = response
       await saveToFile(data)
       timestamp = new Date().getTime()
+    } else {
+      console.log('>>>> From cache file')
+      data = await readCache()
     }
   } catch (e) {
     throw new Error('Failed to get Devto')
@@ -110,4 +113,9 @@ export const frequentDevtoMapper = ({
 const cacheFile = 'devto-cache.json'
 const saveToFile = async (data: Devto.FromResponse[]): Promise<void> => {
   await fs.writeFile(path.join(`${process.cwd()}/public`, cacheFile), JSON.stringify(data, null, 2))
+}
+
+const readCache = async (): Promise<Devto.FromResponse[]> => {
+  const data = await fs.readFile(path.join(`${process.cwd()}/public`, cacheFile))
+  return JSON.parse(Buffer.from(data).toString())
 }

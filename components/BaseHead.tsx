@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import * as React from 'react'
-import { usePersonalData } from '@helpers'
+import { usePersonalData } from '@feHelpers'
 
 interface BaseHead {
   title: string

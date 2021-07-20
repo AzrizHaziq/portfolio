@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { usePersonalData } from '@helpers'
+import { usePersonalData } from '@feHelpers'
 import { CopyClipboard, IconBox } from '@components'
 
 export const Skills = (): JSX.Element => {

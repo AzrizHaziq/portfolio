@@ -8,7 +8,7 @@ import { DefaultSeo } from 'next-seo'
 import data from '../personal-data.json'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
-import { PersonalData, PersonalDataProvider } from '@helpers'
+import { PersonalData, PersonalDataProvider } from '@feHelpers'
 
 export default function MyApp({ Component, pageProps, PersonalData }: AppProps & { PersonalData: PersonalData }) {
   return (

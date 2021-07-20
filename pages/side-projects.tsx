@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo'
-import { usePersonalData } from '@helpers'
+import { usePersonalData } from '@feHelpers'
 import { Nav, Projects } from '@components'
 
 const navHeader = '88px'

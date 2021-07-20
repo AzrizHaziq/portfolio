@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'
 import { DevToPost, Nav } from '@components'
-import { Devto, frequentDevtoMapper, getDevto } from '../../helpers/devto/get_devto'
+import { Devto, frequentDevtoMapper, getDevto } from '@beHelpers'
 
 export async function getStaticProps(context: GetStaticProps) {
   const data = await getDevto(frequentDevtoMapper)

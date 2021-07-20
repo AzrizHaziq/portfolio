@@ -2,7 +2,7 @@ import matter from 'gray-matter'
 import { Nav } from '@components'
 import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'
-import { Devto, getDevto, getDevToBySlug } from '../../helpers/devto/get_devto'
+import { Devto, getDevto, getDevToBySlug } from '@beHelpers'
 
 export default function BlogPost({ post }: any) {
   // console.log(post)

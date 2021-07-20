@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@components": ["components"],
-      "@helpers": ["helpers"],
+      "@feHelpers": ["helpers/FE"],
+      "@beHelpers": ["helpers/BE"],
       "@contents": ["content"]
     }
   },
