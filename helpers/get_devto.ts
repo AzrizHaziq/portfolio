@@ -10,6 +10,7 @@ export interface Devto_Post {
   published_timestamp: string
   tag_list: any[]
   cover_image: string | null
+  type: 'devto'
 }
 
 export async function getDevto<R, T = Devto_Post[]>(mapper: (post: Devto_Post) => R): Promise<R[]> {
@@ -21,7 +22,7 @@ export async function getDevto<R, T = Devto_Post[]>(mapper: (post: Devto_Post) =
       },
     })
 
-    return data.map(mapper)
+    return data.map(mapper).map(i => ({ ...i, type: 'devto' }))
   } catch (e) {
     throw new Error('Failed to get Devto')
   }

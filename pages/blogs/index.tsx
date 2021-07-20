@@ -18,7 +18,7 @@ export async function getStaticProps(context: GetStaticProps) {
   return { props: { data } }
 }
 
-export default function Blogs({ data }: { data: Devto_Post[] }) {
+export default function Index({ data }: { data: Devto_Post[] }) {
   return (
     <>
       <NextSeo
@@ -33,9 +33,7 @@ export default function Blogs({ data }: { data: Devto_Post[] }) {
         <section className='py-10'>
           <ul className='-my-8 divide-y-2 divide-gray-300 dark:divide-gray-800'>
             {data.map(post => (
-              <li key={post.id}>
-                <DevToPost post={post} />
-              </li>
+              <li key={post.id}>{post.type === 'devto' ? <DevToPost post={post} /> : null}</li>
             ))}
           </ul>
         </section>
