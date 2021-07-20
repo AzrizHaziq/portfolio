@@ -29,7 +29,7 @@ export default function Blogs({ data }: { data: Devto_Post[] }) {
         }}
       />
       <Nav />
-      <main className='max-w-3xl container mx-auto px-5'>
+      <main className='max-w-xl md:max-w-3xl container mx-auto px-5'>
         <section className='py-10'>
           <ul className='-my-8 divide-y-2 divide-gray-300 dark:divide-gray-800'>
             {data.map(post => (

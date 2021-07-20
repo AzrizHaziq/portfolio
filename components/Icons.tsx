@@ -45,7 +45,7 @@ const Icons: { [k: string]: IconType } = {
   Sun: FaSun,
   XMark: HiX,
   Menu: HiMenu,
-}
+} as const
 
 /**
  * @param param0
@@ -54,24 +54,17 @@ const Icons: { [k: string]: IconType } = {
 export const IconBox = ({
   icon,
   children,
-  pre = false,
   title,
   ...props
 }: {
   icon: keyof typeof Icons
   children?: any
   title?: string
-  pre?: boolean
   className?: string
 } & IconBaseProps) => {
   const IC = Icons[icon]
+  const { className, ...rest } = props
   const iconTitle = title ?? (icon as string)
 
-  return (
-    <>
-      {!pre && children}
-      {IC({ 'aria-hidden': 'true', title: iconTitle, className: `w-6 h-6 ${props.className}`, ...props })}
-      {pre && children}
-    </>
-  )
+  return IC({ 'aria-hidden': 'true', title: iconTitle, className: `w-6 h-6 ${props.className}`, ...rest })
 }
