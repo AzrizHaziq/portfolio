@@ -33,7 +33,7 @@ export function DevToPost({ post }: { post: Devto_Post }): JSX.Element {
           className='hidden md:block w-6 h-6 text-black dark:text-white opacity-80 hover:opacity-100'
         />
       </a>
-      <Link href={'/'}>
+      <Link href={`/blogs/${post.slug}`}>
         <a className={'space-y-2 text-gray-700 group dark:text-indigo-300 opacity-80 hover:opacity-100'}>
           <DevToPostTimeStamp time={post.published_timestamp} />
           <h2 className='flex items-center text-2xl text-bold font-medium'>{post.title}</h2>

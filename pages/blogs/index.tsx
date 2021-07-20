@@ -1,24 +1,15 @@
 import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'
 import { DevToPost, Nav } from '@components'
-import { Devto_Post, getDevto } from '@helpers'
+import { Devto, frequentDevtoMapper, getDevto } from '../../helpers/devto/get_devto'
 
 export async function getStaticProps(context: GetStaticProps) {
-  const data = await getDevto(({ id, title, url, description, slug, published_timestamp, tag_list, cover_image }) => ({
-    id,
-    title,
-    description,
-    slug,
-    published_timestamp,
-    tag_list,
-    url,
-    cover_image,
-  }))
+  const data = await getDevto(frequentDevtoMapper)
 
   return { props: { data } }
 }
 
-export default function Index({ data }: { data: Devto_Post[] }) {
+export default function Index({ data }: { data: Devto.Post[] }) {
   return (
     <>
       <NextSeo

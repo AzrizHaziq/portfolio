@@ -1,10 +1,11 @@
+import matter from 'gray-matter'
 import { Nav } from '@components'
 import { NextSeo } from 'next-seo'
-import { Devto_Post } from '@helpers'
-import { Params } from 'next/dist/next-server/server/router'
+import { GetStaticProps } from 'next'
+import { Devto, getDevto, getDevToBySlug } from '../../helpers/devto/get_devto'
 
 export default function BlogPost({ post }: any) {
-  console.log(post)
+  // console.log(post)
   return (
     <>
       <NextSeo
@@ -15,71 +16,37 @@ export default function BlogPost({ post }: any) {
         }}
       />
       <Nav />
-      <main className='max-w-xl md:max-w-3xl container mx-auto px-5'>inner blog</main>
+      <main className='max-w-xl md:max-w-3xl container mx-auto px-5'>
+        <article className='prose lg:prose-xl text-white'>
+          <div dangerouslySetInnerHTML={{ __html: post.body_markdown }} />
+        </article>
+      </main>
     </>
   )
 }
 
-export async function getStaticProps({ params }: Params) {
-  // const post = getPostBySlug(params.slug, ['title', 'date', 'slug', 'author', 'content', 'ogImage', 'coverImage'])
-  // const content = await markdownToHtml(post.content || '')
+// @ts-ignore
+export const getStaticProps: GetStaticProps<Devto.Post, { slug: string }> = async context => {
+  const slug = context.params!.slug
+  const post = await getDevToBySlug(slug)
+
+  if (!post) {
+    return { redirect: '/404' }
+  }
+
+  const { content, data: frontMatter } = matter(post.body_markdown as string)
 
   return {
-    props: {
-      post: {
-        title: '123',
-        description: '213123123123',
-      },
-    },
+    props: { post: { ...post, body_markdown: content, frontMatter } },
+    revalidate: 60 * 60,
   }
 }
 
 export async function getStaticPaths() {
+  const paths = await getDevto(({ slug }: Devto.FromResponse) => ({ params: { slug } }))
+
   return {
-    paths: [
-      {
-        params: {
-          slug: '123',
-        },
-      },
-    ],
+    paths: [...paths, { params: { slug: '123' } }],
     fallback: false,
   }
 }
-
-// export async function getStaticProps({ params }: Params) {
-//   const post = getPostBySlug(params.slug, [
-//     'title',
-//     'date',
-//     'slug',
-//     'author',
-//     'content',
-//     'ogImage',
-//     'coverImage',
-//   ])
-//   const content = await markdownToHtml(post.content || '')
-//
-//   return {
-//     props: {
-//       post: {
-//         ...post,
-//         content,
-//       },
-//     },
-//   }
-// }
-//
-// export async function getStaticPaths() {
-//   const posts = getAllPosts(['slug'])
-//
-//   return {
-//     paths: posts.map((posts) => {
-//       return {
-//         params: {
-//           slug: posts.slug,
-//         },
-//       }
-//     }),
-//     fallback: false,
-//   }
-// }
