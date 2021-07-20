@@ -18,9 +18,10 @@
       "@components": ["components"],
       "@feHelpers": ["helpers/FE"],
       "@beHelpers": ["helpers/BE"],
+      "@helpers/*": ["helpers/*"],
       "@contents": ["content"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["*.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

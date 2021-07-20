@@ -45,8 +45,8 @@ export declare module Devto {
 const _5min = 300
 let timestamp = 0
 export const getDevto = async (mapper?: any): Promise<Devto.Post[]> => {
-  let data: Devto.FromResponse[] = []
   mapper ??= Identity
+  let data: Devto.FromResponse[] = await readCache()
 
   try {
     if (new Date().getTime() - timestamp < _5min) {
@@ -63,7 +63,6 @@ export const getDevto = async (mapper?: any): Promise<Devto.Post[]> => {
       timestamp = new Date().getTime()
     } else {
       console.log('>>>> DEVTO: From cache file')
-      data = await readCache()
     }
   } catch (e) {
     throw new Error('Failed to get Devto')

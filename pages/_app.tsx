@@ -1,4 +1,4 @@
-import 'helpers/wdyr'
+import '@helpers/wdyr'
 import '../styles/globals.scss'
 
 import { v4 as uuid } from 'uuid'

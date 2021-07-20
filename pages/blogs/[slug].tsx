@@ -2,6 +2,7 @@ import matter from 'gray-matter'
 import { GetStaticProps } from 'next'
 import { ExtendHead, Nav } from '@components'
 import { Devto, getDevto, getDevToBySlug } from '@beHelpers'
+import { convertMarkdownToHtml, sanitizeDevToMarkdown } from '@helpers/markdown'
 
 export default function BlogPost({ post }: any) {
   // console.log(post)
@@ -38,9 +39,13 @@ export const getStaticProps: GetStaticProps<Devto.Post, { slug: string }> = asyn
   }
 
   const { content, data: frontMatter } = matter(post.body_markdown as string)
+  const markdown = sanitizeDevToMarkdown(post.body_markdown as string)
+  const html = convertMarkdownToHtml(markdown)
+
+  console.log(html)
 
   return {
-    props: { post: { ...post, body_markdown: content, frontMatter } },
+    props: { post: { ...post, body_markdown: html, frontMatter } },
     revalidate: 60 * 60,
   }
 }
