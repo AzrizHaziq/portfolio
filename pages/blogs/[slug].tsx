@@ -1,23 +1,26 @@
 import matter from 'gray-matter'
-import { Nav } from '@components'
-import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'
+import { ExtendHead, Nav } from '@components'
 import { Devto, getDevto, getDevToBySlug } from '@beHelpers'
 
 export default function BlogPost({ post }: any) {
   // console.log(post)
   return (
     <>
-      <NextSeo
-        openGraph={{
-          title: 'abc',
-          description: 'def',
-          images: [{ url: `${process.env.NEXT_PUBLIC_HOSTNAME}/assets/routes/blogs.png`, alt: 'Side Projects' }],
-        }}
+      <ExtendHead
+        title={post.title}
+        description={post.description}
+        permalink={`${process.env.NEXT_PUBLIC_HOSTNAME}/blogs/${post.slug}`}
       />
       <Nav />
       <main className='max-w-xl md:max-w-3xl container mx-auto px-5'>
         <article className='prose lg:prose-xl text-white'>
+          <header>
+            <h3 className='publish-date'>{post.publishDate}</h3>
+            <a href={post.url}>
+              <h1 className='title'>{post.title}</h1>
+            </a>
+          </header>
           <div dangerouslySetInnerHTML={{ __html: post.body_markdown }} />
         </article>
       </main>
@@ -46,7 +49,7 @@ export async function getStaticPaths() {
   const paths = await getDevto(({ slug }: Devto.FromResponse) => ({ params: { slug } }))
 
   return {
-    paths: [...paths, { params: { slug: '123' } }],
+    paths,
     fallback: false,
   }
 }

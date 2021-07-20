@@ -1,6 +1,5 @@
-import { NextSeo } from 'next-seo'
 import { usePersonalData } from '@feHelpers'
-import { Nav, Projects } from '@components'
+import { ExtendHead, Nav, Projects } from '@components'
 
 const navHeader = '88px'
 export default function SideProjects() {
@@ -8,10 +7,11 @@ export default function SideProjects() {
 
   return (
     <>
-      <NextSeo
+      <ExtendHead
+        title='List of my side projects'
+        description='Hopefully you find something interesting'
+        permalink={`${process.env.NEXT_PUBLIC_HOSTNAME}/side-projects`}
         openGraph={{
-          title: 'List of my side projects',
-          description: 'Hopefully you find something interesting',
           images: [
             { url: `${process.env.NEXT_PUBLIC_HOSTNAME}/assets/routes/side-projects.png`, alt: 'Side Projects' },
           ],

@@ -52,6 +52,6 @@ const NextSeo: DefaultSeoProps = {
       href: '/manifest.json',
     },
   ],
-}
+} as const
 
 export default NextSeo

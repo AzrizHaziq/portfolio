@@ -50,7 +50,7 @@ export const getDevto = async (mapper?: any): Promise<Devto.Post[]> => {
 
   try {
     if (new Date().getTime() - timestamp < _5min) {
-      console.log('>>>> Hit Devto Api')
+      console.log('>>>> DEVTO: Hit Api')
       const { data: response }: { data: Devto.FromResponse[] } = await axios.get('https://dev.to/api/articles/me/all', {
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export const getDevto = async (mapper?: any): Promise<Devto.Post[]> => {
       await saveToFile(data)
       timestamp = new Date().getTime()
     } else {
-      console.log('>>>> From cache file')
+      console.log('>>>> DEVTO: From cache file')
       data = await readCache()
     }
   } catch (e) {

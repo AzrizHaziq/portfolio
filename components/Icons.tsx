@@ -18,6 +18,14 @@ import {
   FaArrowDown,
 } from 'react-icons/fa'
 
+export type IconBoxShape = {
+  icon: keyof typeof Icons
+  children?: React.ReactNode
+  title?: string
+  className?: string
+} & IconBaseProps &
+  Partial<{ id: string | undefined; url: string }>
+
 const Icons: { [k: string]: IconType } = {
   // Social
   Github: FaGithub,
@@ -47,21 +55,7 @@ const Icons: { [k: string]: IconType } = {
   Menu: HiMenu,
 } as const
 
-/**
- * @param param0
- * @returns
- */
-export const IconBox = ({
-  icon,
-  children,
-  title,
-  ...props
-}: {
-  icon: keyof typeof Icons
-  children?: any
-  title?: string
-  className?: string
-} & IconBaseProps) => {
+export const IconBox = ({ icon, children, title, ...props }: IconBoxShape) => {
   const IC = Icons[icon]
   const { className, ...rest } = props
   const iconTitle = title ?? (icon as string)

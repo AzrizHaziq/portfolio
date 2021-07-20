@@ -1,19 +1,19 @@
 import 'helpers/wdyr'
 import '../styles/globals.scss'
 
-import App from 'next/app'
 import { v4 as uuid } from 'uuid'
 import SEO from '../next-seo.config'
 import { DefaultSeo } from 'next-seo'
 import data from '../personal-data.json'
 import type { AppProps } from 'next/app'
+import App, { AppContext } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { PersonalData, PersonalDataProvider } from '@feHelpers'
 
 export default function MyApp({ Component, pageProps, PersonalData }: AppProps & { PersonalData: PersonalData }) {
   return (
     <>
-      <DefaultSeo {...SEO} />{' '}
+      <DefaultSeo {...SEO} />
       <ThemeProvider attribute='class'>
         <PersonalDataProvider value={PersonalData}>
           <Component {...pageProps} />
@@ -23,7 +23,7 @@ export default function MyApp({ Component, pageProps, PersonalData }: AppProps &
   )
 }
 
-MyApp.getInitialProps = async (appContext: any) => {
+MyApp.getInitialProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext)
 
   const mergedSkills = shuffle(data.skills).map(item => ({

@@ -1,21 +1,22 @@
-import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'
-import { DevToPost, Nav } from '@components'
+import { DevToPost, ExtendHead, Nav } from '@components'
 import { Devto, frequentDevtoMapper, getDevto } from '@beHelpers'
 
 export async function getStaticProps(context: GetStaticProps) {
   const data = await getDevto(frequentDevtoMapper)
+  const permalink = `${process.env.NEXT_PUBLIC_HOSTNAME}/blogs`
 
-  return { props: { data } }
+  return { props: { data, permalink } }
 }
 
-export default function Index({ data }: { data: Devto.Post[] }) {
+export default function Index({ data, permalink }: { data: Devto.Post[]; permalink: string }) {
   return (
     <>
-      <NextSeo
+      <ExtendHead
+        permalink={permalink}
+        title='Enjoy reading 😀'
+        description='Do share the post if you find interesting'
         openGraph={{
-          title: 'List of my blog posts',
-          description: 'Do share the post if you find interesting',
           images: [{ url: `${process.env.NEXT_PUBLIC_HOSTNAME}/assets/routes/blogs.png`, alt: 'Side Projects' }],
         }}
       />
