@@ -47,7 +47,7 @@ export default function _404() {
       <Nav />
       <main className='max-w-7xl mx-auto flex items-center' style={{ minHeight }}>
         <section className='container py-10 px-5 mx-auto'>
-          <div className='flex flex-col justify-center items-center font-extrabold text-[#4B5563] dark:text-indigo-500'>
+          <div className='flex flex-col justify-center items-center font-extrabold text-[#4B5563]'>
             <What />
             <h1 className='text-9xl text-center leading-tight mt-4'>404</h1>
           </div>

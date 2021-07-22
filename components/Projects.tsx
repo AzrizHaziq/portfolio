@@ -13,7 +13,7 @@ export const Projects = ({
         href={web_url ?? github_url}
         target='_blank'
         rel='noopener noreferrer'
-        className='group h-56 relative w-full overflow-hidden border-2 border-transparent hover:border-white rounded-lg shadow-lg border-white text-white'>
+        className='group h-56 relative w-full overflow-hidden border-2 border-transparent hover:border-white rounded-lg shadow-lg border-white text-white nightwind-prevent'>
         <div className='absolute inset-0 w-full h-full object-fill object-center filter blur-sm md:blur-none group-hover:blur-sm'>
           <Image layout='fill' className='w-full h-full' src={img} alt={name} objectFit='cover' />
         </div>

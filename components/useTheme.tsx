@@ -23,11 +23,11 @@ export function UseTheme() {
   return (
     <button aria-label={`Toggle to ${isDark ? 'Light' : 'Dark'} Mode`} onClick={toggle} className='cursor-pointer'>
       <span className='sr-only'>{isDark ? 'You are on dark theme' : 'Your are on light theme'}</span>
-      <span className={`inline transform rounded-full`}>
+      <span className={`inline transform rounded-full `}>
         {isDark ? (
-          <IconBox icon='Moon' className='w-6 h-6 text-gray-300 hover:text-gray-200' title={text} />
+          <IconBox icon='Moon' className='opacity-80 hover:opacity-100 text-gray-300 nightwind-prevent' title={text} />
         ) : (
-          <IconBox icon='Sun' className='w-6 h-6 text-[gold] opacity-80 hover:opacity-100' title={text} />
+          <IconBox icon='Sun' className='opacity-80 hover:opacity-100 text-[gold]' title={text} />
         )}
       </span>
     </button>

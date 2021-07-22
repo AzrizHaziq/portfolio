@@ -13,9 +13,9 @@ export function HeroSection() {
       <h1
         className='tracking-tight font-extrabold text-gray-900'
         style={{ fontSize: 'clamp(3em, calc(9 / 80 * 100vw), 5em)' }}>
-        <span className='block text-black dark:text-white text-center md:text-left'>Hi {hi}</span>
+        <span className='block text-black text-center md:text-left'>Hi {hi}</span>
         <div className='space-x-4'>
-          <span className='text-black dark:text-white hidden sm:inline'>Im</span>
+          <span className='text-black hidden sm:inline'>Im</span>
           <div className='inline text-indigo-600'>{alias}</div>
         </div>
       </h1>

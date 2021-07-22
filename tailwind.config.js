@@ -3,7 +3,19 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      nightwind: {
+        typography: true,
+        transitionDuration: false,
+        colorClasses: [
+          // "gradient",
+          // "ring",
+          // "ring-offset",
+          'divide',
+          // "placeholder",
+        ],
+      },
+    },
   },
   variants: {
     extend: {},

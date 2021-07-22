@@ -17,7 +17,6 @@ export default function BlogPost({ post }: any) {
     prism.highlightAll()
   }, [])
 
-  // console.log(post)
   return (
     <>
       <ExtendHead
@@ -27,7 +26,7 @@ export default function BlogPost({ post }: any) {
       />
       <Nav />
       <main className='max-w-xl md:max-w-3xl container mx-auto px-5'>
-        <article className='prose lg:prose-xl text-white'>
+        <article className='prose lg:prose-xl'>
           <header>
             <h3 className='publish-date'>{post.publishDate}</h3>
             <h1 className='title'>{post.title}</h1>
@@ -51,8 +50,6 @@ export const getStaticProps: GetStaticProps<Devto.Post, { slug: string }> = asyn
   const { content, data: frontMatter } = matter(post.body_markdown as string)
   const markdown = sanitizeDevToMarkdown(post.body_markdown as string)
   const html = convertMarkdownToHtml(markdown)
-
-  // console.log(html)
 
   return {
     props: { post: { ...post, body_markdown: html, frontMatter } },

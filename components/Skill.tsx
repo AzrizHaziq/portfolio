@@ -23,14 +23,14 @@ export const Skills = (): JSX.Element => {
 
   return (
     <>
-      <div className={`flex justify-center md:justify-end space-x-2 text-black dark:text-white mb-3 cursor-default`}>
+      <div className={`flex justify-center md:justify-end space-x-2 text-black mb-3 cursor-default`}>
         {selectedSkills.length > 0 ? (
           <>
             <span title={`You have selected: ${selectedSkills.length}`}>{selectedSkills.length}</span>
-            <div className={`hover:text-indigo-500 dark:hover:text-indigo-500 cursor-pointer`} onClick={clear}>
+            <div className={`hover:text-indigo-500 cursor-pointer`} onClick={clear}>
               <IconBox icon='Refresh' className={`refresh-spin w-6 h-6 `} title={'Clear'} />
             </div>
-            <div className='hover:text-indigo-500 dark:hover:text-indigo-500 cursor-pointer'>
+            <div className='hover:text-indigo-500 cursor-pointer'>
               <CopyClipboard texts={selectedSkills.join(', ')} />
             </div>
           </>

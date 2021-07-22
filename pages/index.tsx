@@ -34,7 +34,7 @@ export default function Home() {
           ref={scrollRef}
           className={`flex justify-center ${showArrow ? 'visible' : 'invisible'}`}
           style={{ height: arrowHeight }}>
-          <IconBox icon='ArrowDown' className={'w-6 h-6 animate-bounce text-black dark:text-white'} />
+          <IconBox icon='ArrowDown' className={'w-6 h-6 animate-bounce text-black'} />
         </div>
         <div className='mx-5 mb-10 md:mb-0 flex items-center flex-col justify-center' style={{ minHeight }}>
           <Skills />
