@@ -25,6 +25,12 @@ export default function BlogPost({ post }: any) {
         permalink={`${process.env.NEXT_PUBLIC_HOSTNAME}/blogs/${post.slug}`}
       />
       <Nav />
+      <style global jsx>{`
+        .dark .prose pre {
+          background: #2d2d2d;
+          color: #ccc;
+        }
+      `}</style>
       <main className='max-w-xl md:max-w-3xl container mx-auto px-5'>
         <article className='prose lg:prose-xl'>
           <header>
