@@ -14,7 +14,7 @@ export default function MyApp({ Component, pageProps, PersonalData }: AppProps &
   return (
     <>
       <DefaultSeo {...SEO} />
-      <ThemeProvider attribute='class'>
+      <ThemeProvider attribute='class' storageKey='theme' defaultTheme='system'>
         <PersonalDataProvider value={PersonalData}>
           <Component {...pageProps} />
         </PersonalDataProvider>

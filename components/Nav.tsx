@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { IconBox } from './Icons'
+import { UseTheme } from './useTheme'
 import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'
-import { UseToggle } from './useToggle'
 import { usePersonalData } from '@feHelpers'
 import { Popover, Transition } from '@headlessui/react'
 
@@ -78,7 +78,7 @@ export function Nav() {
                 </div>
                 <Popover.Group as='nav' className='hidden md:flex space-x-10'>
                   <PageLinks navs={navs} />
-                  <UseToggle />
+                  <UseTheme />
                 </Popover.Group>
               </div>
             </div>
@@ -111,7 +111,7 @@ export function Nav() {
                   <div className='py-6 px-5 space-y-6'>
                     <div className='grid grid-cols-1 gap-y-4 gap-x-8'>
                       <PageLinks navs={navs} isMobile />
-                      <UseToggle />
+                      <UseTheme />
                     </div>
                   </div>
                 </div>

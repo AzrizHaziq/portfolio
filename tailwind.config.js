@@ -8,5 +8,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/line-clamp')],
+  plugins: [require('nightwind'), require('@tailwindcss/typography'), require('@tailwindcss/line-clamp')],
 }

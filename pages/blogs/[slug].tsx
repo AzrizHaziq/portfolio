@@ -1,10 +1,22 @@
+import prism from 'prismjs'
 import matter from 'gray-matter'
+import { useEffect } from 'react'
 import { GetStaticProps } from 'next'
 import { ExtendHead, Nav } from '@components'
 import { Devto, getDevto, getDevToBySlug } from '@beHelpers'
 import { convertMarkdownToHtml, sanitizeDevToMarkdown } from '@helpers/markdown'
 
+import 'prismjs/components/prism-css'
+import 'prismjs/components/prism-scss'
+import 'prismjs/components/prism-javascript'
+import 'prismjs/components/prism-typescript'
+import 'prismjs/themes/prism-tomorrow.css'
+
 export default function BlogPost({ post }: any) {
+  useEffect(() => {
+    prism.highlightAll()
+  }, [])
+
   // console.log(post)
   return (
     <>
@@ -18,9 +30,7 @@ export default function BlogPost({ post }: any) {
         <article className='prose lg:prose-xl text-white'>
           <header>
             <h3 className='publish-date'>{post.publishDate}</h3>
-            <a href={post.url}>
-              <h1 className='title'>{post.title}</h1>
-            </a>
+            <h1 className='title'>{post.title}</h1>
           </header>
           <div dangerouslySetInnerHTML={{ __html: post.body_markdown }} />
         </article>
@@ -42,7 +52,7 @@ export const getStaticProps: GetStaticProps<Devto.Post, { slug: string }> = asyn
   const markdown = sanitizeDevToMarkdown(post.body_markdown as string)
   const html = convertMarkdownToHtml(markdown)
 
-  console.log(html)
+  // console.log(html)
 
   return {
     props: { post: { ...post, body_markdown: html, frontMatter } },

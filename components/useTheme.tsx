@@ -1,8 +1,9 @@
 import { IconBox } from './Icons'
 import { useTheme } from 'next-themes'
+import nightwind from 'nightwind/helper'
 import { useEffect, useState } from 'react'
 
-export function UseToggle() {
+export function UseTheme() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [isDark, setEnabled] = useState(theme === 'dark')
@@ -13,6 +14,7 @@ export function UseToggle() {
   if (!mounted) return null
 
   function toggle() {
+    nightwind.beforeTransition()
     const enableDark = !isDark
     setEnabled(enableDark)
     setTheme(enableDark ? 'dark' : 'light')
