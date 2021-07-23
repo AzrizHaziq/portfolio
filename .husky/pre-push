@@ -1,0 +1,16 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Check Lint
+echo "running 'yarn lint'"
+yarn lint || (
+ "❌ Failed linting, please fix it"
+ false;
+)
+
+# Try to build
+echo "Build project with 'yarn build'"
+yarn build || (
+ "❌ Failed building, please fix it"
+ false;
+)
