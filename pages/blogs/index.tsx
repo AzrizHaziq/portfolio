@@ -1,12 +1,20 @@
 import { GetStaticProps } from 'next'
+import { getAllPosts } from '@helpers/BE/get_custom_post'
 import { DevtoPostList, ExtendHead, Nav } from '@components'
 import { Devto, frequentDevtoMapper, getDevto } from '@beHelpers'
+import { CustomPostList } from '../../components/Post/CustomPost/PostList'
 
 export async function getStaticProps(context: GetStaticProps) {
-  const data = await getDevto(frequentDevtoMapper)
+  const customPosts = getAllPosts()
+  const devtoPosts = await getDevto(frequentDevtoMapper)
   const permalink = `${process.env.NEXT_PUBLIC_HOSTNAME}/blogs`
 
-  return { props: { data, permalink } }
+  const sortedData = [...customPosts, ...devtoPosts].sort(
+    // @ts-ignore
+    (a, b) => new Date(b.published_timestamp) - new Date(a.published_timestamp),
+  )
+
+  return { props: { data: sortedData, permalink } }
 }
 
 export default function Index({ data, permalink }: { data: Devto.Post[]; permalink: string }) {
@@ -25,7 +33,9 @@ export default function Index({ data, permalink }: { data: Devto.Post[]; permali
         <section className='py-10'>
           <ul className='-my-8 divide-y-2 divide-gray-200 dark:divide-gray-800'>
             {data.map(post => (
-              <li key={post.id}>{post.type === 'devto' ? <DevtoPostList post={post} /> : null}</li>
+              <li key={post.id}>
+                {post.type === 'devto' ? <DevtoPostList post={post} /> : <CustomPostList post={post} />}
+              </li>
             ))}
           </ul>
         </section>

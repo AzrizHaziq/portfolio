@@ -1,6 +1,6 @@
-import fs from 'fs/promises'
 import path from 'path'
 import axios from 'axios'
+import fs from 'fs/promises'
 
 export declare module Devto {
   export type Post = { type: 'devto' } & Partial<FromResponse> & Partial<AdditionalProps>

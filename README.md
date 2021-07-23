@@ -14,3 +14,5 @@ TODO
 - [ ] Service workers(PWA)
 - [X] Dark theme
 - [X] Responsive
+- [ ] Sitemap (https://www.npmjs.com/package/next-sitemap)
+- [ ] Sitemap (https://www.npmjs.com/package/next-sitemap)

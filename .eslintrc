@@ -1,16 +1,18 @@
 {
-  "plugins": ["jest-dom", "unused-imports", "prettier"],
+  "plugins": [
+//    "jest-dom",
+    "unused-imports", "prettier"],
   "extends": [
     "next",
     "next/core-web-vitals",
-    "plugin:jest-dom/recommended",
+//    "plugin:jest-dom/recommended",
     "plugin:tailwind/recommended",
     "plugin:prettier/recommended"
   ],
   "env": {
     "es6": true,
     "browser": true,
-    "jest": true,
+//    "jest": true,
     "node": true
   },
   "rules": {
