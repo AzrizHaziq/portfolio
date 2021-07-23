@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import { Tag } from '../Tag'
-import { IconBox } from '../Icons'
+import { IconBox, Tag } from '../..'
 import format from 'date-fns/format'
 import formatDistance from 'date-fns/formatDistance'
 
@@ -17,7 +16,7 @@ const DevToPostTimeStamp = ({ time }: { time: string }): JSX.Element => {
   )
 }
 
-export function DevToPost({ post }: { post: any }): JSX.Element {
+export function DevtoPostList({ post }: { post: any }): JSX.Element {
   return (
     <article className='relative py-8 flex flex-col'>
       <a

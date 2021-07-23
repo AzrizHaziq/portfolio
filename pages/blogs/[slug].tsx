@@ -2,7 +2,7 @@ import prism from 'prismjs'
 import matter from 'gray-matter'
 import { useEffect } from 'react'
 import { GetStaticProps } from 'next'
-import { ExtendHead, Nav } from '@components'
+import { ExtendHead, Nav, DevtoPost } from '@components'
 import { Devto, getDevto, getDevToBySlug } from '@beHelpers'
 import { convertMarkdownToHtml, sanitizeDevToMarkdown } from '@helpers/markdown'
 
@@ -25,20 +25,14 @@ export default function BlogPost({ post }: any) {
         permalink={`${process.env.NEXT_PUBLIC_HOSTNAME}/blogs/${post.slug}`}
       />
       <Nav />
-      <style global jsx>{`
+      <style jsx>{`
         .dark .prose pre {
           background: #2d2d2d;
           color: #ccc;
         }
       `}</style>
       <main className='max-w-xl md:max-w-3xl container mx-auto px-5'>
-        <article className='prose lg:prose-xl'>
-          <header>
-            <h3 className='publish-date'>{post.publishDate}</h3>
-            <h1 className='title'>{post.title}</h1>
-          </header>
-          <div dangerouslySetInnerHTML={{ __html: post.body_markdown }} />
-        </article>
+        {post.type === 'devto' ? <DevtoPost post={post} /> : null}
       </main>
     </>
   )

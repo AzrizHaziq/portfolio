@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next'
-import { DevToPost, ExtendHead, Nav } from '@components'
+import { DevtoPostList, ExtendHead, Nav } from '@components'
 import { Devto, frequentDevtoMapper, getDevto } from '@beHelpers'
 
 export async function getStaticProps(context: GetStaticProps) {
@@ -25,7 +25,7 @@ export default function Index({ data, permalink }: { data: Devto.Post[]; permali
         <section className='py-10'>
           <ul className='-my-8 divide-y-2 divide-gray-200 dark:divide-gray-800'>
             {data.map(post => (
-              <li key={post.id}>{post.type === 'devto' ? <DevToPost post={post} /> : null}</li>
+              <li key={post.id}>{post.type === 'devto' ? <DevtoPostList post={post} /> : null}</li>
             ))}
           </ul>
         </section>

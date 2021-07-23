@@ -8,5 +8,7 @@ export * from './Projects'
 export * from './useTheme'
 export * from './SocialLink'
 export * from './Tag'
-export * from './Post/DevToPost'
 export * from './ExtendHead'
+
+export * from './Post/Devto/Post'
+export * from './Post/Devto/PostList'

@@ -40,7 +40,9 @@ const colors = [
   'bg-red-200 text-red-600',
   'bg-blue-200 text-blue-600',
   'bg-green-200 text-green-600',
-  'bg-white text-black border-1 border-black',
+  'bg-pink-200 text-pink-600',
+  'bg-cyan-200 text-cyan-600',
+  'bg-lime-200 text-lime-600',
 ]
 
 function random(min: number, max: number): number {
