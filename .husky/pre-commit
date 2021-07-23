@@ -1,4 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npx lint-staged
+# Check Lint
+echo "running 'yarn lint'"
+yarn lint || (
+ "❌ Failed linting, please fix it"
+ false;
+)
+
