@@ -25,7 +25,7 @@ export function UseTheme() {
       <span className='sr-only'>{isDark ? 'You are on dark theme' : 'Your are on light theme'}</span>
       <span className={`inline transform rounded-full `}>
         {isDark ? (
-          <IconBox icon='Moon' className='opacity-80 hover:opacity-100 text-gray-300 nightwind-prevent' title={text} />
+          <IconBox icon='Moon' className='text-gray-300 opacity-80 hover:opacity-100 nightwind-prevent' title={text} />
         ) : (
           <IconBox icon='Sun' className='opacity-80 hover:opacity-100 text-[gold]' title={text} />
         )}

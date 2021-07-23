@@ -1,6 +1,6 @@
+import fs from 'fs/promises'
 import path from 'path'
 import axios from 'axios'
-import fs from 'fs/promises'
 
 export declare module Devto {
   export type Post = { type: 'devto' } & Partial<FromResponse> & Partial<AdditionalProps>
@@ -50,7 +50,9 @@ export const getDevto = async (mapper?: any): Promise<Devto.Post[]> => {
 
   try {
     if (new Date().getTime() - timestamp < _5min) {
+      // eslint-disable-next-line no-console
       console.log('>>>> DEVTO: Hit Api')
+
       const { data: response }: { data: Devto.FromResponse[] } = await axios.get('https://dev.to/api/articles/me/all', {
         headers: {
           'Content-Type': 'application/json',
@@ -62,6 +64,7 @@ export const getDevto = async (mapper?: any): Promise<Devto.Post[]> => {
       await saveToFile(data)
       timestamp = new Date().getTime()
     } else {
+      // eslint-disable-next-line no-console
       console.log('>>>> DEVTO: From cache file')
     }
   } catch (e) {

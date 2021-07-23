@@ -25,7 +25,7 @@ export const CopyClipboard = ({ texts }: { texts: string }) => {
       {show ? (
         <div className={`relative`}>
           <IconBox icon='CheckMark' className={`w-6 h-6 z-0`} title={'Copy'} />
-          <div className='absolute bg-indigo-200 text-indigo-800 text-sm rounded py-2 px-4 right-0 bottom-[30px] w-auto text-center'>
+          <div className='absolute right-0 w-auto px-4 py-2 text-sm text-center text-indigo-800 bg-indigo-200 rounded bottom-[30px]'>
             {copyState.error ? (
               <p>Unable to copy value: {copyState.error.message}</p>
             ) : (

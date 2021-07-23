@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <main className='max-w-7xl mx-auto'>
+      <main className='mx-auto max-w-7xl'>
         <div style={{ minHeight }} className='flex flex-col justify-evenly'>
           <div className='flex justify-center mt-10'>
             <SocialLink />
@@ -36,7 +36,7 @@ export default function Home() {
           style={{ height: arrowHeight }}>
           <IconBox icon='ArrowDown' className={'w-6 h-6 animate-bounce text-black'} />
         </div>
-        <div className='mx-5 mb-10 md:mb-0 flex items-center flex-col justify-center' style={{ minHeight }}>
+        <div className='flex flex-col items-center justify-center mx-5 mb-10 md:mb-0' style={{ minHeight }}>
           <Skills />
         </div>
       </main>

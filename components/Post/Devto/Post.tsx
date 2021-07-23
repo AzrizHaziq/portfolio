@@ -3,7 +3,7 @@ import { IconBox } from '@components'
 export function DevtoPost({ post }: any) {
   return (
     <>
-      <a href={post.url} className='mt-5 group flex items-center space-x-1'>
+      <a href={post.url} className='flex items-center mt-5 group space-x-1'>
         <IconBox
           icon='Devto'
           className='opacity-80 group-hover:opacity-100'

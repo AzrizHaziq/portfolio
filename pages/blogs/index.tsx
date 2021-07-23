@@ -21,7 +21,7 @@ export default function Index({ data, permalink }: { data: Devto.Post[]; permali
         }}
       />
       <Nav />
-      <main className='max-w-xl md:max-w-3xl container mx-auto px-5'>
+      <main className='container max-w-xl px-5 mx-auto md:max-w-3xl'>
         <section className='py-10'>
           <ul className='-my-8 divide-y-2 divide-gray-200 dark:divide-gray-800'>
             {data.map(post => (

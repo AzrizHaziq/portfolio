@@ -30,7 +30,7 @@ export const Skills = (): JSX.Element => {
             <div className={`hover:text-indigo-500 cursor-pointer`} onClick={clear}>
               <IconBox icon='Refresh' className={`refresh-spin w-6 h-6 `} title={'Clear'} />
             </div>
-            <div className='hover:text-indigo-500 cursor-pointer'>
+            <div className='cursor-pointer hover:text-indigo-500'>
               <CopyClipboard texts={selectedSkills.join(', ')} />
             </div>
           </>
@@ -38,7 +38,7 @@ export const Skills = (): JSX.Element => {
           <span>Click below 👇</span>
         )}
       </div>
-      <div className='font-mono flex gap-2 flex-wrap justify-center'>
+      <div className='flex flex-wrap justify-center font-mono gap-2'>
         {skills.map(item => (
           <span
             onClick={() => toggle(item.skill)}

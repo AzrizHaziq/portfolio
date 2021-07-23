@@ -11,11 +11,11 @@ export function HeroSection() {
   return (
     <>
       <h1
-        className='tracking-tight font-extrabold text-gray-900'
+        className='font-extrabold tracking-tight text-gray-900'
         style={{ fontSize: 'clamp(3em, calc(9 / 80 * 100vw), 5em)' }}>
-        <span className='block text-black text-center md:text-left'>Hi {hi}</span>
+        <span className='block text-center text-black md:text-left'>Hi {hi}</span>
         <div className='space-x-4'>
-          <span className='text-black hidden sm:inline'>Im</span>
+          <span className='hidden text-black sm:inline'>Im</span>
           <div className='inline text-indigo-600'>{alias}</div>
         </div>
       </h1>

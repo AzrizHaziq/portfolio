@@ -53,7 +53,7 @@ const merged = [socials, blogs].flat()
 
 export function SocialLink() {
   return (
-    <div className='flex gap-3 mb-2'>
+    <div className='flex mb-2 gap-3'>
       {merged.map(({ id, icon, url, className = '', fill = '' }) => (
         <a href={url} key={`${id}--${icon}`} rel='noreferrer noopener' target='_blank'>
           <IconBox icon={icon} className={`${className} w-8 h-8 hover:opacity-80`} fill={fill} />

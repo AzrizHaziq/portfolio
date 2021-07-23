@@ -24,7 +24,7 @@ function Logo() {
   return (
     <div className='font-mono cursor-pointer'>
       {router.pathname === '/' ? (
-        <a href={`mailto:${email}`} className='px-2 py-1 flex items-center uppercase font-bold font-mono space-x-1'>
+        <a href={`mailto:${email}`} className='flex items-center px-2 py-1 font-mono font-bold uppercase space-x-1'>
           <IconBox icon='email' />
           <span>{email}</span>
         </a>
@@ -62,16 +62,16 @@ function PageLinks({ navs, isMobile = false }: { navs: Nav[]; isMobile?: boolean
 export function Nav() {
   return (
     <div className='sticky top-0 z-10'>
-      <Popover className='relative bg-gradient-to-r from-indigo-900 to-indigo-700 border-b-4 border-indigo-300'>
+      <Popover className='relative border-b-4 border-indigo-300 bg-gradient-to-r from-indigo-900 to-indigo-700'>
         {({ open }) => (
           <>
-            <div className='max-w-7xl mx-auto px-4 sm:px-6'>
-              <div className='flex justify-between items-center border-gray-100 py-6 md:justify-start md:space-x-10'>
-                <div className='flex justify-start lg:w-0 lg:flex-1 text-indigo-200 hover:text-indigo-300 dark:text-indigo-300 dark:hover:text-indigo-200'>
+            <div className='px-4 mx-auto max-w-7xl sm:px-6'>
+              <div className='flex items-center justify-between py-6 border-gray-100 md:justify-start md:space-x-10'>
+                <div className='flex justify-start text-indigo-200 lg:w-0 lg:flex-1 hover:text-indigo-300 dark:text-indigo-300 dark:hover:text-indigo-200'>
                   <Logo />
                 </div>
-                <div className='-mr-2 -my-2 md:hidden'>
-                  <Popover.Button className='rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-100 hover:bg-indigo-600 dark:hover:bg-indigo-600 fill-current dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
+                <div className='-my-2 -mr-2 md:hidden'>
+                  <Popover.Button className='inline-flex items-center justify-center p-2 text-gray-400 fill-current rounded-md hover:text-gray-100 hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
                     <span className='sr-only'>Open menu</span>
                     <IconBox icon='Menu' />
                   </Popover.Button>
@@ -95,20 +95,20 @@ export function Nav() {
               <Popover.Panel
                 focus
                 static
-                className='absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden'>
-                <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-gradient-to-r from-indigo-300 to-indigo-100 dark:from-indigo-900 dark:to-indigo-600 border-2 border-indigo-400'>
-                  <div className='pt-5 pb-6 px-5 relative'>
+                className='absolute inset-x-0 top-0 p-2 transition transform origin-top-right md:hidden'>
+                <div className='border-2 border-indigo-400 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-gradient-to-r from-indigo-300 to-indigo-100 dark:from-indigo-900 dark:to-indigo-600'>
+                  <div className='relative px-5 pt-5 pb-6'>
                     <div className='flex items-center justify-center text-indigo-500 hover:text-indigo-600 dark:text-indigo-300 dark:hover:text-indigo-200'>
                       <Logo />
                     </div>
-                    <div className='absolute mr-2 top-1/4 right-0'>
-                      <Popover.Button className='rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-indigo-600 fill-current dark:hover:text-indigo-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
+                    <div className='absolute right-0 mr-2 top-1/4'>
+                      <Popover.Button className='inline-flex items-center justify-center p-2 text-gray-400 fill-current rounded-md hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-indigo-600 dark:hover:text-indigo-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
                         <span className='sr-only'>Close menu</span>
-                        <IconBox icon='XMark' className='text-indigo-400 w-6 h-6' />
+                        <IconBox icon='XMark' className='w-6 h-6 text-indigo-400' />
                       </Popover.Button>
                     </div>
                   </div>
-                  <div className='py-6 px-5 space-y-6'>
+                  <div className='px-5 py-6 space-y-6'>
                     <div className='grid grid-cols-1 gap-y-4 gap-x-8'>
                       <PageLinks navs={navs} isMobile />
                       <UseTheme />

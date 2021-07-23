@@ -18,7 +18,7 @@ const DevToPostTimeStamp = ({ time }: { time: string }): JSX.Element => {
 
 export function DevtoPostList({ post }: { post: any }): JSX.Element {
   return (
-    <article className='relative py-8 flex flex-col'>
+    <article className='relative flex flex-col py-8'>
       <a
         href={post.url}
         onClick={e => e.stopPropagation()}
@@ -28,14 +28,14 @@ export function DevtoPostList({ post }: { post: any }): JSX.Element {
         <IconBox
           icon='Devto'
           title='Written at Devto'
-          className='hidden md:block w-6 h-6 text-black opacity-80 hover:opacity-100'
+          className='hidden w-6 h-6 text-black md:block opacity-80 hover:opacity-100'
         />
       </a>
       <Link href={`/blogs/${post.slug}`}>
         <a className={'space-y-2 text-gray-700 group opacity-80 hover:opacity-100'}>
           <DevToPostTimeStamp time={post.published_timestamp} />
-          <h2 className='flex items-center text-2xl text-bold font-medium'>{post.title}</h2>
-          <p className='hidden! md:block line-clamp-0 leading-relaxed'>{post.description}</p>
+          <h2 className='flex items-center text-2xl font-medium text-bold'>{post.title}</h2>
+          <p className='leading-relaxed hidden! md:block line-clamp-0'>{post.description}</p>
           <div className='flex flex-wrap space-x-1'>
             {post.tag_list.map((tag: string, i: number) => (
               <Tag key={i}>{tag}</Tag>
