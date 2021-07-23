@@ -21,22 +21,27 @@ export const getAllPosts = (): Custom.Post[] => {
       id: uuid(),
       ...(data as Custom.FrontMatter),
       slug,
+      code: '',
       type: 'custom_post',
       published_timestamp: new Date(data.published_timestamp).toJSON(),
     }
   })
 }
 
-export const getSinglePost = async (slug: string) => {
-  const source = getSourceOfFile(slug + '.mdx').toString() //
+export const getSinglePost = async (slug: string): Promise<Custom.Post | any> => {
+  try {
+    const source = getSourceOfFile(slug).toString()
 
-  const { code, frontmatter } = await bundleMDX(source, {
-    cwd: POSTS_PATH,
-  })
+    const { code, frontmatter } = await bundleMDX(source, {
+      cwd: POSTS_PATH,
+    })
 
-  return {
-    frontmatter,
-    code,
+    return {
+      ...frontmatter,
+      code,
+    }
+  } catch (e) {
+    throw new Error(`Failed to get Custom Post by slug: ${slug}`)
   }
 }
 
@@ -45,6 +50,7 @@ export declare module Custom {
     type: 'custom_post'
     id: string
     slug: string
+    code: string
   } & FrontMatter
 
   export type FrontMatter = {

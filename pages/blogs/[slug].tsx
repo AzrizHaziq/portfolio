@@ -1,10 +1,9 @@
 import prism from 'prismjs'
-import matter from 'gray-matter'
 import { useEffect } from 'react'
 import { GetStaticProps } from 'next'
-import { ExtendHead, Nav, DevtoPost } from '@components'
 import { Devto, getDevto, getDevToBySlug } from '@beHelpers'
-import { convertMarkdownToHtml, sanitizeDevToMarkdown } from '@helpers/markdown'
+import { CustomPost, DevtoPost, ExtendHead, Nav } from '@components'
+import { Custom, getAllPosts, getSinglePost } from '@helpers/BE/get_custom_post'
 
 import 'prismjs/components/prism-css'
 import 'prismjs/components/prism-scss'
@@ -12,7 +11,7 @@ import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-typescript'
 import 'prismjs/themes/prism-tomorrow.css'
 
-export default function BlogPost({ post }: any) {
+export default function BlogPost({ post }: { post: Devto.Post | Custom.Post }) {
   useEffect(() => {
     prism.highlightAll()
   }, [])
@@ -32,7 +31,7 @@ export default function BlogPost({ post }: any) {
         }
       `}</style>
       <main className='container max-w-xl px-5 mx-auto md:max-w-3xl'>
-        {post.type === 'devto' ? <DevtoPost post={post} /> : null}
+        {post.type === 'devto' ? <DevtoPost post={post} /> : <CustomPost post={post} />}
       </main>
     </>
   )
@@ -40,28 +39,28 @@ export default function BlogPost({ post }: any) {
 
 // @ts-ignore
 export const getStaticProps: GetStaticProps<Devto.Post, { slug: string }> = async context => {
+  const revalidate = 60 * 60
   const slug = context.params!.slug
-  const post = await getDevToBySlug(slug)
 
-  if (!post) {
-    return { redirect: '/404' }
+  const post = (await getDevToBySlug(slug)) ?? (await getSinglePost(slug))
+
+  if (post) {
+    return {
+      props: { post },
+      revalidate,
+    }
   }
 
-  const { content, data: frontMatter } = matter(post.body_markdown as string)
-  const markdown = sanitizeDevToMarkdown(post.body_markdown as string)
-  const html = convertMarkdownToHtml(markdown)
-
-  return {
-    props: { post: { ...post, body_markdown: html, frontMatter } },
-    revalidate: 60 * 60,
-  }
+  return { redirect: '/404' }
 }
 
 export async function getStaticPaths() {
-  const paths = await getDevto(({ slug }: Devto.FromResponse) => ({ params: { slug } }))
+  const pluck = (key: string) => (item: any) => item[key]
+  const devtoPaths = await getDevto(({ slug }: Devto.FromResponse) => slug)
+  const customPaths = await getAllPosts().map(pluck('slug'))
 
   return {
-    paths,
+    paths: [...devtoPaths, ...customPaths].map(slug => ({ params: { slug } })),
     fallback: false,
   }
 }

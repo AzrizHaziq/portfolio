@@ -1,21 +1,7 @@
 import { GetStaticProps } from 'next'
 import { getAllPosts } from '@helpers/BE/get_custom_post'
-import { DevtoPostList, ExtendHead, Nav } from '@components'
 import { Devto, frequentDevtoMapper, getDevto } from '@beHelpers'
-import { CustomPostList } from '../../components/Post/CustomPost/PostList'
-
-export async function getStaticProps(context: GetStaticProps) {
-  const customPosts = getAllPosts()
-  const devtoPosts = await getDevto(frequentDevtoMapper)
-  const permalink = `${process.env.NEXT_PUBLIC_HOSTNAME}/blogs`
-
-  const sortedData = [...customPosts, ...devtoPosts].sort(
-    // @ts-ignore
-    (a, b) => new Date(b.published_timestamp) - new Date(a.published_timestamp),
-  )
-
-  return { props: { data: sortedData, permalink } }
-}
+import { CustomPostList, DevtoPostList, ExtendHead, Nav } from '@components'
 
 export default function Index({ data, permalink }: { data: Devto.Post[]; permalink: string }) {
   return (
@@ -42,4 +28,17 @@ export default function Index({ data, permalink }: { data: Devto.Post[]; permali
       </main>
     </>
   )
+}
+
+export async function getStaticProps(context: GetStaticProps) {
+  const customPosts = getAllPosts()
+  const devtoPosts = await getDevto(frequentDevtoMapper)
+  const permalink = `${process.env.NEXT_PUBLIC_HOSTNAME}/blogs`
+
+  const sortedData = [...customPosts, ...devtoPosts].sort(
+    // @ts-ignore
+    (a, b) => new Date(b.published_timestamp) - new Date(a.published_timestamp),
+  )
+
+  return { props: { data: sortedData, permalink } }
 }
