@@ -3,7 +3,7 @@ import { IconBox } from './Icons'
 import { UseTheme } from './useTheme'
 import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'
-import { usePersonalData } from '@feHelpers'
+import { usePersonalData } from '@helper_client'
 import { Popover, Transition } from '@headlessui/react'
 
 interface Nav {

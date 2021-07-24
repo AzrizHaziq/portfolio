@@ -1,4 +1,4 @@
-import { usePersonalData } from '@feHelpers'
+import { usePersonalData } from '@helper_client'
 import { ExtendHead, Nav, Projects } from '@components'
 
 const navHeader = '88px'

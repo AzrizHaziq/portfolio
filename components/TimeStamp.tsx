@@ -6,10 +6,9 @@ export function TimeStamp({ time }: { time: string }): JSX.Element {
   const dateFormatted = format(new Date(time), 'dd/MM/yyyy')
 
   return (
-    <time className='text-xs text-gray-400'>
-      <div className='sr-only'>{dateFormatted}</div>
-      <span className='block group-hover:hidden'>{date}</span>
-      <span className='hidden group-hover:block'>{dateFormatted}</span>
+    <time className='flex justify-between text-xs text-gray-400 group'>
+      <span>{dateFormatted}</span>
+      <span className='hidden group-hover:block'>{date} ago</span>
     </time>
   )
 }

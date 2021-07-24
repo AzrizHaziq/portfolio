@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
-import { getAllPosts } from '@helpers/BE/get_custom_post'
-import { Devto, frequentDevtoMapper, getDevto } from '@beHelpers'
+import { getAllPosts } from '@helpers/server/get_custom_post'
 import { CustomPostList, DevtoPostList, ExtendHead, Nav } from '@components'
+import { Devto, frequentDevtoMapper, getDevto } from '@helpers_server/get_devto'
 
 export default function Index({ data, permalink }: { data: Devto.Post[]; permalink: string }) {
   return (

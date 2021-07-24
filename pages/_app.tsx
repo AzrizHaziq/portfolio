@@ -8,7 +8,7 @@ import data from '../personal-data.json'
 import type { AppProps } from 'next/app'
 import App, { AppContext } from 'next/app'
 import { ThemeProvider } from 'next-themes'
-import { PersonalData, PersonalDataProvider } from '@feHelpers'
+import { PersonalData, PersonalDataProvider } from '@helper_client'
 
 export default function MyApp({ Component, pageProps, PersonalData }: AppProps & { PersonalData: PersonalData }) {
   return (

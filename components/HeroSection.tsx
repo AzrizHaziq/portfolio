@@ -1,7 +1,7 @@
 import { Type } from './Type'
 import { useState } from 'react'
 import { Langs } from '@components'
-import { useHi, usePersonalData } from '@feHelpers'
+import { useHi, usePersonalData } from '@helper_client'
 
 export function HeroSection() {
   const hi = useHi()

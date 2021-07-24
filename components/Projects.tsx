@@ -1,6 +1,6 @@
 import { Tag } from './Tag'
 import Image from 'next/image'
-import { Project } from '@feHelpers'
+import { Project } from '@helper_client'
 
 export const Projects = ({
   project: { name, build_with, img, web_url, github_url, descriptions },
