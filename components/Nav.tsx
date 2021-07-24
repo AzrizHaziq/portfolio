@@ -30,8 +30,12 @@ function Logo() {
         </a>
       ) : (
         <Link href='/'>
-          <a>
-            <IconBox icon='Home' title='Home' className={'mr-2 w-8 h-8 text-indigo-400 hover:opacity-80'} />
+          <a aria-label='Home'>
+            <IconBox
+              icon='Home'
+              title='Home'
+              className={'mr-2 w-8 h-8 text-indigo-400 dark:text-indigo-400 hover:opacity-80'}
+            />
           </a>
         </Link>
       )}
