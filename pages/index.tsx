@@ -1,4 +1,5 @@
 import { useEvent } from 'react-use'
+import { useTrackPage } from '@helpers/analytics'
 import { useCallback, useRef, useState } from 'react'
 import { SocialLink, HeroSection, IconBox, Nav, Skills } from '@components'
 
@@ -7,6 +8,8 @@ const arrowHeight = '6vh'
 const minHeight = `calc(100vh - ${arrowHeight} - ${navHeader} - 40px)`
 
 export default function Home() {
+  useTrackPage({ title: 'home', path: '/' })
+
   const scrollRef = useRef<HTMLDivElement>(null)
   const [showArrow, setShowArrow] = useState<boolean>(true)
 

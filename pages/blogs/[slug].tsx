@@ -10,8 +10,11 @@ import 'prismjs/components/prism-scss'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-typescript'
 import 'prismjs/themes/prism-tomorrow.css'
+import { useTrackPage } from '@helpers/analytics'
 
 export default function BlogPost({ post }: { post: Devto.Post | Custom.Post }) {
+  useTrackPage({ title: post.title, path: `/blogs/${post.slug}` })
+
   useEffect(() => {
     prism.highlightAll()
   }, [])

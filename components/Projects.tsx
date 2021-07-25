@@ -1,16 +1,20 @@
 import { Tag } from './Tag'
 import Image from 'next/image'
 import { Project } from '@helper_client'
+import { trackEvent } from '@helpers/analytics'
 
 export const Projects = ({
   project: { name, build_with, img, web_url, github_url, descriptions },
 }: {
   project: Project
 }) => {
+  const handleClick = () => trackEvent('side_projects_open', name)
+
   return (
     <>
       <a
-        href={web_url ?? github_url}
+        href={web_url || github_url}
+        onClick={handleClick}
         target='_blank'
         rel='noopener noreferrer'
         className='relative w-full h-56 overflow-hidden text-white border-2 border-transparent border-white rounded-lg shadow-lg group hover:border-white nightwind-prevent'>

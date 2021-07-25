@@ -12,3 +12,8 @@ declare module 'nightwind/*' {
   const value: any
   export = value
 }
+
+declare module '@analytics/google-analytics' {
+  const value: any
+  export = value
+}

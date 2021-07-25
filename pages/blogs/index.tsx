@@ -2,8 +2,11 @@ import { GetStaticProps } from 'next'
 import { getAllPosts } from '@helpers/server/get_custom_post'
 import { CustomPostList, DevtoPostList, ExtendHead, Nav } from '@components'
 import { Devto, frequentDevtoMapper, getDevto } from '@helpers_server/get_devto'
+import { useTrackPage } from '@helpers/analytics'
 
 export default function Index({ data, permalink }: { data: Devto.Post[]; permalink: string }) {
+  useTrackPage({ title: 'blogs', path: '/blogs' })
+
   return (
     <>
       <ExtendHead

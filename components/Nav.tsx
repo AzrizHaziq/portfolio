@@ -3,6 +3,7 @@ import { IconBox } from './Icons'
 import { UseTheme } from './useTheme'
 import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'
+import { trackEvent } from '@helpers/analytics'
 import { usePersonalData } from '@helper_client'
 import { Popover, Transition } from '@headlessui/react'
 
@@ -21,10 +22,15 @@ function Logo() {
   const router = useRouter()
   const { email } = usePersonalData()
 
+  const handleEmailClick = () => trackEvent('nav_email', null)
+
   return (
     <div className='font-mono cursor-pointer'>
       {router.pathname === '/' ? (
-        <a href={`mailto:${email}`} className='flex items-center px-2 py-1 font-mono font-bold uppercase space-x-1'>
+        <a
+          href={`mailto:${email}`}
+          onClick={handleEmailClick}
+          className='flex items-center px-2 py-1 font-mono font-bold uppercase space-x-1'>
           <IconBox icon='email' />
           <span>{email}</span>
         </a>

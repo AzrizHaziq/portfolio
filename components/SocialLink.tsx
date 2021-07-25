@@ -1,4 +1,5 @@
 import { IconBox, IconBoxShape } from './Icons'
+import { trackEvent } from '@helpers/analytics'
 
 const socials: IconBoxShape[] = [
   {
@@ -22,13 +23,13 @@ const blogs: IconBoxShape[] = [
     id: '5',
     className: 'fill-current text-black dark:text-white',
     icon: 'Devto',
-    url: 'https://github.com/azrizhaziq',
+    url: 'https://dev.to/azrizhaziq',
   },
   {
     id: '6',
     className: 'fill-current text-black dark:text-white',
     icon: 'Medium',
-    url: 'https://github.com/azrizhaziq',
+    url: 'https://azrizhaziq.medium.com/',
   },
 ]
 
@@ -52,10 +53,17 @@ const langs: IconBoxShape[] = [
 const merged = [socials, blogs].flat()
 
 export function SocialLink() {
+  const handleClick = (url: string) => () => trackEvent('socials', url)
+
   return (
     <div className='flex mb-2 gap-3'>
       {merged.map(({ id, icon, url, className = '', fill = '' }) => (
-        <a href={url} key={`${id}--${icon}`} rel='noreferrer noopener' target='_blank'>
+        <a
+          href={url}
+          key={`${id}--${icon}`}
+          onClick={handleClick(url as string)}
+          rel='noreferrer noopener'
+          target='_blank'>
           <IconBox icon={icon} className={`${className} w-8 h-8 hover:opacity-80`} fill={fill} />
         </a>
       ))}

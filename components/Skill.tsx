@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { usePersonalData } from '@helper_client'
 import { CopyClipboard, IconBox } from '@components'
+import { trackEvent } from '@helpers/analytics'
 
 export const Skills = (): JSX.Element => {
   const { skills } = usePersonalData()
@@ -9,13 +10,16 @@ export const Skills = (): JSX.Element => {
   function toggle(skill: string) {
     if (selectedSkills.includes(skill)) {
       setSelectedSkills(selectedSkills.filter(i => i !== skill))
+      trackEvent('skills_remove', skill)
     } else {
       setSelectedSkills([...selectedSkills, skill])
+      trackEvent('skills_add', skill)
     }
   }
 
   function clear() {
     setSelectedSkills([])
+    trackEvent('skills_clear', null)
   }
 
   const setColorSkill = (skill: string): string =>

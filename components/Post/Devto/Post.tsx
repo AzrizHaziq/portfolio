@@ -1,9 +1,17 @@
 import { IconBox } from '@components'
+import { trackEvent } from '@helpers/analytics'
 
 export function DevtoPost({ post }: any) {
+  const handleClick = () => trackEvent('blog_devto_read_external', null)
+
   return (
     <>
-      <a href={post.url} className='flex items-center mt-5 group space-x-1'>
+      <a
+        href={post.url}
+        target='_blank'
+        rel='noopener noreferrer'
+        onClick={handleClick}
+        className='flex items-center mt-5 group space-x-1'>
         <IconBox
           icon='Devto'
           className='opacity-80 group-hover:opacity-100'

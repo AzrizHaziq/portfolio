@@ -1,6 +1,7 @@
 import { IconBox } from './Icons'
 import React, { useState } from 'react'
 import { useCopyToClipboard } from 'react-use'
+import { trackEvent } from '@helpers/analytics'
 
 export const CopyClipboard = ({ texts }: { texts: string }) => {
   const [show, setShow] = useState<boolean>(false)
@@ -13,6 +14,7 @@ export const CopyClipboard = ({ texts }: { texts: string }) => {
 
     setShow(true)
     copyToClipboard(texts)
+    trackEvent('skills_copied', texts)
 
     const t = setTimeout(() => {
       setShow(false)

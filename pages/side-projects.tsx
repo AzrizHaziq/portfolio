@@ -1,9 +1,11 @@
 import { usePersonalData } from '@helper_client'
+import { useTrackPage } from '@helpers/analytics'
 import { ExtendHead, Nav, Projects } from '@components'
 
 const navHeader = '88px'
 export default function SideProjects() {
   const { projects } = usePersonalData()
+  useTrackPage({ title: 'side_projects', path: '/side-projects' })
 
   return (
     <>

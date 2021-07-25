@@ -2,6 +2,7 @@ import { IconBox } from './Icons'
 import { useTheme } from 'next-themes'
 import nightwind from 'nightwind/helper'
 import { useEffect, useState } from 'react'
+import { trackEvent } from '@helpers/analytics'
 
 export function UseTheme() {
   const { theme, setTheme } = useTheme()
@@ -18,6 +19,7 @@ export function UseTheme() {
     const enableDark = !isDark
     setEnabled(enableDark)
     setTheme(enableDark ? 'dark' : 'light')
+    trackEvent('theme', enableDark ? 'dark' : 'light')
   }
 
   return (
