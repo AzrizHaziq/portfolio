@@ -17,3 +17,18 @@ declare module '@analytics/google-analytics' {
   const value: any
   export = value
 }
+
+// declare module 'next-mdx-remote/*' {
+//   const value: any
+//   export = value
+// }
+
+declare module 'mdx-prism' {
+  const value: any
+  export = value
+}
+
+declare module 'reading-time' {
+  const value: any
+  export = value
+}

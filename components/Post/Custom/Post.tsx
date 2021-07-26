@@ -1,17 +1,15 @@
-import React, { useMemo } from 'react'
-import { getMDXComponent } from 'mdx-bundler/client'
-import { Custom } from '@helpers_server/get_custom_post'
+import React from 'react'
+import { MDXRemote } from 'next-mdx-remote'
+import { Custom } from '@helpers/server/get_custom_post'
 
-export function CustomPost({ post }: { post: Custom.Post }) {
-  const Component = useMemo(() => getMDXComponent(post.code), [post.code])
-
+export function CustomPost({ post }: { post: Custom.Post | any }) {
   return (
     <>
       <article className='prose lg:prose-xl'>
         <header>
           <h1>{post.title}</h1>
         </header>
-        <Component />
+        <MDXRemote {...post.mdxSource} />
       </article>
     </>
   )
