@@ -11,7 +11,8 @@ export const getDevto = async (mapper?: any): Promise<Devto.Post[]> => {
   let data: Devto.FromResponse[] = await readCache()
 
   try {
-    if (new Date().getTime() - timestamp < _5min) {
+    // at the moment just disable http
+    if (new Date().getTime() - timestamp < _5min && false) {
       // eslint-disable-next-line no-console
       console.log('>>>> DEVTO: Hit Api')
 

@@ -29,7 +29,7 @@ const PersonalDataContext = React.createContext<PersonalData | null>(null)
 export function usePersonalData(): PersonalData {
   const context = React.useContext(PersonalDataContext)
   if (!context) {
-    throw new Error(`useCount must be used within a PersonalDataContext`)
+    throw new Error(`usePersonalData must be used within a PersonalDataContext`)
   }
 
   return context

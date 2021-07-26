@@ -8,30 +8,43 @@ import { serialize } from 'next-mdx-remote/serialize'
 
 export const POSTS_PATH = path.join(process.cwd(), 'contents/posts')
 
-export const getSourceOfFile = (filename: string) => {
-  return fs.readFileSync(path.join(POSTS_PATH, `${filename}/index.mdx`), 'utf8')
+export const getSourceOfFile = (folderName: string) => {
+  return fs.readFileSync(path.join(POSTS_PATH, `${folderName}/index.mdx`), 'utf8')
 }
 
 export const getAllPosts = (): Custom.Post[] => {
-  return fs.readdirSync(POSTS_PATH).map(filename => {
-    const source = getSourceOfFile(filename)
-    const slug = filename.replace(/\.mdx?$/, '')
-    const { data } = matter(source) as { data: any & { published_timestamp: Date } }
+  return fs.readdirSync(POSTS_PATH).map(file => {
+    const [published_timestamp, slug] = file.split('_')
+    const source = getSourceOfFile(file)
+    const { data, content } = matter(source)
 
     return {
+      type: 'custom_post',
       id: uuid(),
-      ...(data as Custom.FrontMatter),
       slug,
       mdxSource: '',
-      type: 'custom_post',
-      published_timestamp: new Date(data.published_timestamp).toJSON(),
+      wordCount: content.split(/\s+/gu).length,
+      reading_time: readingTime(content),
+      published_timestamp: new Date(published_timestamp).toJSON(),
+      title: slug.replaceAll('-', ' '),
+      ...(data as { description: string; tag_list: string[] }),
     }
   })
 }
 
-export const getSinglePost = async (slug: string): Promise<Custom.Post | any> => {
+export const getSinglePost = async (slug: string): Promise<Custom.Post> => {
   try {
-    const source = getSourceOfFile(slug)
+    const foundFilename = fs.readdirSync(POSTS_PATH).find(file => {
+      const [_, findSlug] = file.split('_')
+      return slug === findSlug
+    })
+
+    if (!foundFilename) {
+      throw new Error(`Cant find ${slug} in getSinglePost`)
+    }
+
+    const [published_timestamp] = foundFilename.split('_')
+    const source = getSourceOfFile(`${published_timestamp}_${slug}`)
     const { data, content } = matter(source)
 
     const mdxSource = await serialize(content, {
@@ -42,11 +55,15 @@ export const getSinglePost = async (slug: string): Promise<Custom.Post | any> =>
     })
 
     return {
+      type: 'custom_post',
+      id: uuid(),
+      slug,
       mdxSource,
       wordCount: content.split(/\s+/gu).length,
       reading_time: readingTime(content),
-      slug: slug || null,
-      ...data,
+      published_timestamp,
+      title: slug.replaceAll('-', ' '),
+      ...(data as { description: string; tag_list: string[] }),
     }
   } catch (e) {
     throw new Error(`Failed to get Custom Post by slug: ${slug}`)
@@ -58,7 +75,7 @@ export declare module Custom {
     type: 'custom_post'
     id: string
     slug: string
-    mdxSource: string
+    mdxSource: any
   } & FrontMatter
 
   export type FrontMatter = {
