@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useEvent } from 'react-use'
 import { useTrackPage } from '@helpers/analytics'
 import { useCallback, useRef, useState } from 'react'
@@ -24,23 +25,44 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <main className='mx-auto max-w-7xl'>
-        <div style={{ minHeight }} className='flex flex-col justify-evenly'>
-          <div className='flex justify-center mt-10'>
-            <SocialLink />
+      <main>
+        <div className='mx-auto max-w-7xl'>
+          <div style={{ minHeight }} className='flex flex-col justify-evenly'>
+            <div className='flex justify-center mt-10'>
+              <SocialLink />
+            </div>
+            <div className='flex flex-col items-center justify-center'>
+              <HeroSection />
+            </div>
           </div>
-          <div className='flex flex-col items-center justify-center'>
-            <HeroSection />
+          <div
+            ref={scrollRef}
+            className={`flex justify-center ${showArrow ? 'visible' : 'invisible'}`}
+            style={{ height: arrowHeight }}>
+            <IconBox icon='ArrowDown' className={'w-6 h-6 animate-bounce text-black'} />
           </div>
         </div>
         <div
-          ref={scrollRef}
-          className={`flex justify-center ${showArrow ? 'visible' : 'invisible'}`}
-          style={{ height: arrowHeight }}>
-          <IconBox icon='ArrowDown' className={'w-6 h-6 animate-bounce text-black'} />
+          className='flex flex-col items-center justify-center w-full text-center text-indigo-200 bg-indigo-600'
+          style={{ minHeight }}>
+          <h2 className='mb-1 text-xs font-medium tracking-widest text-indigo-100 title-font'>Javascript developer</h2>
+          <h1 className='mb-4 text-2xl font-bold sm:text-3xl title-font'>Mohd Azriz Haziq Jasni</h1>
+          <div className='mx-auto text-base leading-relaxed lg:w-2/3 dark:text-white'>
+            <p>Hey thanks for visiting, this is the place where you can find my</p>
+            <Link href='/side-projects'>
+              <a className={'underline opacity-80 hover:opacity-100'}>side-projects</a>
+            </Link>{' '}
+            and{' '}
+            <Link href='/blogs'>
+              <a className={'underline opacity-80 hover:opacity-100'}>blogs</a>
+            </Link>
+            . Hope you enjoy it and do share with others 🙂.
+          </div>
         </div>
-        <div className='flex flex-col items-center justify-center mx-5 mb-10 md:mb-0' style={{ minHeight }}>
-          <Skills />
+        <div className='px-5 py-10 mx-auto max-w-7xl'>
+          <div className='flex flex-col items-center justify-center' style={{ minHeight }}>
+            <Skills />
+          </div>
         </div>
       </main>
     </>
