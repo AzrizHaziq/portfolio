@@ -18,11 +18,6 @@ declare module '@analytics/google-analytics' {
   export = value
 }
 
-// declare module 'next-mdx-remote/*' {
-//   const value: any
-//   export = value
-// }
-
 declare module 'mdx-prism' {
   const value: any
   export = value
@@ -32,3 +27,8 @@ declare module 'reading-time' {
   const value: any
   export = value
 }
+//
+// declare module 'react-icons/go/index.esm.js' {
+//   const GoHome: any
+//   export = { GoHome }
+// }

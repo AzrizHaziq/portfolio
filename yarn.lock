@@ -927,6 +927,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@welldone-software/why-did-you-render@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "@welldone-software/why-did-you-render@npm:6.2.0"
+  dependencies:
+    lodash: ^4
+  peerDependencies:
+    react: ^16 || ^17
+  checksum: f068794511b58d8d7481e39e03c9b84311652bda4c2aa6b7bc0da722866855a68fb7856a75901123641f72f2f9d56df5275faa44280e5a35eca1c5e226c7536a
+  languageName: node
+  linkType: hard
+
 "@xobotyi/scrollbar-width@npm:^1.9.5":
   version: 1.9.5
   resolution: "@xobotyi/scrollbar-width@npm:1.9.5"
@@ -5254,7 +5265,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.11, lodash@npm:^4.17.12, lodash@npm:^4.17.13, lodash@npm:^4.17.14, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21":
+"lodash@npm:^4, lodash@npm:^4.17.11, lodash@npm:^4.17.12, lodash@npm:^4.17.13, lodash@npm:^4.17.14, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -5869,6 +5880,7 @@ __metadata:
     "@types/react": 17.0.15
     "@types/react-icons": ^3.0.0
     "@types/uuid": ^8.3.1
+    "@welldone-software/why-did-you-render": ^6.2.0
     analytics: ^0.7.7
     autoprefixer: ^10.2.6
     axios: ^0.21.1
