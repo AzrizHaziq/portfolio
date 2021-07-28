@@ -25,7 +25,7 @@ export default function BlogPost({ post }: { post: Devto.Post | Custom.Post }) {
       <ExtendHead
         title={post.title}
         description={post.description}
-        permalink={`${process.env.NEXT_PUBLIC_HOSTNAME}/blogs/${post.slug}`}
+        permalink={`${process.env.VERCEL_URL}/blogs/${post.slug}`}
       />
       <Nav />
       <style global jsx>{`

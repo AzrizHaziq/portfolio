@@ -7,9 +7,9 @@ const NextSeo: DefaultSeoProps = {
     description: 'Welcome to my website, hope you enjoy',
     type: 'website',
     locale: 'en_us',
-    url: process.env.NEXT_PUBLIC_HOSTNAME,
+    url: process.env.VERCEL_URL,
     site_name: data.alias,
-    images: [{ url: `${process.env.NEXT_PUBLIC_HOSTNAME}/assets/routes/Home.png`, alt: 'Azriz Haziq Jasni' }],
+    images: [{ url: `${process.env.VERCEL_URL}/assets/routes/Home.png`, alt: 'Azriz Haziq Jasni' }],
   },
   twitter: {
     handle: '@azrizhaziq',

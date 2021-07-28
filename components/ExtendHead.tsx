@@ -5,7 +5,7 @@ import { NextSeo, NextSeoProps } from 'next-seo'
 
 // This comp add twitter seo tag, since next-seo didnt generate it
 export function ExtendHead({ permalink, title, description, ...rest }: NextSeoProps & { permalink?: string }) {
-  permalink ??= process.env.NEXT_PUBLIC_HOSTNAME as string
+  permalink ??= process.env.VERCEL_URL as string
   const imgUrl = rest.openGraph?.images?.[0]?.url ?? SEO.openGraph?.images?.[0].url
 
   return (

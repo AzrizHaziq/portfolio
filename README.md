@@ -1,4 +1,3 @@
-
 Build with Nextjs 
 
 TODO
@@ -6,7 +5,7 @@ TODO
     - [X] Setup getStaticPath and read it in /content folder
     - [X] Create new comp in /components/custom/CustomPost.jsx(for /blogs/:slug) and CustomPostList.jsx(for /blogs)
     - [ ] Currently, external links in devto blogs, it's not properly render. `gist github`, `youtube`, etc. 
-- [ ] Setup analytics with https://github.com/DavidWells/analytics
+- [X] Setup analytics with https://github.com/DavidWells/analytics
 - [ ] Setup capture image with playwright for each blogs
 - [ ] Deploy to Vercel
 - [X] Seo (index, side-projects, blogs), still pending on each pages

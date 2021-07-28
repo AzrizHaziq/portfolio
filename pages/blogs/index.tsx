@@ -14,7 +14,7 @@ export default function Index({ data, permalink }: { data: Devto.Post[]; permali
         title='Enjoy reading 😀'
         description='Do share the post if you find interesting'
         openGraph={{
-          images: [{ url: `${process.env.NEXT_PUBLIC_HOSTNAME}/assets/routes/blogs.png`, alt: 'Side Projects' }],
+          images: [{ url: `${process.env.VERCEL_URL}/assets/routes/blogs.png`, alt: 'Side Projects' }],
         }}
       />
       <Nav />
@@ -36,7 +36,7 @@ export default function Index({ data, permalink }: { data: Devto.Post[]; permali
 export async function getStaticProps(context: GetStaticProps) {
   const customPosts = getAllPosts()
   const devtoPosts = await getDevto(frequentDevtoMapper)
-  const permalink = `${process.env.NEXT_PUBLIC_HOSTNAME}/blogs`
+  const permalink = `${process.env.VERCEL_URL}/blogs`
 
   const sortedData = [...customPosts, ...devtoPosts].sort(
     // @ts-ignore
