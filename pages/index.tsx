@@ -43,7 +43,7 @@ export default function Home() {
           </div>
         </div>
         <div
-          className='flex flex-col items-center justify-center w-full text-center text-indigo-200 bg-indigo-600'
+          className='flex flex-col items-center justify-center w-full text-center text-indigo-200 bg-indigo-500'
           style={{ minHeight }}>
           <h2 className='mb-1 text-xs font-medium tracking-widest text-indigo-100 title-font'>Javascript developer</h2>
           <h1 className='mb-4 text-2xl font-bold sm:text-3xl title-font'>Mohd Azriz Haziq Jasni</h1>
