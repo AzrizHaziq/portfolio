@@ -1,8 +1,7 @@
 import { GetStaticProps } from 'next'
-import { getAllPosts } from '@helpers/server/get_custom_post'
-import { CustomPostList, DevtoPostList, ExtendHead, Nav } from '@components'
-import { Devto, frequentDevtoMapper, getDevto } from '@helpers_server/get_devto'
 import { useTrackPage } from '@helpers/analytics'
+import { Devto, getAllPostSortedByDate } from '@helpers/server'
+import { CustomPostList, DevtoPostList, ExtendHead, Nav } from '@components'
 
 export default function Index({ data, permalink }: { data: Devto.Post[]; permalink: string }) {
   useTrackPage({ title: 'blogs', path: '/blogs' })
@@ -34,14 +33,8 @@ export default function Index({ data, permalink }: { data: Devto.Post[]; permali
 }
 
 export async function getStaticProps(context: GetStaticProps) {
-  const customPosts = getAllPosts()
-  const devtoPosts = await getDevto(frequentDevtoMapper)
   const permalink = `${process.env.VERCEL_URL}/blogs`
-
-  const sortedData = [...customPosts, ...devtoPosts].sort(
-    // @ts-ignore
-    (a, b) => new Date(b.published_timestamp) - new Date(a.published_timestamp),
-  )
+  const sortedData = await getAllPostSortedByDate()
 
   return { props: { data: sortedData, permalink } }
 }

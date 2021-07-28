@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:BA": "ANALYZE=true yarn build",
+    "postbuild": "next-sitemap --config next-sitemap.cjs",
     "start": "next start",
     "lint": "next lint",
     "update-seo": "node scripts/grab-seo-img.js",

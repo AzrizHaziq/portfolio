@@ -52,7 +52,7 @@ export const getDevToBySlug = async (slug: string): Promise<Devto.Post | undefin
 
     return {
       ...post,
-      frontMatter,
+      ...frontMatter,
       body_markdown: html,
     }
   } catch (e) {
@@ -71,7 +71,7 @@ export const frequentDevtoMapper = ({
   published_timestamp,
   tag_list,
   cover_image,
-}: Devto.FromResponse): Devto.Post => ({
+}: Devto.FromResponse): Devto.PostList => ({
   id,
   title,
   description,
@@ -94,13 +94,13 @@ const readCache = async (): Promise<Devto.FromResponse[]> => {
 }
 
 export declare module Devto {
-  export type Post = { type: 'devto' } & Partial<FromResponse> & Partial<AdditionalProps>
+  export type Post = { type: 'devto' } & FromResponse
+  export type PostList = { type: 'devto' } & Pick<
+    FromResponse,
+    'id' | 'title' | 'description' | 'slug' | 'published_timestamp' | 'tag_list' | 'url' | 'cover_image'
+  >
 
-  export interface AdditionalProps {
-    frontMatter: Record<string, any>
-  }
-
-  export interface User {
+  interface User {
     name: string
     username: string
     twitter_username?: any
@@ -111,6 +111,7 @@ export declare module Devto {
   }
 
   export interface FromResponse {
+    tags: string
     type_of: string
     id: number
     title: string

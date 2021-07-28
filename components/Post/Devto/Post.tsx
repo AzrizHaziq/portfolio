@@ -1,7 +1,8 @@
-import { IconBox } from '@components'
+import { Devto } from '@helpers/server'
 import { trackEvent } from '@helpers/analytics'
+import { IconBox, TimeStamp } from '@components'
 
-export function DevtoPost({ post }: any) {
+export function DevtoPost({ post }: { post: Devto.Post }) {
   const handleClick = () => trackEvent('blog_devto_read_external', null)
 
   return (
@@ -20,8 +21,8 @@ export function DevtoPost({ post }: any) {
         <span className='group-hover:text-blue-700'>Read this article at Devto Website</span>
       </a>
       <article className='prose lg:prose-xl'>
-        <header>
-          <h3 className='mt-2'>{post.publishDate}</h3>
+        <header className='!mt-5'>
+          <TimeStamp time={post.published_timestamp as string} />
           <h1>{post.title}</h1>
         </header>
         <div dangerouslySetInnerHTML={{ __html: post.body_markdown }} />

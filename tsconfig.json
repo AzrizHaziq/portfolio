@@ -19,7 +19,6 @@
       "@components": ["components"],
       "@helpers/*": ["helpers/*"],
       "@helper_client": ["helpers/client"],
-      "@helpers_server/*": ["helpers/server/*"],
       "@contents": ["content"]
     }
   },
