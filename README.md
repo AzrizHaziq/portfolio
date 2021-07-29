@@ -1,30 +1,16 @@
-You can fork this repo for your portfolio. Feel free to make a pull request.
+Build with Nextjs 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-
-Screen shot below: 
-
-![alt text](https://raw.githubusercontent.com/AzrizHaziq/portfolio/master/public/screnshot.png)
+TODO
+- [X] Add custom blog with mdx
+    - [X] Setup getStaticPath and read it in /content folder
+    - [X] Create new comp in /components/custom/CustomPost.jsx(for /blogs/:slug) and CustomPostList.jsx(for /blogs)
+    - [ ] Currently, external links in devto blogs, it's not properly render. `gist github`, `youtube`, etc. 
+- [X] Setup analytics with https://github.com/DavidWells/analytics
+- [ ] Setup capture image with playwright for each blogs
+- [ ] Deploy to Vercel
+- [X] Seo (index, side-projects, blogs), still pending on each pages
+- [ ] Test(no need I guess 😅)
+- [ ] Service workers(PWA)
+- [X] Dark theme
+- [X] Responsive
+- [ ] Sitemap (https://www.npmjs.com/package/next-sitemap)
