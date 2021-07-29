@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useEvent } from 'react-use'
 import { useTrackPage } from '@helpers/analytics'
 import { useCallback, useRef, useState } from 'react'
-import { SocialLink, HeroSection, IconBox, Nav, Skills } from '@components'
+import { IconBox, SocialLink, HeroSection, Nav, Skills } from '@components'
 
 const navHeader = '88px'
 const arrowHeight = '6vh'

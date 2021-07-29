@@ -44,6 +44,6 @@ yarn-error.log*
 
 /public/sitemap.xml
 /public/robots.txt
-/public/fallback-development.js
-/public/sw*
-/public/workbox*
+/public/fallback*.js
+/public/sw*.js
+/public/workbox*.js
