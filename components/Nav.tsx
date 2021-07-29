@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { IconBox } from './Icons'
+import { IconBox } from './IconsBox'
 import { UseTheme } from './useTheme'
 import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'

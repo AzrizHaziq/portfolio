@@ -1,4 +1,4 @@
-import { IconBox } from './Icons'
+import { IconBox } from './IconsBox'
 import { useTheme } from 'next-themes'
 import nightwind from 'nightwind/helper'
 import { useEffect, useState } from 'react'

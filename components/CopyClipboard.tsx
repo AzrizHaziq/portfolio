@@ -1,4 +1,4 @@
-import { IconBox } from './Icons'
+import { IconBox } from './IconsBox'
 import React, { useState } from 'react'
 import { useCopyToClipboard } from 'react-use'
 import { trackEvent } from '@helpers/analytics'

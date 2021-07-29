@@ -1,4 +1,4 @@
-import { IconBox, IconBoxShape } from './Icons'
+import { IconBox, IconBoxShape } from './IconsBox'
 import { trackEvent } from '@helpers/analytics'
 
 const socials: IconBoxShape[] = [

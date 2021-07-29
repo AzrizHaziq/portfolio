@@ -12,13 +12,15 @@ export function DevtoPost({ post }: { post: Devto.Post }) {
         target='_blank'
         rel='noopener noreferrer'
         onClick={handleClick}
-        className='flex items-center mt-5 group space-x-1'>
-        <IconBox
-          icon='Devto'
-          className='opacity-80 group-hover:opacity-100'
-          title='Read this article at Devto website'
-        />
-        <span className='group-hover:text-blue-700'>Read this article at Devto Website</span>
+        className='flex p-3 mt-5 bg-indigo-200 border-2 border-indigo-400 border-dashed rounded dark:bg-indigo-100 dark:text-black md:items-center group space-x-1 hover:shadow-md'>
+        <IconBox icon='Devto' className='hidden w-10 h-10 md:block' title='Read this article at Devto website' />
+        <div className='flex flex-col'>
+          <span className=''>Read this article at Devto Website</span>
+          <small>
+            Few of below content does not render properly so instead of reading here, you can read this in Devto
+            instead.
+          </small>
+        </div>
       </a>
       <article className='prose lg:prose-xl'>
         <header className='!mt-5'>
