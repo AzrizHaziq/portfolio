@@ -1,6 +1,7 @@
 {
   "name": "Azriz Haziq Jasni",
   "short_name": "AJ",
+  "description": "Welcome to my website, hope you enjoy",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -16,5 +17,6 @@
   "theme_color": "#4137c4",
   "background_color": "#4137c4",
   "display": "standalone",
-  "start_url": "https://example.com"
+  "start_url": "/",
+  "orientation": "any"
 }

@@ -23,6 +23,7 @@ export function ExtendHead({ permalink, title, description, ...rest }: NextSeoPr
         <meta property='twitter:url' content={permalink} />
         <meta property='twitter:description' content={description} />
         <meta property='twitter:image' content={imgUrl} />
+        <meta name='twitter:creator' content='@azrizhaziq' />
         <meta name='theme-color' content='#4137c4' />
       </Head>
     </>

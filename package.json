@@ -1,6 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "description": "Welcome to my website, hope you enjoy",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -23,6 +24,7 @@
     "mdx-prism": "^0.3.3",
     "next": "11.0.1",
     "next-mdx-remote": "^3.0.4",
+    "next-pwa": "^5.2.24",
     "next-seo": "^4.26.0",
     "next-themes": "^0.0.15",
     "nightwind": "^1.1.12",
