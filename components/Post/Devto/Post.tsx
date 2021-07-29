@@ -22,9 +22,11 @@ export function DevtoPost({ post }: { post: Devto.Post }) {
           </small>
         </div>
       </a>
+      <div className='my-2'>
+        <TimeStamp time={post.published_timestamp as string} />
+      </div>
       <article className='prose lg:prose-xl'>
         <header className='!mt-5'>
-          <TimeStamp time={post.published_timestamp as string} />
           <h1>{post.title}</h1>
         </header>
         <div dangerouslySetInnerHTML={{ __html: post.body_markdown }} />

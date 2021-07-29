@@ -24,8 +24,9 @@ export default function BlogPost({ post }: { post: Devto.Post | Custom.Post }) {
       <ExtendHead
         title={post.title}
         description={post.description}
-        permalink={`${process.env.VERCEL_URL}/blogs/${post.slug}`}
-      />
+        permalink={`${process.env.VERCEL_URL}/blogs/${post.slug}`}>
+        <meta name='keywords' content={post.tag_list.join(', ')} />
+      </ExtendHead>
       <Nav />
       <style global jsx>{`
         .dark .prose pre {
