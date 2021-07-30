@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Welcome to my website, hope you enjoy",
   "private": true,
+  "engines": {
+    "node": "16.4.2",
+    "yarn": "1.22.11"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
