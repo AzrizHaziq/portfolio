@@ -5,14 +5,13 @@ import { NextSeo, NextSeoProps } from 'next-seo'
 
 // This comp add twitter seo tag, since next-seo didnt generate it
 export function ExtendHead({
-  permalink,
+  permalink = process.env.VERCEL_URL as string,
   title,
   description,
   children,
   ...rest
 }: NextSeoProps & { children?: React.ReactNode; permalink?: string }) {
-  permalink ??= process.env.VERCEL_URL as string
-  const imgUrl = rest.openGraph?.images?.[0]?.url ?? SEO.openGraph?.images?.[0].url
+  const imgUrl = rest.openGraph?.images?.[0]?.url || SEO.openGraph?.images?.[0].url
 
   return (
     <>

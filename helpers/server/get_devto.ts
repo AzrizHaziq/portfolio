@@ -6,8 +6,7 @@ import { convertMarkdownToHtml, sanitizeDevToMarkdown } from '@helpers/markdown'
 
 const _5min = 300
 let timestamp = 0
-export const getDevto = async (mapper?: any): Promise<Devto.Post[]> => {
-  mapper ??= Identity
+export const getDevto = async (mapper: any = Identity): Promise<Devto.Post[]> => {
   let data: Devto.FromResponse[] = await readCache()
 
   try {

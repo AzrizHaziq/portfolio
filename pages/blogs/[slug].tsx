@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps<Devto.Post, { slug: string }> = asyn
   const revalidate = 60 * 60
   const slug = context.params!.slug
 
-  const post = (await getDevToBySlug(slug)) ?? (await getSinglePost(slug))
+  const post = (await getDevToBySlug(slug)) || (await getSinglePost(slug))
 
   if (post) {
     return {

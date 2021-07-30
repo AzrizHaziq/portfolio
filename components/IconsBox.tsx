@@ -65,7 +65,7 @@ const IconsBox: { [k: string]: IconType } = {
 export const IconBox = ({ icon, children, title, ...props }: IconBoxShape) => {
   const IC = IconsBox[icon]
   const { className, ...rest } = props
-  const iconTitle = title ?? (icon as string)
+  const iconTitle = title || (icon as string)
 
   return IC({ 'aria-hidden': 'true', title: iconTitle, className: `w-6 h-6 ${props.className}`, ...rest })
 }

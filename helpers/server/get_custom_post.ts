@@ -26,7 +26,7 @@ export const getAllPosts = (): Custom.Post[] => {
       wordCount: content.split(/\s+/gu).length,
       reading_time: readingTime(content),
       published_timestamp: new Date(published_timestamp).toJSON(),
-      title: slug.replaceAll('-', ' '),
+      title: slug.replace(/-/g, ' '),
       ...(data as { description: string; tag_list: string[] }),
     }
   })
@@ -62,7 +62,7 @@ export const getSinglePost = async (slug: string): Promise<Custom.Post> => {
       wordCount: content.split(/\s+/gu).length,
       reading_time: readingTime(content),
       published_timestamp,
-      title: slug.replaceAll('-', ' '),
+      title: slug.replace(/-/g, ' '),
       ...(data as { description: string; tag_list: string[] }),
     }
   } catch (e) {
