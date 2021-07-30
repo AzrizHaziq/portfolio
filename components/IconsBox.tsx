@@ -16,9 +16,9 @@ import { MdEmail } from '@react-icons/all-files/md/MdEmail'
 import { BsClipboard } from '@react-icons/all-files/bs/BsClipboard'
 import { FcCheckmark } from '@react-icons/all-files/fc/FcCheckmark'
 
-import { HiX } from '@react-icons/all-files/Hi/HiX'
-import { HiMenu } from '@react-icons/all-files/Hi/HiMenu'
-import { HiOutlineRefresh } from '@react-icons/all-files/Hi/HiOutlineRefresh'
+// import { HiX } from '@react-icons/all-files/Hi/HiX'
+// import { HiMenu } from '@react-icons/all-files/Hi/HiMenu'
+// import { HiOutlineRefresh } from '@react-icons/all-files/Hi/HiOutlineRefresh'
 
 import { SiDeno } from '@react-icons/all-files/si/SiDeno'
 import { SiRust } from '@react-icons/all-files/si/SiRust'
@@ -51,15 +51,15 @@ const IconsBox: { [k: string]: IconType } = {
   TS: SiTypescript,
   JS: SiJavascript,
   ArrowDown: FaArrowDown,
-  Refresh: HiOutlineRefresh,
+  Refresh: SiDeno,
   Copy: BsClipboard,
   CheckMark: FcCheckmark,
 
   Home: GoHome,
   Moon: FaMoon,
   Sun: FaSun,
-  XMark: HiX,
-  Menu: HiMenu,
+  XMark: SiDeno,
+  Menu: SiDeno,
 } as const
 
 export const IconBox = ({ icon, children, title, ...props }: IconBoxShape) => {
