@@ -10,11 +10,14 @@ import { FaMediumM } from '@react-icons/all-files/fa/FaMediumM'
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
 import { FaArrowDown } from '@react-icons/all-files/fa/FaArrowDown'
 import { FaStackOverflow } from '@react-icons/all-files/fa/FaStackOverflow'
+import { FaTimes } from '@react-icons/all-files/fa/FaTimes'
+import { FaBars } from '@react-icons/all-files/fa/FaBars'
 
 import { GoHome } from '@react-icons/all-files/go/GoHome'
 import { MdEmail } from '@react-icons/all-files/md/MdEmail'
 import { BsClipboard } from '@react-icons/all-files/bs/BsClipboard'
 import { FcCheckmark } from '@react-icons/all-files/fc/FcCheckmark'
+import { FiRefreshCw } from '@react-icons/all-files/fi/FiRefreshCw'
 
 // import { HiX } from '@react-icons/all-files/Hi/HiX'
 // import { HiMenu } from '@react-icons/all-files/Hi/HiMenu'
@@ -51,15 +54,15 @@ const IconsBox: { [k: string]: IconType } = {
   TS: SiTypescript,
   JS: SiJavascript,
   ArrowDown: FaArrowDown,
-  Refresh: SiDeno,
+  Refresh: FiRefreshCw,
   Copy: BsClipboard,
   CheckMark: FcCheckmark,
 
   Home: GoHome,
   Moon: FaMoon,
   Sun: FaSun,
-  XMark: SiDeno,
-  Menu: SiDeno,
+  XMark: FaTimes,
+  Menu: FaBars,
 } as const
 
 export const IconBox = ({ icon, children, title, ...props }: IconBoxShape) => {

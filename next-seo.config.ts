@@ -14,7 +14,7 @@ const NextSeo: DefaultSeoProps = {
   twitter: {
     handle: '@azrizhaziq',
     site: '@',
-    cardType: 'summary',
+    cardType: 'summary_large_image',
   },
   additionalLinkTags: [
     {

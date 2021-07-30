@@ -27,12 +27,26 @@ export const Skills = (): JSX.Element => {
 
   return (
     <>
-      <div className={`flex justify-center md:justify-end space-x-2 text-black mb-3 cursor-default`}>
+      <style global jsx>{`
+        .refresh-spin:hover {
+          animation: refresh-spin 1s cubic-bezier(0.65, -0.21, 0.43, 1.23) infinite;
+        }
+
+        @keyframes refresh-spin {
+          from {
+            transform: rotate(0);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
+      <div className={`flex justify-center md:justify-end text-black mb-3 cursor-default space-x-2`}>
         {selectedSkills.length > 0 ? (
           <>
             <span title={`You have selected: ${selectedSkills.length}`}>{selectedSkills.length}</span>
             <div className={`hover:text-indigo-500 cursor-pointer`} onClick={clear}>
-              <IconBox icon='Refresh' className={`refresh-spin w-6 h-6 `} title={'Clear'} />
+              <IconBox icon='Refresh' className={`refresh-spin w-7`} title='Clear' />
             </div>
             <div className='cursor-pointer hover:text-indigo-500'>
               <CopyClipboard texts={selectedSkills.join(', ')} />

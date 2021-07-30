@@ -9,16 +9,3 @@ html body {
 html.dark body {
   @apply bg-gray-900;
 }
-
-.refresh-spin:hover {
-  animation: refresh-spin 1s cubic-bezier(0.65, -0.21, 0.43, 1.23) infinite;
-}
-
-@keyframes refresh-spin {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
-}
