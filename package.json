@@ -4,7 +4,7 @@
   "description": "Welcome to my website, hope you enjoy",
   "private": true,
   "engines": {
-    "node": "16.4.2"
+    "node": "14.16.0"
   },
   "scripts": {
     "dev": "next dev",
