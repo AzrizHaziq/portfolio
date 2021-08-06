@@ -47,3 +47,4 @@ yarn-error.log*
 /public/fallback*.js
 /public/sw*
 /public/workbox*
+/public/assets/blogs/*
