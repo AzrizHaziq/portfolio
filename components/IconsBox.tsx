@@ -1,5 +1,5 @@
 import React from 'react'
-import type { IconType, IconBaseProps } from '@react-icons/all-files'
+import type { IconBaseProps } from '@react-icons/all-files'
 
 import { FaSun } from '@react-icons/all-files/fa/FaSun'
 import { FaDev } from '@react-icons/all-files/fa/FaDev'
@@ -19,24 +19,12 @@ import { BsClipboard } from '@react-icons/all-files/bs/BsClipboard'
 import { FcCheckmark } from '@react-icons/all-files/fc/FcCheckmark'
 import { FiRefreshCw } from '@react-icons/all-files/fi/FiRefreshCw'
 
-// import { HiX } from '@react-icons/all-files/Hi/HiX'
-// import { HiMenu } from '@react-icons/all-files/Hi/HiMenu'
-// import { HiOutlineRefresh } from '@react-icons/all-files/Hi/HiOutlineRefresh'
-
 import { SiDeno } from '@react-icons/all-files/si/SiDeno'
 import { SiRust } from '@react-icons/all-files/si/SiRust'
 import { SiTypescript } from '@react-icons/all-files/si/SiTypescript'
 import { SiJavascript } from '@react-icons/all-files/si/SiJavascript'
 
-export type IconBoxShape = {
-  icon: keyof typeof IconsBox
-  children?: React.ReactNode
-  title?: string
-  className?: string
-} & IconBaseProps &
-  Partial<{ id: string | undefined; url: string }>
-
-const IconsBox: { [k: string]: IconType } = {
+const IconsBox = {
   // Social
   Github: FaGithub,
   Linkedin: FaLinkedin,
@@ -64,6 +52,14 @@ const IconsBox: { [k: string]: IconType } = {
   XMark: FaTimes,
   Menu: FaBars,
 } as const
+
+export type IconBoxShape = {
+  icon: keyof typeof IconsBox
+  children?: React.ReactNode
+  title?: string
+  className?: string
+} & IconBaseProps &
+  Partial<{ id: string | undefined; url: string }>
 
 export const IconBox = ({ icon, children, title, ...props }: IconBoxShape) => {
   const IC = IconsBox[icon]
