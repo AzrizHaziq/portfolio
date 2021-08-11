@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import { GetStaticProps } from 'next'
 import { useTrackPage } from '@helpers/analytics'
 import { CustomPost, DevtoPost, ExtendHead, Nav } from '@components'
-import { generateImg, writeToFile } from '@helpers/server/generate-img'
 import { Custom, getAllPosts, getSinglePost, Devto, getDevto, getDevToBySlug } from '@helpers/server'
 
 import 'prismjs/components/prism-css'
@@ -48,8 +47,6 @@ export const getStaticProps: GetStaticProps<Devto.Post, { slug: string }> = asyn
   const slug = context.params!.slug
 
   const post = (await getDevToBySlug(slug)) || (await getSinglePost(slug))
-  const canvas = await generateImg({ slug: post.slug, tags: post.tag_list })
-  await writeToFile(post.slug, canvas)
 
   if (post) {
     return {

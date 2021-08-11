@@ -23,13 +23,6 @@ const removeDash = (text: string): string => text.replace(/-/g, ' ')
 const toCapitalize = (text: string): string => `${text[0].toUpperCase()}${text.slice(1, text.length)}` // to uppercase
 const breakWords = (text: string): string[] => text.split(' ')
 
-const throwIfMoreThanItems =
-  <U>(n: number, errMsg = `Should not have larger than ${n} items`) =>
-  (arr: U[]) => {
-    if (arr.length > n) throw Error(errMsg)
-    return arr
-  }
-
 const breakLines = (texts: string[]) =>
   texts.reduce<Array<string[]>>(
     (acc, curr: string) => {
@@ -46,9 +39,9 @@ const breakLines = (texts: string[]) =>
     [[]],
   )
 
-export const textToWrite = pipe(removeDash, toCapitalize, breakWords, breakLines, throwIfMoreThanItems(2))
+const textToWrite = pipe(removeDash, toCapitalize, breakWords, breakLines) // , throwIfMoreThanItems(2))
 
-export const writeTextInCanvas = (context: NodeCanvasRenderingContext2D, text: string, y: number) => {
+const writeTextInCanvas = (context: NodeCanvasRenderingContext2D, text: string, y: number) => {
   context.font = 'bold 70pt Menlo'
 
   const metrics = context.measureText(text)
@@ -60,19 +53,25 @@ export const writeTextInCanvas = (context: NodeCanvasRenderingContext2D, text: s
   context.fillText(text, 600, y)
 }
 
-export const writeTagInCanvas = (context: NodeCanvasRenderingContext2D, texts: string[], y: number) => {
+const writeTagInCanvas = (context: NodeCanvasRenderingContext2D, texts: string[], y: number) => {
   context.fillStyle = config.font
   context.font = 'normal 20pt Menlo'
   context.fillText(texts.join(', '), 600, y)
 }
 
-export const writeFooterInCanvas = async (context: NodeCanvasRenderingContext2D, y: number) => {
+const writeFooterInCanvas = async (context: NodeCanvasRenderingContext2D, y: number) => {
   context.fillStyle = '#fff'
   context.font = 'bold 30pt Menlo'
   context.fillText(process.env.VERCEL_URL as string, 600, 530)
 
   const image = await loadImage('./public/android-chrome-192x192.png')
   context.drawImage(image, 260, y, 70, 70)
+}
+
+const getYPos = (rowCount: number) => {
+  // there is no 4th row
+  const yPos = [[170], [100, 220], [70, 190, 310], [70, 190, 310], []]
+  return yPos[rowCount - 1]
 }
 
 export const writeToFile = async (slug: string, canvas: Canvas) => {
@@ -84,7 +83,7 @@ export const writeToFile = async (slug: string, canvas: Canvas) => {
   out.on('finish', () => console.log(`${slug}.png created`))
 }
 
-export async function generateImg({
+export async function generateBlogImg({
   slug = 'init-post-2-12312312-asdasdasd-123123',
   tags = ['jasvacript', 'typescript', 'dx'],
 }): Promise<Canvas> {
@@ -105,8 +104,24 @@ export async function generateImg({
   context.fillStyle = grd
   context.fillRect(0, 0, config.width, config.height)
 
-  writeTextInCanvas(context, title[0].join(' '), 100)
-  title[1] && writeTextInCanvas(context, title[1].join(' '), 220)
+  const yPos = getYPos(title.length)
+  writeTextInCanvas(context, title[0].join(' '), yPos[0])
+  title[1] && writeTextInCanvas(context, title[1].join(' '), yPos[1])
+
+  if (title[2]) {
+    // dynamic add ellipsis
+    let t = title[2].join(' ')
+    if (title[3] && title[3].length) {
+      if (t.length >= 17) {
+        t = `${t.slice(0, 17)}...`
+      } else {
+        t += '...'
+      }
+    }
+
+    writeTextInCanvas(context, t, yPos[2])
+  }
+
   tags.length > 0 && writeTagInCanvas(context, tags, 470)
   await writeFooterInCanvas(context, 520)
 

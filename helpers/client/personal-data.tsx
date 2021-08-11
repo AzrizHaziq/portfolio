@@ -13,6 +13,7 @@ export type Project = {
   descriptions: string
   build_with: string[]
   img: string
+  status: 'stop' | 'active' | 'archive'
 }
 
 export type PersonalData = {

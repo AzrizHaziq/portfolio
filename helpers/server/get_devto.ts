@@ -2,7 +2,7 @@ import path from 'path'
 import axios from 'axios'
 import fs from 'fs/promises'
 import matter from 'gray-matter'
-import { convertMarkdownToHtml, sanitizeDevToMarkdown } from '@helpers/markdown'
+import { convertMarkdownToHtml, sanitizeDevToMarkdown } from '../markdown'
 
 const _5min = 300
 let timestamp = 0

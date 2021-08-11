@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next'
 import { useTrackPage } from '@helpers/analytics'
 import { Devto, getAllPostSortedByDate } from '@helpers/server'
 import { CustomPostList, DevtoPostList, ExtendHead, Nav } from '@components'
+import { generateBlogImg, writeToFile as writeBlogImgToFile } from '@helpers/server/generate-blog-img'
 
 export default function Index({ data, permalink }: { data: Devto.Post[]; permalink: string }) {
   useTrackPage({ title: 'blogs', path: '/blogs' })
@@ -35,6 +36,18 @@ export default function Index({ data, permalink }: { data: Devto.Post[]; permali
 export async function getStaticProps(context: GetStaticProps) {
   const permalink = `${process.env.VERCEL_URL}/blogs`
   const sortedData = await getAllPostSortedByDate()
+
+  for (let post of sortedData) {
+    let mutateSlug = post.slug
+
+    if (post.type === 'devto') {
+      // remove unique digit in devto slug
+      mutateSlug = mutateSlug.replace(/-\w+$/, '')
+    }
+
+    const canvas = await generateBlogImg({ slug: mutateSlug, tags: post.tag_list })
+    await writeBlogImgToFile(post.slug, canvas)
+  }
 
   return { props: { data: sortedData, permalink } }
 }

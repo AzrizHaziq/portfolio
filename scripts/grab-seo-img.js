@@ -20,7 +20,7 @@ const useSEOImg = async (browser, url) => {
       }
     })
   } catch (err) {
-    throw new Error('Unable to obtain github seo image at')
+    throw new Error(`Unable to obtain github seo image at: ${err}`)
   }
 }
 
@@ -35,7 +35,7 @@ const useScreenshot = async (browser, p, screenshotOptions, outputPath) => {
     await page.screenshot(screenshotOptions)
     return outputPath
   } catch (err) {
-    throw new Error('Unable to take screenshot')
+    throw new Error(`Unable to take screenshot: ${err}`)
   }
 }
 
@@ -45,7 +45,7 @@ async function getRoutesImages(browser) {
       { web_url: '', name: 'Home' },
       { web_url: 'side-projects', name: 'side-projects' },
       { web_url: 'blogs', name: 'Blogs' },
-    ].map(route => ({ ...route, web_url: `${'http://localhost:3000'}/${route.web_url}` }))
+    ].map(route => ({ ...route, web_url: `http://localhost:3000/${route.web_url}` }))
 
     return await Promise.all(
       routes.map(
@@ -58,9 +58,8 @@ async function getRoutesImages(browser) {
           ),
       ),
     )
-  } catch (e) {
-    throw new Error('Failed to get Devto', e)
-    throw new Error('Failed to getRoutesImages', e)
+  } catch (err) {
+    throw new Error(`Failed to getRoutesImages :${err}`)
   }
 }
 
@@ -81,8 +80,8 @@ async function generateSideProjectImg(browser) {
     const newProjects = await Promise.all(projects)
 
     await fs.writeFile('./personal-data.json', JSON.stringify({ ...data, projects: newProjects }, null, 2), 'utf-8')
-  } catch (e) {
-    throw new Error('Failed to generate SideProjectImg')
+  } catch (err) {
+    throw new Error(`Failed to generate SideProjectImg: ${err}`)
   }
 }
 
@@ -94,7 +93,7 @@ async function generateSideProjectImg(browser) {
     await getRoutesImages(browser)
     await generateSideProjectImg(browser)
   } catch (e) {
-    throw new Error('Whole process gone wrong')
+    throw new Error(`Whole process gone wrong: ${e}`)
   } finally {
     await browser.close()
   }

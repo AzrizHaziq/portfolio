@@ -1,5 +1,5 @@
-import { Custom, getAllPosts } from '@helpers/server/get_custom_post'
-import { Devto, frequentDevtoMapper, getDevto } from '@helpers/server/get_devto'
+import { Custom, getAllPosts } from './get_custom_post'
+import { Devto, frequentDevtoMapper, getDevto } from './get_devto'
 
 export * from './get_devto'
 export * from './get_custom_post'
