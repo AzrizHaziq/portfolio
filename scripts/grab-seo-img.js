@@ -90,8 +90,8 @@ async function generateSideProjectImg(browser) {
   try {
     browser = await chromium.launch({ headless: true })
 
-    await getRoutesImages(browser)
     await generateSideProjectImg(browser)
+    await getRoutesImages(browser)
   } catch (e) {
     throw new Error(`Whole process gone wrong: ${e}`)
   } finally {
