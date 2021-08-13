@@ -10,6 +10,7 @@ module.exports = withPlugins(
     [withPWA, { pwa: { dest: 'public', dynamicStartUrl: false, disable: process.env.NODE_ENV === 'development' } }],
   ],
   {
+    experimental: { esmExternals: true },
     pageExtensions: ['ts', 'tsx'],
     reactStrictMode: true,
     images: {

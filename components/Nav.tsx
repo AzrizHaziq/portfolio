@@ -81,7 +81,7 @@ export function Nav() {
                   <Logo />
                 </div>
                 <div className='-my-2 -mr-2 md:hidden'>
-                  <Popover.Button className='inline-flex items-center justify-center p-2 text-gray-400 fill-current rounded-md hover:text-gray-100 hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
+                  <Popover.Button className='inline-flex items-center justify-center p-2 text-gray-300 fill-current rounded-md hover:text-gray-100 hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
                     <span className='sr-only'>Open menu</span>
                     <IconBox icon='Menu' />
                   </Popover.Button>
