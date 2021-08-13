@@ -81,7 +81,7 @@ export function Nav() {
                   <Logo />
                 </div>
                 <div className='-my-2 -mr-2 md:hidden'>
-                  <Popover.Button className='inline-flex items-center justify-center p-2 text-gray-300 fill-current rounded-md hover:text-gray-100 hover:bg-indigo-600 dark:hover:bg-indigo-600 dark:hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
+                  <Popover.Button className='inline-flex items-center justify-center p-2 text-indigo-300 dark:text-indigo-300 hover:text-indigo-100 dark:hover:text-indigo-100 rounded-md hover:bg-indigo-600 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
                     <span className='sr-only'>Open menu</span>
                     <IconBox icon='Menu' />
                   </Popover.Button>
@@ -112,9 +112,9 @@ export function Nav() {
                       <Logo />
                     </div>
                     <div className='absolute right-0 mr-2 top-1/4'>
-                      <Popover.Button className='inline-flex items-center justify-center p-2 text-gray-400 fill-current rounded-md hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-indigo-600 dark:hover:text-indigo-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
+                      <Popover.Button className='inline-flex items-center justify-center p-2 text-gray-400 text-indigo-400 dark:text-indigo-300 hover:text-indigo-300 dark:hover:text-indigo-100 rounded-md hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-indigo-600 dark:hover:text-indigo-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
                         <span className='sr-only'>Close menu</span>
-                        <IconBox icon='XMark' className='w-6 h-6 text-indigo-400' />
+                        <IconBox icon='XMark' />
                       </Popover.Button>
                     </div>
                   </div>

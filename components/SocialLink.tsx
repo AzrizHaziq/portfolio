@@ -4,7 +4,7 @@ import { trackEvent } from '@helpers/analytics'
 const socials: IconBoxShape[] = [
   {
     id: '1',
-    className: 'fill-current text-black dark:text-white ',
+    className: 'text-black dark:text-white ',
     icon: 'Github',
     url: 'https://github.com/azrizhaziq',
   },
@@ -21,13 +21,13 @@ const socials: IconBoxShape[] = [
 const blogs: IconBoxShape[] = [
   {
     id: '5',
-    className: 'fill-current text-black dark:text-white',
+    className: 'text-black dark:text-white',
     icon: 'Devto',
     url: 'https://dev.to/azrizhaziq',
   },
   {
     id: '6',
-    className: 'fill-current text-black dark:text-white',
+    className: 'text-black dark:text-white',
     icon: 'Medium',
     url: 'https://azrizhaziq.medium.com/',
   },
@@ -36,13 +36,13 @@ const blogs: IconBoxShape[] = [
 const langs: IconBoxShape[] = [
   {
     id: '1',
-    className: 'fill-current text-black bg-white rounded-full',
+    className: 'text-black bg-white rounded-full',
     icon: 'Deno',
     children: <title>Still learning</title>,
   },
   {
     id: '2',
-    className: 'fill-current text-black dark:text-white ',
+    className: 'text-black dark:text-white ',
     icon: 'Rust',
     children: <title>Still learning</title>,
   },

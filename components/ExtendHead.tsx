@@ -37,7 +37,6 @@ export function ExtendHead({
   published_timestamp,
   children,
 }: AdditionalProps & { children?: React.ReactNode; permalink?: string }) {
-  // const imgUrl = rest.openGraph?.images?.[0]?.url || SEO.openGraph?.images?.[0].url
   const baseUrl = process.env.URL ? process.env.URL : 'http://localhost:3000'
 
   return (
