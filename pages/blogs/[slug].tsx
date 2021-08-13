@@ -5,12 +5,12 @@ import { useTrackPage } from '@helpers/analytics'
 import { CustomPost, DevtoPost, ExtendHead, Nav } from '@components'
 import { Custom, getSinglePost, Devto, getDevto, getDevToBySlug, getAllCustomPosts } from '@helpers/server'
 
+import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-css'
 import 'prismjs/components/prism-scss'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-typescript'
-import 'prismjs/themes/prism-tomorrow.css'
 
 export default function BlogPost({ post }: { post: Devto.Post | Custom.Post }) {
   useTrackPage({ title: post.title, path: `/blogs/${post.slug}` })
@@ -22,19 +22,27 @@ export default function BlogPost({ post }: { post: Devto.Post | Custom.Post }) {
   return (
     <>
       <ExtendHead
+        type='article'
+        url={`/blogs/${post.slug}`}
         title={post.title}
         description={post.description}
-        permalink={`${process.env.VERCEL_URL}/blogs/${post.slug}`}>
+        published_timestamp={post.published_timestamp as string}
+        imgUrl={`/assets/blogs/${post.slug}.png`}
+        imgAlt={post.title}>
+        <meta property='article:section' content='Technology' />
         <meta name='keywords' content={post.tag_list.join(', ')} />
+        {post.tag_list.map((tag, index) => (
+          <meta key={index} property='article:tag' content={tag} />
+        ))}
       </ExtendHead>
       <Nav />
-      <style global jsx>{`
-        .dark .prose pre {
-          background: #2d2d2d;
-          color: #ccc;
-        }
-      `}</style>
       <main className='container max-w-xl px-5 mx-auto md:max-w-3xl'>
+        <style global jsx>{`
+          .dark .prose pre {
+            background: #2d2d2d;
+            color: #ccc;
+          }
+        `}</style>
         {post.type === 'devto' ? <DevtoPost post={post} /> : <CustomPost post={post} />}
       </main>
     </>

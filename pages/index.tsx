@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useEvent } from 'react-use'
 import { useTrackPage } from '@helpers/analytics'
 import { useCallback, useRef, useState } from 'react'
-import { IconBox, SocialLink, HeroSection, Nav, Skills } from '@components'
+import { IconBox, SocialLink, HeroSection, Nav, Skills, ExtendHead } from '@components'
 
 const navHeader = '88px'
 const arrowHeight = '6vh'
@@ -24,6 +24,7 @@ export default function Home() {
 
   return (
     <>
+      <ExtendHead />
       <Nav />
       <main>
         <div className='mx-auto max-w-7xl'>

@@ -10,12 +10,11 @@ export default function SideProjects() {
   return (
     <>
       <ExtendHead
+        url='/side-projects'
         title='List of my side projects'
-        description='Hopefully you find something interesting'
-        permalink={`${process.env.VERCEL_URL}/side-projects`}
-        openGraph={{
-          images: [{ url: `${process.env.VERCEL_URL}/assets/routes/side-projects.png`, alt: 'Side Projects' }],
-        }}
+        description='I use my free time to build something great.'
+        imgUrl='/assets/routes/side-projects.png'
+        imgAlt='I use my free time to build something great.'
       />
       <Nav />
       <main

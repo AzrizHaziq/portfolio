@@ -1,4 +1,4 @@
-import { Nav } from '@components'
+import { ExtendHead, Nav } from '@components'
 
 const What = () => (
   <svg xmlns='http://www.w3.org/2000/svg' width={240} height={324} viewBox='0 0 240 324'>
@@ -44,6 +44,11 @@ const minHeight = `calc(100vh - ${navHeader} - 40px)`
 export default function _404() {
   return (
     <>
+      <ExtendHead
+        url='/404'
+        title='Hi seem you have lost'
+        description={`Hi, if you still breathing, you could directly hit this url just in case: ${process.env.URL}`}
+      />
       <Nav />
       <main className='flex items-center mx-auto max-w-7xl' style={{ minHeight }}>
         <section className='container px-5 py-10 mx-auto'>

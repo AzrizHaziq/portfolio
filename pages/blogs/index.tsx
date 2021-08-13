@@ -4,18 +4,17 @@ import { Devto, getAllPostSortedByDate } from '@helpers/server'
 import { CustomPostList, DevtoPostList, ExtendHead, Nav } from '@components'
 import { generateBlogImg, writeToFile as writeBlogImgToFile } from '@helpers/server/generate-blog-img'
 
-export default function Index({ data, permalink }: { data: Devto.Post[]; permalink: string }) {
+export default function Index({ data }: { data: Devto.Post[] }) {
   useTrackPage({ title: 'blogs', path: '/blogs' })
 
   return (
     <>
       <ExtendHead
-        permalink={permalink}
+        url='/blog'
         title='Enjoy reading 😀'
         description='Do share the post if you find interesting'
-        openGraph={{
-          images: [{ url: `${process.env.VERCEL_URL}/assets/routes/blogs.png`, alt: 'Side Projects' }],
-        }}
+        imgUrl='/assets/routes/blogs.png'
+        imgAlt='Hope you enjoy reading my writings'
       />
       <Nav />
       <main className='container max-w-xl px-5 mx-auto md:max-w-3xl'>
@@ -34,7 +33,6 @@ export default function Index({ data, permalink }: { data: Devto.Post[]; permali
 }
 
 export async function getStaticProps(context: GetStaticProps) {
-  const permalink = `${process.env.VERCEL_URL}/blogs`
   const sortedData = await getAllPostSortedByDate()
 
   for (let post of sortedData) {
@@ -49,5 +47,5 @@ export async function getStaticProps(context: GetStaticProps) {
     await writeBlogImgToFile(post.slug, canvas)
   }
 
-  return { props: { data: sortedData, permalink } }
+  return { props: { data: sortedData } }
 }

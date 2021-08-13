@@ -2,8 +2,6 @@ import '@helpers/wdyr'
 import '../styles/globals.scss'
 
 import { v4 as uuid } from 'uuid'
-import SEO from '../next-seo.config'
-import { DefaultSeo } from 'next-seo'
 import data from '../personal-data.json'
 import type { AppProps } from 'next/app'
 import App, { AppContext } from 'next/app'
@@ -13,7 +11,6 @@ import { PersonalData, PersonalDataProvider } from '@helper_client'
 export default function MyApp({ Component, pageProps, PersonalData }: AppProps & { PersonalData: PersonalData }) {
   return (
     <>
-      <DefaultSeo {...SEO} />
       <ThemeProvider attribute='class' storageKey='theme' defaultTheme='system'>
         <PersonalDataProvider value={PersonalData}>
           <Component {...pageProps} />

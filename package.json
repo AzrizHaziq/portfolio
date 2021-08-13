@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "azrizhaziq_portfolio",
   "version": "0.1.0",
   "description": "Welcome to my website, hope you enjoy",
   "private": true,
@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "sme:client": "source-map-explorer .next/static/**/*.js",
-    "update-seo": "node scripts/grab-seo-img.js",
+    "update-img": "node scripts/grab-seo-img.js",
     "tailwind-config-viewer": "tailwind-config-viewer -o",
     "prepare": "husky install"
   },
@@ -28,7 +28,6 @@
     "next": "11.1.0",
     "next-mdx-remote": "^3.0.4",
     "next-pwa": "^5.2.24",
-    "next-seo": "^4.26.0",
     "next-themes": "^0.0.15",
     "nightwind": "^1.1.12",
     "prismjs": "^1.24.1",
