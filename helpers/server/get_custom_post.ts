@@ -12,7 +12,7 @@ export const getSourceOfFile = (folderName: string) => {
   return fs.readFileSync(path.join(POSTS_PATH, `${folderName}/index.mdx`), 'utf8')
 }
 
-export const getAllPosts = (): Custom.Post[] => {
+export const getAllCustomPosts = (): Custom.Post[] => {
   return fs.readdirSync(POSTS_PATH).map(file => {
     const [published_timestamp, slug] = file.split('_')
     const source = getSourceOfFile(file)

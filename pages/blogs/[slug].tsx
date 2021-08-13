@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { GetStaticProps } from 'next'
 import { useTrackPage } from '@helpers/analytics'
 import { CustomPost, DevtoPost, ExtendHead, Nav } from '@components'
-import { Custom, getAllPosts, getSinglePost, Devto, getDevto, getDevToBySlug } from '@helpers/server'
+import { Custom, getSinglePost, Devto, getDevto, getDevToBySlug, getAllCustomPosts } from '@helpers/server'
 
 import 'prismjs/components/prism-css'
 import 'prismjs/components/prism-scss'
@@ -60,8 +60,8 @@ export const getStaticProps: GetStaticProps<Devto.Post, { slug: string }> = asyn
 
 export async function getStaticPaths() {
   const pluck = (key: string) => (item: any) => item[key]
+  const customPaths = getAllCustomPosts().map(pluck('slug'))
   const devtoPaths = await getDevto(({ slug }: Devto.FromResponse) => slug)
-  const customPaths = await getAllPosts().map(pluck('slug'))
 
   return {
     paths: [...devtoPaths, ...customPaths].map(slug => ({ params: { slug } })),
