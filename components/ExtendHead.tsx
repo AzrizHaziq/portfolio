@@ -18,7 +18,7 @@ export const SEOMetadata = {
   locale: 'en_us',
   site_name: 'Azriz Haziq',
   image: {
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}/assets/routes/Home.png`,
+    url: `/assets/routes/home.png`,
     alt: 'About Azriz haziq',
   },
   twitter: {

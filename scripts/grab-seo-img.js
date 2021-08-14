@@ -42,9 +42,9 @@ const useScreenshot = async (browser, p, screenshotOptions, outputPath) => {
 async function getRoutesImages(browser) {
   try {
     const routes = [
-      { web_url: '', name: 'Home' },
+      { web_url: '', name: 'home' },
       { web_url: 'side-projects', name: 'side-projects' },
-      { web_url: 'blogs', name: 'Blogs' },
+      { web_url: 'blogs', name: 'blogs' },
     ].map(route => ({ ...route, web_url: `http://localhost:3000/${route.web_url}` }))
 
     return await Promise.all(
