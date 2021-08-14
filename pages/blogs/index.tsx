@@ -36,7 +36,7 @@ export async function getStaticProps(context: GetStaticProps) {
   const sortedData = await getAllPostSortedByDate()
 
   // generate images for /blog/:slug
-  if (process.env.NODE_ENV === 'development')
+  if (process.env.SHOULD_GENERATE_IMG)
     for (let post of sortedData) {
       let mutateSlug = post.slug
 
