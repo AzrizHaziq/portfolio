@@ -35,17 +35,19 @@ export default function Index({ data }: { data: Devto.Post[] }) {
 export async function getStaticProps(context: GetStaticProps) {
   const sortedData = await getAllPostSortedByDate()
 
-  for (let post of sortedData) {
-    let mutateSlug = post.slug
+  // generate images for /blog/:slug
+  if (process.env.NODE_ENV === 'development')
+    for (let post of sortedData) {
+      let mutateSlug = post.slug
 
-    if (post.type === 'devto') {
-      // remove unique digit in devto slug
-      mutateSlug = mutateSlug.replace(/-\w+$/, '')
+      if (post.type === 'devto') {
+        // remove unique digit in devto slug
+        mutateSlug = mutateSlug.replace(/-\w+$/, '')
+      }
+
+      const canvas = await generateBlogImg({ slug: mutateSlug, tags: post.tag_list })
+      await writeBlogImgToFile(post.slug, canvas)
     }
-
-    const canvas = await generateBlogImg({ slug: mutateSlug, tags: post.tag_list })
-    await writeBlogImgToFile(post.slug, canvas)
-  }
 
   return { props: { data: sortedData } }
 }
