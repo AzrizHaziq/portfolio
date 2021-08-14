@@ -19,7 +19,7 @@ export function UseTheme() {
     const enableDark = !isDark
     setEnabled(enableDark)
     setTheme(enableDark ? 'dark' : 'light')
-    trackEvent('theme', enableDark ? 'dark' : 'light')
+    trackEvent('theme', { category: 'user_preference', label: enableDark ? 'dark' : 'light' })
   }
 
   return (

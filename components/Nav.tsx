@@ -22,7 +22,7 @@ function Logo() {
   const router = useRouter()
   const { email } = usePersonalData()
 
-  const handleEmailClick = () => trackEvent('nav_email', null)
+  const handleEmailClick = () => trackEvent('nav_email', { category: 'socials', label: 'email' })
 
   return (
     <div className='font-mono cursor-pointer'>

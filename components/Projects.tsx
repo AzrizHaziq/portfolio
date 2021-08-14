@@ -8,7 +8,7 @@ export const Projects = ({
 }: {
   project: Project
 }) => {
-  const handleClick = () => trackEvent('side_projects_open', name)
+  const handleClick = () => trackEvent('side_projects_open', { category: 'side_projects', label: name })
 
   return (
     <>

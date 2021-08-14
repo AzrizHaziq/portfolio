@@ -14,7 +14,7 @@ export const CopyClipboard = ({ texts }: { texts: string }) => {
 
     setShow(true)
     copyToClipboard(texts)
-    trackEvent('skills_copied', texts)
+    trackEvent('skills_copied', { category: 'skill', label: texts })
 
     const t = setTimeout(() => {
       setShow(false)

@@ -4,7 +4,7 @@ import { IconBox, Metadata } from '@components'
 import { trackEvent } from '@helpers/analytics'
 
 export function DevtoPost({ post }: { post: Devto.Post }) {
-  const handleClick = () => trackEvent('blog_devto_read_external', null)
+  const handleClick = () => trackEvent('blog_devto_read_external', { category: 'blog', label: post.title })
 
   return (
     <>

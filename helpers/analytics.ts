@@ -23,15 +23,20 @@ export function useTrackPage(...args: Parameters<typeof analytics.page>) {
 }
 
 export interface EventMap {
-  skills_clear: null
-  skills_add: string
-  skills_remove: string
-  skills_copied: string
-  blog_devto_read_external: null
-  theme: 'dark' | 'light'
-  side_projects_open: string
-  nav_email: null
-  socials: string
+  skills_clear: { category: 'skill' }
+  skills_add: { category: 'skill'; label: string }
+  skills_remove: { category: 'skill'; label: string }
+  skills_copied: { category: 'skill'; label: string }
+  blog_devto_read_external: { category: 'blog'; label: string }
+  theme: { category: 'user_preference'; label: 'dark' | 'light' }
+  side_projects_open: { category: 'side_projects'; label: string }
+  nav_email: { category: 'socials'; label: 'email' }
+  socials_click: { category: 'socials'; label: string }
+  // example_playVideo: {
+  //   category: 'Videos'
+  //   label: 'Fall Campaign'
+  //   value: 42
+  // }
 }
 
 export async function trackEvent<K extends keyof EventMap>(eventName: K, props: EventMap[K]): Promise<void> {

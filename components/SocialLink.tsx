@@ -53,7 +53,7 @@ const langs: IconBoxShape[] = [
 const merged = [socials, blogs].flat()
 
 export function SocialLink() {
-  const handleClick = (url: string) => () => trackEvent('socials', url)
+  const handleClick = (url: string) => () => trackEvent('socials_click', { category: 'socials', label: url })
 
   return (
     <div className='flex mb-2 gap-3'>

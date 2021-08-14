@@ -10,16 +10,16 @@ export const Skills = (): JSX.Element => {
   function toggle(skill: string) {
     if (selectedSkills.includes(skill)) {
       setSelectedSkills(selectedSkills.filter(i => i !== skill))
-      trackEvent('skills_remove', skill)
+      trackEvent('skills_remove', { category: 'skill', label: skill })
     } else {
       setSelectedSkills([...selectedSkills, skill])
-      trackEvent('skills_add', skill)
+      trackEvent('skills_add', { category: 'skill', label: skill })
     }
   }
 
   function clear() {
     setSelectedSkills([])
-    trackEvent('skills_clear', null)
+    trackEvent('skills_clear', { category: 'skill' })
   }
 
   const setColorSkill = (skill: string): string =>
