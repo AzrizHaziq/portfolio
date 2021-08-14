@@ -10,7 +10,7 @@ export default function Index({ data }: { data: Devto.Post[] }) {
   return (
     <>
       <ExtendHead
-        url='/blog'
+        url='/blogs'
         title='Enjoy reading 😀'
         description='Do share the post if you find interesting'
         imgUrl='/assets/routes/blogs.png'

@@ -39,6 +39,11 @@ export function ExtendHead({
 }: AdditionalProps & { children?: React.ReactNode; permalink?: string }) {
   const baseUrl = process.env.URL ? process.env.URL : 'http://localhost:3000'
 
+  // eslint-disable-next-line no-console
+  console.log('baseUrl', process.env.URL)
+
+  const fullUrl = `${baseUrl}${url}`
+
   return (
     <Head>
       <title>{title}</title>
@@ -47,7 +52,7 @@ export function ExtendHead({
 
       <meta property='og:title' content={title} />
       <meta property='og:type' content={type} />
-      <meta property='og:url' content={`${baseUrl}${url}`} />
+      <meta property='og:url' content={`${fullUrl}`} />
       <meta property='og:image' content={`${baseUrl}${imgUrl}`} />
       <meta property='og:image:alt' content={imgAlt} />
 
@@ -56,7 +61,7 @@ export function ExtendHead({
       <meta property='og:locale' content={SEOMetadata.locale} />
 
       <meta name='twitter:title' content={title} />
-      <meta property='twitter:url' content={`${baseUrl}${url}`} />
+      <meta property='twitter:url' content={`${fullUrl}`} />
       <meta name='twitter:card' content={SEOMetadata.twitter.cardType} />
       <meta name='twitter:site' content={SEOMetadata.twitter.handle} />
       <meta name='twitter:description' content={description} />
