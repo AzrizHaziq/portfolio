@@ -23,7 +23,6 @@ export const getAllCustomPosts = (): Custom.Post[] => {
       id: uuid(),
       slug,
       mdxSource: '',
-      wordCount: content.split(/\s+/gu).length,
       reading_time: readingTime(content),
       published_timestamp: new Date(published_timestamp).toJSON(),
       title: slug.replace(/-/g, ' '),
@@ -59,7 +58,6 @@ export const getSinglePost = async (slug: string): Promise<Custom.Post> => {
       id: uuid(),
       slug,
       mdxSource,
-      wordCount: content.split(/\s+/gu).length,
       reading_time: readingTime(content),
       published_timestamp,
       title: slug.replace(/-/g, ' '),
@@ -83,8 +81,7 @@ export declare module Custom {
     description: string
     tag_list: string[]
     cover_image?: string
-    reading_time: string
-    wordCount: number
+    reading_time: { text: string }
     published_timestamp: Date | string
   }
 }

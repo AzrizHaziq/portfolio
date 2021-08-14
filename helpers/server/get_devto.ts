@@ -2,6 +2,7 @@ import path from 'path'
 import axios from 'axios'
 import fs from 'fs/promises'
 import matter from 'gray-matter'
+import readingTime from 'reading-time'
 import { convertMarkdownToHtml, sanitizeDevToMarkdown } from '../markdown'
 
 const _5min = 300
@@ -53,6 +54,7 @@ export const getDevToBySlug = async (slug: string): Promise<Devto.Post | undefin
       ...post,
       ...frontMatter,
       body_markdown: html,
+      reading_time: readingTime(content),
     }
   } catch (e) {
     throw new Error(`Failed to get Devto by slug: ${slug}`)
@@ -94,6 +96,7 @@ const readCache = async (): Promise<Devto.FromResponse[]> => {
 
 export declare module Devto {
   export type Post = { type: 'devto' } & FromResponse
+
   export type PostList = { type: 'devto' } & Pick<
     FromResponse,
     'id' | 'title' | 'description' | 'slug' | 'published_timestamp' | 'tag_list' | 'url' | 'cover_image'
@@ -112,6 +115,7 @@ export declare module Devto {
   export interface FromResponse {
     tags: string
     type_of: string
+    reading_time: { text: string } // custom
     id: number
     title: string
     description: string
