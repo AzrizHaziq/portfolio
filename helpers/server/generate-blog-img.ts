@@ -60,12 +60,12 @@ const writeTagInCanvas = (context: NodeCanvasRenderingContext2D, texts: string[]
 }
 
 const writeFooterInCanvas = async (context: NodeCanvasRenderingContext2D, y: number) => {
-  context.fillStyle = '#fff'
+  context.fillStyle = getColor(7)
   context.font = 'bold 30pt Menlo'
-  context.fillText(process.env.NEXT_PUBLIC_BASE_URL as string, 600, 530)
+  context.fillText('https://azrizhaziq.vercel.app', 600, 530)
 
   const image = await loadImage('./public/android-chrome-192x192.png')
-  context.drawImage(image, 260, y, 70, 70)
+  context.drawImage(image, 170, y, 70, 70)
 }
 
 const getYPos = (rowCount: number) => {
@@ -79,9 +79,8 @@ export const writeToFile = async (slug: string, canvas: Canvas) => {
   const stream = canvas.createPNGStream()
 
   stream.pipe(out)
-  out.on('ready', () => console.log(`${slug}.png ready`)) // eslint-disable-line no-console
-  out.on('finish', () => console.log(`${slug}.png created`)) // eslint-disable-line no-console
-  out.on('error', e => console.log(`${slug}.png error: ${e}`)) // eslint-disable-line no-console
+  out.on('finish', () => console.log(`created: ${slug}.png`)) // eslint-disable-line no-console
+  out.on('error', e => console.log(`error: ${slug}.png: ${e}`)) // eslint-disable-line no-console
 }
 
 export async function generateBlogImg({
