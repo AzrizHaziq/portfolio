@@ -47,7 +47,7 @@ export default function _404() {
       <ExtendHead
         url='/404'
         title='Hi seem you have lost'
-        description={`Hi, if you still breathing, you could directly hit this url just in case: ${process.env.URL}`}
+        description={`Hi, if you still breathing, you could directly hit this url just in case: ${process.env.NEXT_PUBLIC_BASE_URL}`}
       />
       <Nav />
       <main className='flex items-center mx-auto max-w-7xl' style={{ minHeight }}>

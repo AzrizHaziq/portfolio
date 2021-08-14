@@ -62,7 +62,7 @@ const writeTagInCanvas = (context: NodeCanvasRenderingContext2D, texts: string[]
 const writeFooterInCanvas = async (context: NodeCanvasRenderingContext2D, y: number) => {
   context.fillStyle = '#fff'
   context.font = 'bold 30pt Menlo'
-  context.fillText(process.env.URL as string, 600, 530)
+  context.fillText(process.env.NEXT_PUBLIC_BASE_URL as string, 600, 530)
 
   const image = await loadImage('./public/android-chrome-192x192.png')
   context.drawImage(image, 260, y, 70, 70)

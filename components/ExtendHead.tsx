@@ -18,7 +18,7 @@ export const SEOMetadata = {
   locale: 'en_us',
   site_name: 'Azriz Haziq',
   image: {
-    url: `${process.env.URL}/assets/routes/Home.png`,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/assets/routes/Home.png`,
     alt: 'About Azriz haziq',
   },
   twitter: {
@@ -37,10 +37,10 @@ export function ExtendHead({
   published_timestamp,
   children,
 }: AdditionalProps & { children?: React.ReactNode; permalink?: string }) {
-  const baseUrl = process.env.URL ? process.env.URL : 'http://localhost:3000'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : 'http://localhost:3000'
 
   // eslint-disable-next-line no-console
-  console.log('baseUrl', process.env.URL)
+  console.log('baseUrl', process.env.NEXT_PUBLIC_BASE_URL)
 
   const fullUrl = `${baseUrl}${url}`
 
