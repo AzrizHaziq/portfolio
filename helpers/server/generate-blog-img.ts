@@ -79,8 +79,9 @@ export const writeToFile = async (slug: string, canvas: Canvas) => {
   const stream = canvas.createPNGStream()
 
   stream.pipe(out)
-  // eslint-disable-next-line no-console
-  out.on('finish', () => console.log(`${slug}.png created`))
+  out.on('ready', () => console.log(`${slug}.png ready`)) // eslint-disable-line no-console
+  out.on('finish', () => console.log(`${slug}.png created`)) // eslint-disable-line no-console
+  out.on('error', e => console.log(`${slug}.png error: ${e}`)) // eslint-disable-line no-console
 }
 
 export async function generateBlogImg({
