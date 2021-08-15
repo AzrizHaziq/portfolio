@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { usePersonalData } from '@helper_client'
-import { CopyClipboard, IconBox } from '@components'
 import { trackEvent } from '@helpers/analytics'
+import { CopyClipboard, IconBox } from '@components'
+import { Skill, usePersonalData } from '@helper_client'
 
 export const Skills = (): JSX.Element => {
   const { skills } = usePersonalData()
@@ -25,23 +25,27 @@ export const Skills = (): JSX.Element => {
   const setColorSkill = (skill: string): string =>
     selectedSkills.includes(skill) ? '' : selectedSkills.length > 0 ? 'opacity-30' : ''
 
+  const cls = (item: Skill) => `
+    cursor-pointer select-none rounded px-2 py-1 shadow hover:shadow-md hover:opacity-90 
+    ${setColorSkill(item.skill)} ${item.color}`
+
   return (
     <>
-      <style global jsx>{`
-        .refresh-spin:hover {
-          animation: refresh-spin 1s cubic-bezier(0.65, -0.21, 0.43, 1.23) infinite;
-        }
-
-        @keyframes refresh-spin {
-          from {
-            transform: rotate(0);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
       <div className={`flex justify-center md:justify-end text-black mb-3 cursor-default space-x-2`}>
+        <style global jsx>{`
+          .refresh-spin:hover {
+            animation: refresh-spin 1s cubic-bezier(0.65, -0.21, 0.43, 1.23) infinite;
+          }
+
+          @keyframes refresh-spin {
+            from {
+              transform: rotate(0);
+            }
+            to {
+              transform: rotate(360deg);
+            }
+          }
+        `}</style>
         {selectedSkills.length > 0 ? (
           <>
             <span title={`You have selected: ${selectedSkills.length}`}>{selectedSkills.length}</span>
@@ -58,11 +62,7 @@ export const Skills = (): JSX.Element => {
       </div>
       <div className='flex flex-wrap justify-center font-mono gap-2'>
         {skills.map(item => (
-          <span
-            onClick={() => toggle(item.skill)}
-            key={item.id}
-            className={`cursor-pointer select-none rounded px-2 py-1 shadow hover:shadow-md hover:opacity-90
-           ${setColorSkill(item.skill)} ${item.color}`}>
+          <span key={item.id} onClick={() => toggle(item.skill)} className={cls(item)}>
             {item.skill}
           </span>
         ))}
