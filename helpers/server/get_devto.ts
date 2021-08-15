@@ -127,7 +127,7 @@ export declare module Devto {
     comments_count: number
     public_reactions_count: number
     page_views_count: number
-    published_timestamp: Date | string
+    published_timestamp: string
     body_markdown: string
     positive_reactions_count: number
     cover_image: string

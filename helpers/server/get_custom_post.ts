@@ -13,22 +13,30 @@ export const getSourceOfFile = (folderName: string) => {
 }
 
 export const getAllCustomPosts = (): Custom.Post[] => {
-  return fs.readdirSync(POSTS_PATH).map(file => {
-    const [published_timestamp, slug] = file.split('_')
-    const source = getSourceOfFile(file)
-    const { data, content } = matter(source)
+  return fs
+    .readdirSync(POSTS_PATH)
+    .map(file => {
+      const [published_timestamp, slug] = file.split('_')
+      const source = getSourceOfFile(file)
+      const { data, content } = matter(source)
 
-    return {
-      type: 'custom_post',
-      id: uuid(),
-      slug,
-      mdxSource: '',
-      reading_time: readingTime(content),
-      published_timestamp: new Date(published_timestamp).toJSON(),
-      title: slug.replace(/-/g, ' '),
-      ...(data as { description: string; tag_list: string[] }),
-    }
-  })
+      // if article is not published and its on production then don't show it
+      if (!data.published && process.env.NODE_ENV === 'production') {
+        return null as any
+      }
+
+      return {
+        type: 'custom_post',
+        id: uuid(),
+        slug,
+        mdxSource: '',
+        reading_time: readingTime(content),
+        published_timestamp: new Date(published_timestamp).toJSON(),
+        title: slug.replace(/-/g, ' '),
+        ...(data as { tag_list: string[]; description: string; published: boolean }),
+      }
+    })
+    .filter(Boolean)
 }
 
 export const getSinglePost = async (slug: string): Promise<Custom.Post> => {
@@ -46,6 +54,11 @@ export const getSinglePost = async (slug: string): Promise<Custom.Post> => {
     const source = getSourceOfFile(`${published_timestamp}_${slug}`)
     const { data, content } = matter(source)
 
+    // if article is not published and its on production then don't show it
+    if (!data.published && process.env.NODE_ENV === 'production') {
+      throw new Error(`Post is not published yet: ${slug}`)
+    }
+
     const mdxSource = await serialize(content, {
       mdxOptions: {
         remarkPlugins: [require('remark-autolink-headings'), require('remark-slug'), require('remark-code-titles')],
@@ -61,7 +74,7 @@ export const getSinglePost = async (slug: string): Promise<Custom.Post> => {
       reading_time: readingTime(content),
       published_timestamp,
       title: slug.replace(/-/g, ' '),
-      ...(data as { description: string; tag_list: string[] }),
+      ...(data as { tag_list: string[]; description: string; published: boolean }),
     }
   } catch (e) {
     throw new Error(`Failed to get Custom Post by slug: ${slug}`)
@@ -82,6 +95,7 @@ export declare module Custom {
     tag_list: string[]
     cover_image?: string
     reading_time: { text: string }
+    published: boolean
     published_timestamp: Date | string
   }
 }
