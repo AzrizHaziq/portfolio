@@ -33,7 +33,8 @@ export const Skills = (): JSX.Element => {
     <>
       <div className={`flex justify-center md:justify-end text-black mb-3 cursor-default space-x-2`}>
         <style global jsx>{`
-          .refresh-spin:hover {
+          .refresh-wrapper:focus-within .refresh-spin,
+          .refresh-wrapper:hover .refresh-spin {
             animation: refresh-spin 1s cubic-bezier(0.65, -0.21, 0.43, 1.23) infinite;
           }
 
@@ -49,9 +50,13 @@ export const Skills = (): JSX.Element => {
         {selectedSkills.length > 0 ? (
           <>
             <span title={`You have selected: ${selectedSkills.length}`}>{selectedSkills.length}</span>
-            <div className={`hover:text-indigo-500 cursor-pointer`} onClick={clear}>
+            <a
+              tabIndex={0}
+              className={`hover:text-indigo-500 cursor-pointer refresh-wrapper`}
+              onClick={clear}
+              onKeyUp={e => ['Enter', 'Space'].includes(e.code) && clear()}>
               <IconBox icon='Refresh' className={`refresh-spin w-7`} title='Clear' />
-            </div>
+            </a>
             <div className='cursor-pointer hover:text-indigo-500'>
               <CopyClipboard texts={selectedSkills.join(', ')} />
             </div>
@@ -60,13 +65,18 @@ export const Skills = (): JSX.Element => {
           <span>Click below 👇</span>
         )}
       </div>
-      <div className='flex flex-wrap justify-center font-mono gap-2'>
+      <ul className='flex flex-wrap justify-center font-mono gap-2'>
         {skills.map(item => (
-          <span key={item.id} onClick={() => toggle(item.skill)} className={cls(item)}>
+          <li
+            tabIndex={0}
+            key={item.id}
+            onKeyUp={e => ['Enter', 'Space'].includes(e.code) && toggle(item.skill)}
+            onClick={() => toggle(item.skill)}
+            className={cls(item)}>
             {item.skill}
-          </span>
+          </li>
         ))}
-      </div>
+      </ul>
     </>
   )
 }

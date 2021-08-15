@@ -36,9 +36,9 @@ export const CopyClipboard = ({ texts }: { texts: string }) => {
           </div>
         </div>
       ) : (
-        <div onClick={onClickCopy}>
+        <a tabIndex={0} onClick={onClickCopy} onKeyUp={e => ['Enter', 'Space'].includes(e.code) && onClickCopy()}>
           <IconBox icon='Copy' />
-        </div>
+        </a>
       )}
     </>
   )

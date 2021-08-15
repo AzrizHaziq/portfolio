@@ -17,7 +17,7 @@ export function Metadata({
           <Tag key={index}>{tag}</Tag>
         ))}
       </div>
-      <div className='flex'>
+      <div className='flex gap-0.5'>
         <span className='hidden md:block'>{'・'}</span>
         <span>{reading_time}</span>
         {'・'}
