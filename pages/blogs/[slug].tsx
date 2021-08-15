@@ -1,6 +1,7 @@
 import prism from 'prismjs'
-import { useEffect } from 'react'
-import { GetStaticProps } from 'next'
+import Image from 'next/image'
+import React, { useEffect } from 'react'
+import type { GetStaticProps } from 'next'
 import { useTrackPage } from '@helpers/analytics'
 import { CustomPost, DevtoPost, ExtendHead, Nav } from '@components'
 import { Custom, getSinglePost, Devto, getDevto, getDevToBySlug, getAllCustomPosts } from '@helpers/server'
@@ -36,6 +37,11 @@ export default function BlogPost({ post }: { post: Devto.Post | Custom.Post }) {
         ))}
       </ExtendHead>
       <Nav />
+
+      {post.cover_image && (
+        <Image layout='responsive' width='100%' height={50} src={post.cover_image} alt={post.title} objectFit='cover' />
+      )}
+
       <main className='container max-w-xl px-5 mx-auto md:max-w-3xl'>
         <style global jsx>{`
           .dark .prose pre {
