@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { generateBlogImg } from '@helpers/server/generate-blog-img'
 
 interface Req extends NextApiRequest {
   query: {
@@ -10,16 +9,17 @@ interface Req extends NextApiRequest {
 
 export default async function handle(req: Req, res: NextApiResponse) {
   if (process.env.NODE_ENV === 'production') {
-    res.status(500).json({ message: 'this feature is not available at production' })
+    res.redirect('/404')
+  } else {
+    let { q: slug, tags = [] } = req.query
+    const { generateBlogImg } = await import('@helpers/server/generate-blog-img')
+    const canvas = await generateBlogImg({ slug, tags })
+
+    res
+      .writeHead(200, {
+        'Content-Type': 'image/png',
+        'Content-Length': canvas.toBuffer().length,
+      })
+      .end(canvas.toBuffer('image/png'))
   }
-
-  let { q: slug, tags = [] } = req.query
-  const canvas = await generateBlogImg({ slug, tags })
-
-  res
-    .writeHead(200, {
-      'Content-Type': 'image/png',
-      'Content-Length': canvas.toBuffer().length,
-    })
-    .end(canvas.toBuffer('image/png'))
 }
