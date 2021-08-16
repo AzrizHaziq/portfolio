@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { Devto } from '@helpers/server'
 import { IconBox, Tag, TimeStamp } from '../..'
+import { Devto } from '@helpers/server/get_devto'
 
 export function DevtoPostList({ post }: { post: Devto.Post }): JSX.Element {
   return (

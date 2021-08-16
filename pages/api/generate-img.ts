@@ -12,7 +12,7 @@ export default async function handle(req: Req, res: NextApiResponse) {
     res.redirect('/404')
   } else {
     let { q: slug, tags = [] } = req.query
-    const { generateBlogImg } = await import('@helpers/server/generate-blog-img')
+    const { generateBlogImg } = await import('../../scripts/generate-blog-img')
     const canvas = await generateBlogImg({ slug, tags })
 
     res

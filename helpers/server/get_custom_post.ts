@@ -6,6 +6,11 @@ import matter from 'gray-matter'
 import readingTime from 'reading-time'
 import { serialize } from 'next-mdx-remote/serialize'
 
+import remarkSlug from 'remark-slug'
+import mdx_prism from 'mdx-prism'
+import remarkCodeTitles from 'remark-code-titles'
+import remarkAutolinkHeadings from 'remark-autolink-headings'
+
 export const POSTS_PATH = path.join(process.cwd(), 'contents/posts')
 
 export const getSourceOfFile = (folderName: string) => {
@@ -61,8 +66,12 @@ export const getSinglePost = async (slug: string): Promise<Custom.Post> => {
 
     const mdxSource = await serialize(content, {
       mdxOptions: {
-        remarkPlugins: [require('remark-autolink-headings'), require('remark-slug'), require('remark-code-titles')],
-        rehypePlugins: [require('mdx-prism')],
+        remarkPlugins: [
+          remarkSlug,
+          remarkCodeTitles,
+          [remarkAutolinkHeadings, { behavior: 'wrap', linkProperties: { className: ['relative'] } }],
+        ],
+        rehypePlugins: [mdx_prism],
       },
     })
 

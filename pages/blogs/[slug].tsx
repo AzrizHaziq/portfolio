@@ -3,8 +3,9 @@ import Image from 'next/image'
 import React, { useEffect } from 'react'
 import type { GetStaticProps } from 'next'
 import { useTrackPage } from '@helpers/analytics'
+import { Devto, getDevto, getDevToBySlug } from '@helpers/server/get_devto'
 import { CustomPost, DevtoPost, ExtendHead, ImgSkeleton, Nav } from '@components'
-import { Custom, getSinglePost, Devto, getDevto, getDevToBySlug, getAllCustomPosts } from '@helpers/server'
+import { Custom, getAllCustomPosts, getSinglePost } from '@helpers/server/get_custom_post'
 
 import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-css'
@@ -56,6 +57,39 @@ export default function BlogPost({ post }: { post: Devto.Post | Custom.Post }) {
           .dark .prose pre {
             background: #2d2d2d;
             color: #ccc;
+          }
+
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            scroll-margin-top: 100px;
+          }
+
+          :where(h1, h2, h3, h4, h5, h6):target a[href^='#']::before {
+            opacity: 100;
+          }
+
+          :where(h1, h2, h3, h4, h5, h6):hover a[href^='#']::before {
+            opacity: 100;
+          }
+
+          :where(h1, h2, h3, h4, h5, h6) a[href^='#']::before {
+            opacity: 0;
+            content: '#';
+            position: absolute;
+            left: -30px;
+          }
+
+          :where(h1, h2, h3, h4, h5, h6) a[href^='#'] {
+            text-decoration: none;
+          }
+
+          html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
           }
         `}</style>
         {post.type === 'devto' ? <DevtoPost post={post} /> : <CustomPost post={post} />}

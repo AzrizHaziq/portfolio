@@ -1,11 +1,14 @@
 // credit to https://github.com/james-wallis/wallis.dev/blob/master/lib/markdown.ts
 import gfm from 'remark-gfm'
-import unified from 'unified'
+import { unified } from 'unified'
 import matter from 'gray-matter'
 import parse from 'remark-parse'
+import remarkSlug from 'remark-slug'
 import remarkHtml from 'remark-html'
 import * as highlight from 'remark-highlight.js'
 import stripHtmlComments from 'strip-html-comments'
+import remarkCodeTitles from 'remark-code-titles'
+import remarkAutolinkHeadings from 'remark-autolink-headings'
 
 export const sanitizeDevToMarkdown = (markdown: string): string => {
   let correctedMarkdown = ''
@@ -26,8 +29,11 @@ export const convertMarkdownToHtml = (markdown: string): string => {
     .use(parse)
     .use(gfm)
     .use(highlight)
+    .use(remarkSlug)
+    .use(remarkAutolinkHeadings, { behavior: 'wrap', linkProperties: { className: ['relative'] } })
     .use(remarkHtml)
-    .processSync(stripHtmlComments(content)).contents
+    .use(remarkCodeTitles)
+    .processSync(stripHtmlComments(content).toString())
 
   return String(html)
 }

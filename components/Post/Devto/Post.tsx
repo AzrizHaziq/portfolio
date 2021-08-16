@@ -1,7 +1,7 @@
 import React from 'react'
-import { Devto } from '@helpers/server'
 import { IconBox, Metadata } from '@components'
 import { trackEvent } from '@helpers/analytics'
+import { Devto } from '@helpers/server/get_devto'
 
 export function DevtoPost({ post }: { post: Devto.Post }) {
   const handleClick = () => trackEvent('blog_devto_read_external', { category: 'blog', label: post.title })
