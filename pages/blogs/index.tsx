@@ -3,7 +3,6 @@ import { useTrackPage } from '@helpers/analytics'
 import { Devto } from '@helpers/server/get_devto'
 import { getAllPostSortedByDate } from '@helpers/server'
 import { CustomPostList, DevtoPostList, ExtendHead, Nav } from '@components'
-import { generateBlogImg, writeToFile as writeBlogImgToFile } from '@helpers/server/generate-blog-img'
 
 export default function Index({ data }: { data: Devto.Post[] }) {
   useTrackPage({ title: 'blogs', path: '/blogs' })
@@ -37,7 +36,7 @@ export async function getStaticProps(context: GetStaticProps) {
   const sortedData = await getAllPostSortedByDate()
 
   // generate images for /blog/:slug
-  if (process.env.SHOULD_GENERATE_IMG)
+  if (process.env.SHOULD_GENERATE_IMG && process.env.NODE_ENV === 'development')
     for (let post of sortedData) {
       let mutateSlug = post.slug
 
@@ -46,6 +45,7 @@ export async function getStaticProps(context: GetStaticProps) {
         mutateSlug = mutateSlug.replace(/-\w+$/, '')
       }
 
+      const { generateBlogImg, writeToFile: writeBlogImgToFile } = await import('@helpers/server/generate-blog-img')
       const canvas = await generateBlogImg({ slug: mutateSlug, tags: post.tag_list })
       await writeBlogImgToFile(post.slug, canvas)
     }
