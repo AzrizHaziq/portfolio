@@ -1,6 +1,6 @@
 // credit to https://github.com/james-wallis/wallis.dev/blob/master/lib/markdown.ts
 import gfm from 'remark-gfm'
-import unified from 'unified'
+import { unified } from 'unified'
 import matter from 'gray-matter'
 import parse from 'remark-parse'
 import remarkHtml from 'remark-html'
@@ -27,7 +27,7 @@ export const convertMarkdownToHtml = (markdown: string): string => {
     .use(gfm)
     .use(highlight)
     .use(remarkHtml)
-    .processSync(stripHtmlComments(content)).contents
+    .processSync(stripHtmlComments(content).toString())
 
   return String(html)
 }

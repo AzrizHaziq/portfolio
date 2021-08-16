@@ -60,21 +60,21 @@
     "playwright-chromium": "^1.14.0",
     "postcss": "^8.3.6",
     "prettier": "^2.3.2",
-    "rehype": "^11.0.0",
-    "remark-autolink-headings": "^6.0.1",
+    "rehype": "^12.0.0",
+    "remark-autolink-headings": "^7.0.0",
     "remark-capitalize": "^1.1.0",
     "remark-code-titles": "^0.1.2",
-    "remark-gfm": "^1.0.0",
-    "remark-highlight.js": "^6.0.0",
-    "remark-html": "^13.0.1",
-    "remark-slug": "^6.0.0",
+    "remark-gfm": "^2.0.0",
+    "remark-highlight.js": "^7.0.0",
+    "remark-html": "^14.0.0",
+    "remark-slug": "^7.0.0",
     "sass": "^1.37.5",
     "source-map-explorer": "^2.5.2",
     "strip-html-comments": "^1.0.0",
     "tailwind-config-viewer": "^1.6.2",
     "tailwindcss": "^2.2.7",
     "typescript": "4.3.5",
-    "unified": "^9.2.0"
+    "unified": "^10.1.0"
   },
   "packageManager": "yarn@1.22.1"
 }

@@ -1,9 +1,6 @@
 import { Custom, getAllCustomPosts } from './get_custom_post'
 import { Devto, frequentDevtoMapper, getDevto } from './get_devto'
 
-export * from './get_devto'
-export * from './get_custom_post'
-
 export const getAllPostSortedByDate = async (): Promise<(Devto.Post | Custom.Post)[]> => {
   return [...getAllCustomPosts(), ...(await getDevto(frequentDevtoMapper))].sort(
     // @ts-ignore

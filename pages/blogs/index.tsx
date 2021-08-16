@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next'
 import { useTrackPage } from '@helpers/analytics'
-import { Devto, getAllPostSortedByDate } from '@helpers/server'
+import { Devto } from '@helpers/server/get_devto'
+import { getAllPostSortedByDate } from '@helpers/server'
 import { CustomPostList, DevtoPostList, ExtendHead, Nav } from '@components'
 import { generateBlogImg, writeToFile as writeBlogImgToFile } from '@helpers/server/generate-blog-img'
 

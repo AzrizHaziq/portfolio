@@ -8,6 +8,11 @@ declare module 'strip-html-comments' {
   export = value
 }
 
+declare module 'remark-code-titles' {
+  const value: any
+  export = value
+}
+
 declare module 'nightwind/*' {
   const value: any
   export = value
