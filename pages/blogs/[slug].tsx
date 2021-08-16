@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React, { useEffect } from 'react'
 import type { GetStaticProps } from 'next'
 import { useTrackPage } from '@helpers/analytics'
-import { CustomPost, DevtoPost, ExtendHead, Nav } from '@components'
+import { CustomPost, DevtoPost, ExtendHead, ImgSkeleton, Nav } from '@components'
 import { Custom, getSinglePost, Devto, getDevto, getDevToBySlug, getAllCustomPosts } from '@helpers/server'
 
 import 'prismjs/themes/prism-tomorrow.css'
@@ -39,7 +39,16 @@ export default function BlogPost({ post }: { post: Devto.Post | Custom.Post }) {
       <Nav />
 
       {post.cover_image && (
-        <Image layout='responsive' width='100%' height={35} src={post.cover_image} alt={post.title} objectFit='cover' />
+        <Image
+          layout='responsive'
+          width='100%'
+          placeholder='blur'
+          blurDataURL={ImgSkeleton()}
+          height={35}
+          src={post.cover_image}
+          alt={post.title}
+          objectFit='cover'
+        />
       )}
 
       <main className='container max-w-xl px-5 mx-auto md:max-w-3xl'>

@@ -1480,7 +1480,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@headlessui/react@npm:^1.3.0":
+"@headlessui/react@npm:^1.4.0":
   version: 1.4.0
   resolution: "@headlessui/react@npm:1.4.0"
   peerDependencies:
@@ -1603,7 +1603,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/bundle-analyzer@npm:^11.0.1":
+"@next/bundle-analyzer@npm:^11.1.0":
   version: 11.1.0
   resolution: "@next/bundle-analyzer@npm:11.1.0"
   dependencies:
@@ -1976,14 +1976,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:17.0.17":
-  version: 17.0.17
-  resolution: "@types/react@npm:17.0.17"
+"@types/react@npm:17.0.18":
+  version: 17.0.18
+  resolution: "@types/react@npm:17.0.18"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 3f2ae9ab6f7d5c7b480cd5962fe996f0682173036a8437cfde0122bc8594e0e1482864b766dbf611daef40ed65a9fc73ec9510e12511d68c064f309f25219f67
+  checksum: 0b3d5fe0466b57c5539169671e29c4bdad2e2cf5b3eea25d443845d0153b2ddfbe0ef6d017f2f0a7ae49732d6fd14db189f9578ba0629790b896abe3a3ee44f3
   languageName: node
   linkType: hard
 
@@ -2323,7 +2323,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"analytics@npm:^0.7.7":
+"analytics@npm:^0.7.13":
   version: 0.7.13
   resolution: "analytics@npm:0.7.13"
   dependencies:
@@ -2641,7 +2641,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.2.6":
+"autoprefixer@npm:^10.3.1":
   version: 10.3.1
   resolution: "autoprefixer@npm:10.3.1"
   dependencies:
@@ -2708,54 +2708,54 @@ __metadata:
   resolution: "azrizhaziq_portfolio@workspace:."
   dependencies:
     "@analytics/google-analytics": ^0.5.3
-    "@headlessui/react": ^1.3.0
-    "@next/bundle-analyzer": ^11.0.1
+    "@headlessui/react": ^1.4.0
+    "@next/bundle-analyzer": ^11.1.0
     "@react-icons/all-files": ^4.1.0
     "@tailwindcss/line-clamp": ^0.2.1
     "@tailwindcss/typography": ^0.4.1
     "@types/prismjs": ^1.16.6
-    "@types/react": 17.0.17
+    "@types/react": 17.0.18
     "@types/uuid": ^8.3.1
     "@welldone-software/why-did-you-render": ^6.2.0
-    analytics: ^0.7.7
-    autoprefixer: ^10.2.6
+    analytics: ^0.7.13
+    autoprefixer: ^10.3.1
     axios: ^0.21.1
     canvas: ^2.8.0
-    date-fns: ^2.22.1
+    date-fns: ^2.23.0
     eslint: 7.32.0
     eslint-config-next: 11.1.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-jest-dom: ^3.9.0
     eslint-plugin-prettier: ^3.4.0
     eslint-plugin-tailwind: ^0.2.1
-    eslint-plugin-unused-imports: ^1.1.1
+    eslint-plugin-unused-imports: ^1.1.3
     gray-matter: ^4.0.3
     husky: ^7.0.1
-    mdx-prism: ^0.3.3
+    mdx-prism: ^0.3.4
     next: 11.1.0
     next-compose-plugins: ^2.2.1
     next-mdx-remote: ^3.0.4
     next-pwa: ^5.2.24
-    next-sitemap: ^1.6.140
+    next-sitemap: ^1.6.157
     next-themes: ^0.0.15
     nightwind: ^1.1.12
-    playwright-chromium: ^1.12.3
-    postcss: ^8.3.5
+    playwright-chromium: ^1.14.0
+    postcss: ^8.3.6
     prettier: ^2.3.2
     prismjs: ^1.24.1
     react: 17.0.2
     react-dom: 17.0.2
     react-use: ^17.2.4
-    reading-time: ^1.3.0
+    reading-time: ^1.4.0
     rehype: ^11.0.0
     remark-autolink-headings: ^6.0.1
     remark-capitalize: ^1.1.0
-    remark-code-titles: ^0.1.1
+    remark-code-titles: ^0.1.2
     remark-gfm: ^1.0.0
     remark-highlight.js: ^6.0.0
     remark-html: ^13.0.1
     remark-slug: ^6.0.0
-    sass: ^1.35.2
+    sass: ^1.37.5
     source-map-explorer: ^2.5.2
     strip-html-comments: ^1.0.0
     tailwind-config-viewer: ^1.6.2
@@ -3838,7 +3838,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.22.1":
+"date-fns@npm:^2.23.0":
   version: 2.23.0
   resolution: "date-fns@npm:2.23.0"
   checksum: 485216d550255a548552db16379e7a5cd440e262b90fbdc0362f63ee71d0e74bd00ce29ca8d76b343f6df36c1ecb6f22edba0b72848a4c32674e755619695c1f
@@ -4614,7 +4614,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-unused-imports@npm:^1.1.1":
+"eslint-plugin-unused-imports@npm:^1.1.3":
   version: 1.1.3
   resolution: "eslint-plugin-unused-imports@npm:1.1.3"
   dependencies:
@@ -7249,7 +7249,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mdx-prism@npm:^0.3.3":
+"mdx-prism@npm:^0.3.4":
   version: 0.3.4
   resolution: "mdx-prism@npm:0.3.4"
   dependencies:
@@ -7673,9 +7673,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^1.6.140":
-  version: 1.6.148
-  resolution: "next-sitemap@npm:1.6.148"
+"next-sitemap@npm:^1.6.157":
+  version: 1.6.157
+  resolution: "next-sitemap@npm:1.6.157"
   dependencies:
     "@corex/deepmerge": ^2.6.20
     matcher: ^4.0.0
@@ -7684,7 +7684,7 @@ __metadata:
     next: "*"
   bin:
     next-sitemap: bin/next-sitemap
-  checksum: 7e1eb3ea4edbc80541261310d959e497ea07c0008e70f2ca5837823f35e3c65c572f44ba97115322a7b3bcdc96d70c969095c791d7c8d39359282b29090d84b1
+  checksum: 739913de529d91e09a6db7a6ed953f7ff99e67a0c155ea861b7625bf0b774f108e22328d7ef10587a208e5ac707739eaa9ee73896235396f8801aad017383f55
   languageName: node
   linkType: hard
 
@@ -8499,9 +8499,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-chromium@npm:^1.12.3":
-  version: 1.13.1
-  resolution: "playwright-chromium@npm:1.13.1"
+"playwright-chromium@npm:^1.14.0":
+  version: 1.14.0
+  resolution: "playwright-chromium@npm:1.14.0"
   dependencies:
     commander: ^6.1.0
     debug: ^4.1.1
@@ -8519,7 +8519,7 @@ __metadata:
     yazl: ^2.5.1
   bin:
     playwright: lib/cli/cli.js
-  checksum: 6b2fd847d36f94523c52d7958a67fc818e663c8037ab04bbfd95d3cdfcff95f6d12d4d1dec0195243f2109d1e46efe235806f824bd6549e259d5e98e3337ea75
+  checksum: 1a86442c67c871b25f4524431e3a52a6d178a6ad33ff07c1476aee3e583fc911350932465d0ab03128eae12c5c71b3ec7304d290b1e349f125e7b6691c2bf311
   languageName: node
   linkType: hard
 
@@ -8622,7 +8622,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.1.6, postcss@npm:^8.2.1, postcss@npm:^8.3.5":
+"postcss@npm:^8.1.6, postcss@npm:^8.2.1, postcss@npm:^8.3.6":
   version: 8.3.6
   resolution: "postcss@npm:8.3.6"
   dependencies:
@@ -9094,10 +9094,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reading-time@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "reading-time@npm:1.3.0"
-  checksum: abdc7403d74ae9269ff273b32fd00bebba50e4bda08129fc2fab995f495dc4d7c8e9802d5960a0aa67b840566ef1ec87fcf46c46fc348d31ea4d1d5f369fc154
+"reading-time@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "reading-time@npm:1.4.0"
+  checksum: 9eb2acd7492b7432f26e9cfc62eb704a488ce0b1f0c3cd96d9df8f5ee92cbf367a0212736f4660e898e983fc22cd1b5a3be78664f0ff1d34485e0292573c8e94
   languageName: node
   linkType: hard
 
@@ -9262,7 +9262,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-code-titles@npm:^0.1.1":
+"remark-code-titles@npm:^0.1.2":
   version: 0.1.2
   resolution: "remark-code-titles@npm:0.1.2"
   dependencies:
@@ -9659,7 +9659,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.35.2":
+"sass@npm:^1.37.5":
   version: 1.37.5
   resolution: "sass@npm:1.37.5"
   dependencies:
