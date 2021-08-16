@@ -1918,6 +1918,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^16.6.1":
+  version: 16.6.1
+  resolution: "@types/node@npm:16.6.1"
+  checksum: c13aa0da0c2bf9070e521d1b537ba38f64b213dd1b8aeec66c279fc21f8c0ccaf380364f6dc2ec8f84440c4cd1460b67dfe47de2cafcb6eaf4b648817cb27dc4
+  languageName: node
+  linkType: hard
+
 "@types/parse-json@npm:^4.0.0":
   version: 4.0.0
   resolution: "@types/parse-json@npm:4.0.0"
@@ -2697,6 +2704,7 @@ __metadata:
     "@react-icons/all-files": ^4.1.0
     "@tailwindcss/line-clamp": ^0.2.1
     "@tailwindcss/typography": ^0.4.1
+    "@types/node": ^16.6.1
     "@types/prismjs": ^1.16.6
     "@types/react": 17.0.18
     "@types/uuid": ^8.3.1
