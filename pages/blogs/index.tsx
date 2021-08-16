@@ -36,19 +36,19 @@ export async function getStaticProps(context: GetStaticProps) {
   const sortedData = await getAllPostSortedByDate()
 
   // generate images for /blog/:slug
-  if (process.env.SHOULD_GENERATE_IMG && process.env.NODE_ENV === 'development')
-    for (let post of sortedData) {
-      let mutateSlug = post.slug
-
-      if (post.type === 'devto') {
-        // remove unique digit in devto slug
-        mutateSlug = mutateSlug.replace(/-\w+$/, '')
-      }
-
-      const { generateBlogImg, writeToFile: writeBlogImgToFile } = await import('@helpers/server/generate-blog-img')
-      const canvas = await generateBlogImg({ slug: mutateSlug, tags: post.tag_list })
-      await writeBlogImgToFile(post.slug, canvas)
-    }
+  // if (process.env.SHOULD_GENERATE_IMG === 'true' && process.env.NODE_ENV === 'development')
+  //   for (let post of sortedData) {
+  //     let mutateSlug = post.slug
+  //
+  //     if (post.type === 'devto') {
+  //       // remove unique digit in devto slug
+  //       mutateSlug = mutateSlug.replace(/-\w+$/, '')
+  //     }
+  //
+  //     const { generateBlogImg, writeToFile: writeBlogImgToFile } = await import('../../scripts/generate-blog-img')
+  //     const canvas = await generateBlogImg({ slug: mutateSlug, tags: post.tag_list })
+  //     await writeBlogImgToFile(post.slug, canvas)
+  //   }
 
   return { props: { data: sortedData } }
 }
