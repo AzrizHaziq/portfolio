@@ -22,3 +22,4 @@ TODO
   - Certificate achieve
   - All side project built_at
 - [ ] A new page where a list of "mess-up"
+- [ ] yarn 3 with Vercel
