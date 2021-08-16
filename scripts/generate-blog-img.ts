@@ -62,10 +62,10 @@ const writeTagInCanvas = (context: NodeCanvasRenderingContext2D, texts: string[]
 const writeFooterInCanvas = async (context: NodeCanvasRenderingContext2D, y: number) => {
   context.fillStyle = getColor(7)
   context.font = 'bold 30pt Menlo'
-  context.fillText('https://azrizhaziq.com', 640, 530)
+  context.fillText('azrizhaziq.com', 640, 530)
 
-  const image = await loadImage('./public/android-chrome-192x192.png')
-  context.drawImage(image, 270, y, 70, 70)
+  const image = await loadImage('./public/static/favicon-196x196.png')
+  context.drawImage(image, 380, y, 70, 70)
 }
 
 const getYPos = (rowCount: number) => {
