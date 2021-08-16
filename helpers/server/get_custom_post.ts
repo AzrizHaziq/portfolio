@@ -6,10 +6,10 @@ import matter from 'gray-matter'
 import readingTime from 'reading-time'
 import { serialize } from 'next-mdx-remote/serialize'
 
-import remark_slug from 'remark-slug'
+import remarkSlug from 'remark-slug'
 import mdx_prism from 'mdx-prism'
-import remark_code_titles from 'remark-code-titles'
-import remark_autolink_headings from 'remark-autolink-headings'
+import remarkCodeTitles from 'remark-code-titles'
+import remarkAutolinkHeadings from 'remark-autolink-headings'
 
 export const POSTS_PATH = path.join(process.cwd(), 'contents/posts')
 
@@ -66,7 +66,11 @@ export const getSinglePost = async (slug: string): Promise<Custom.Post> => {
 
     const mdxSource = await serialize(content, {
       mdxOptions: {
-        remarkPlugins: [remark_autolink_headings, remark_slug, remark_code_titles],
+        remarkPlugins: [
+          remarkSlug,
+          remarkCodeTitles,
+          [remarkAutolinkHeadings, { behavior: 'wrap', linkProperties: { className: ['relative'] } }],
+        ],
         rehypePlugins: [mdx_prism],
       },
     })
