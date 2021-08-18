@@ -1,15 +1,11 @@
 // copied from https://dipeshwagle.com/blog/use-mdx-bundler-next-js
 import fs from 'fs'
 import path from 'path'
-import { v4 as uuid } from 'uuid'
 import matter from 'gray-matter'
+import { v4 as uuid } from 'uuid'
 import readingTime from 'reading-time'
-import { serialize } from 'next-mdx-remote/serialize'
-
-import remarkSlug from 'remark-slug'
-import mdx_prism from 'mdx-prism'
-import remarkCodeTitles from 'remark-code-titles'
-import remarkAutolinkHeadings from 'remark-autolink-headings'
+import { Post } from '@helpers/server/post'
+import { markdownTransform } from './markdown'
 
 export const POSTS_PATH = path.join(process.cwd(), 'contents/posts')
 
@@ -17,7 +13,7 @@ export const getSourceOfFile = (folderName: string) => {
   return fs.readFileSync(path.join(POSTS_PATH, `${folderName}/index.mdx`), 'utf8')
 }
 
-export const getAllCustomPosts = (): Custom.Post[] => {
+export const getAllCustomPosts = (): Post.Devto[] => {
   return fs
     .readdirSync(POSTS_PATH)
     .map(file => {
@@ -44,7 +40,7 @@ export const getAllCustomPosts = (): Custom.Post[] => {
     .filter(Boolean)
 }
 
-export const getSinglePost = async (slug: string): Promise<Custom.Post> => {
+export const getSinglePost = async (slug: string): Promise<Post.Custom> => {
   try {
     const foundFilename = fs.readdirSync(POSTS_PATH).find(file => {
       const [_, findSlug] = file.split('_')
@@ -57,54 +53,24 @@ export const getSinglePost = async (slug: string): Promise<Custom.Post> => {
 
     const [published_timestamp] = foundFilename.split('_')
     const source = getSourceOfFile(`${published_timestamp}_${slug}`)
-    const { data, content } = matter(source)
+    const { frontmatter, code } = await markdownTransform(source)
 
     // if article is not published and its on production then don't show it
-    if (!data.published && process.env.NODE_ENV === 'production') {
+    if (!frontmatter.published && process.env.NODE_ENV === 'production') {
       throw new Error(`Post is not published yet: ${slug}`)
     }
-
-    const mdxSource = await serialize(content, {
-      mdxOptions: {
-        remarkPlugins: [
-          remarkSlug,
-          remarkCodeTitles,
-          [remarkAutolinkHeadings, { behavior: 'wrap', linkProperties: { className: ['relative'] } }],
-        ],
-        rehypePlugins: [mdx_prism],
-      },
-    })
 
     return {
       type: 'custom_post',
       id: uuid(),
       slug,
-      mdxSource,
-      reading_time: readingTime(content),
+      code,
+      reading_time: readingTime(''),
       published_timestamp,
       title: slug.replace(/-/g, ' '),
-      ...(data as { tag_list: string[]; description: string; published: boolean }),
+      ...(frontmatter as { tag_list: string[]; description: string; published: boolean }),
     }
   } catch (e) {
     throw new Error(`Failed to get Custom Post by slug: ${slug}`)
-  }
-}
-
-export declare module Custom {
-  export type Post = {
-    type: 'custom_post'
-    id: string
-    slug: string
-    mdxSource: any
-  } & FrontMatter
-
-  export type FrontMatter = {
-    title: string
-    description: string
-    tag_list: string[]
-    cover_image?: string
-    reading_time: { text: string }
-    published: boolean
-    published_timestamp: Date | string
   }
 }

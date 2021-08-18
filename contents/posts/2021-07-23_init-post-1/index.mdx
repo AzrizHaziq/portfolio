@@ -22,17 +22,61 @@ This post marks the first public beta release of Astro. **Missing features and b
 To learn more about Astro and start building your first site, check out [the project README.](https://github.com/snowpackjs/astro#-guides)
 
 ```javascript:hello.js
-
 const a = 0
 
 a.toExponential()
 
 document.body.addEventListener('click', () => {
-
   console.log(a)
-
 })
+```
 
+```typescript:hello.tsx
+export function Metadata({
+  tag_list,
+  reading_time,
+  published_timestamp,
+}: {
+  tag_list: string[]
+  reading_time: string
+  published_timestamp: string
+}) {
+  return (
+    <div className='flex flex-col md:flex-row'>
+      <div className='flex flex-wrap items-center space-x-1'>
+        {tag_list.map((tag: string, index: number) => (
+          <Tag key={index}>{tag}</Tag>
+        ))}
+      </div>
+      <div className='flex gap-0.5'>
+        <span className='hidden md:block'>{'・'}</span>
+        <span>{reading_time}</span>
+        {'・'}
+        <TimeStamp time={published_timestamp as string} />
+      </div>
+    </div>
+  )
+}
+
+export function CustomPost({ post }) {
+  const Component = useMemo(() => getMDXComponent(post.code), [post.code])
+
+  return (
+    <div className='px-2 py-5'>
+      <article className='prose lg:prose-xl'>
+        <header>
+          <h1 className='flex !mb-2 space-x-2'>{post.title}</h1>
+        </header>
+        <Metadata
+          tag_list={post.tag_list}
+          reading_time={post.reading_time.text}
+          published_timestamp={post.published_timestamp as string}
+        />
+        <Component />
+      </article>
+    </div>
+  )
+}
 ```
 
 > To learn more about Astro and start building your first site, check out [the project README.](https://github.com/snowpackjs/astro#-guides).

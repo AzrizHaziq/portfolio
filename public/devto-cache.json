@@ -20,16 +20,7 @@
       "javascript"
     ],
     "canonical_url": "https://dev.to/azrizhaziq/have-you-come-across-few-websites-that-you-frustrate-hlc",
-    "reading_time_minutes": 5,
-    "user": {
-      "name": "Azriz Jasni",
-      "username": "azrizhaziq",
-      "twitter_username": null,
-      "github_username": "AzrizHaziq",
-      "website_url": null,
-      "profile_image": "https://res.cloudinary.com/practicaldev/image/fetch/s--C2GJLJGy--/c_fill,f_auto,fl_progressive,h_640,q_auto,w_640/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg",
-      "profile_image_90": "https://res.cloudinary.com/practicaldev/image/fetch/s--QKw4f0Eo--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg"
-    }
+    "reading_time_minutes": 5
   },
   {
     "type_of": "article",
@@ -54,16 +45,7 @@
       "developerexperience"
     ],
     "canonical_url": "https://dev.to/azrizhaziq/i-ve-been-using-vim-in-total-a-year-and-i-ll-stick-using-it-2e8k",
-    "reading_time_minutes": 2,
-    "user": {
-      "name": "Azriz Jasni",
-      "username": "azrizhaziq",
-      "twitter_username": null,
-      "github_username": "AzrizHaziq",
-      "website_url": null,
-      "profile_image": "https://res.cloudinary.com/practicaldev/image/fetch/s--C2GJLJGy--/c_fill,f_auto,fl_progressive,h_640,q_auto,w_640/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg",
-      "profile_image_90": "https://res.cloudinary.com/practicaldev/image/fetch/s--QKw4f0Eo--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg"
-    }
+    "reading_time_minutes": 2
   },
   {
     "type_of": "article",
@@ -86,16 +68,7 @@
       "learnfaster"
     ],
     "canonical_url": "https://dev.to/azrizhaziq/unpopular-opinion-on-learning-approach-119i",
-    "reading_time_minutes": 4,
-    "user": {
-      "name": "Azriz Jasni",
-      "username": "azrizhaziq",
-      "twitter_username": null,
-      "github_username": "AzrizHaziq",
-      "website_url": null,
-      "profile_image": "https://res.cloudinary.com/practicaldev/image/fetch/s--C2GJLJGy--/c_fill,f_auto,fl_progressive,h_640,q_auto,w_640/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg",
-      "profile_image_90": "https://res.cloudinary.com/practicaldev/image/fetch/s--QKw4f0Eo--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg"
-    }
+    "reading_time_minutes": 4
   },
   {
     "type_of": "article",
@@ -109,9 +82,9 @@
     "url": "https://dev.to/azrizhaziq/how-self-xss-work-in-bookmark-15ok",
     "comments_count": 0,
     "public_reactions_count": 6,
-    "page_views_count": 102,
+    "page_views_count": 104,
     "published_timestamp": "2021-05-29T01:39:15Z",
-    "body_markdown": "---\ntitle: How self-xss work in bookmark.\npublished: true\ndescription: How self-xss work in bookmark and how you can prevent it\ntags: xss, javascript, bookmark\ncover_image: https://source.unsplash.com/eMemmpUojlw\n---\n\nOn my previous [article](https://dev.to/azrizhaziq/github-on-steroids-3d23), I share on how to add javascript code in bookmark which later user can just click on it and browser will run it. And after published the article, I had another idea of writing this article. Before I share my findings, I would like to share with the audience what is the definition of `Self-XSS`.\n\n> Self-XSS operates by tricking users into **copying and pasting** malicious content into their browsers' web developer console\n###### wikipedia\n\n\n## So let's continue on our example.\n\n1. First let setup our bookmark script. But before you copy the code, let me brief what the code does. \n\n```js\njavascript: ((url) =>\n  fetch(url)\n    .then((response) => response.text())\n    .then((scriptInString) => eval(scriptInString))\n    /* .then(scriptInString => new Function(scriptInString)()) */\n)(`https://gist.githubusercontent.com/AzrizHaziq/adcfdbf12c3b30b6523495e19f282b58/raw/a959157530b4c282aae0386fda1b3c3b1656bb7d/notify.js`);\n```\n\nFirst we wrap our code in IIFE. Which mean it will execute it right away. Also I used it because, I want to avoid naming a function. Hence, it will make shorter scripts.\n\nNext, we use fetch to trigger **http GET**(pun intended) to our script. Once the http is resolve, we want to convert it to **string**. And finally, since our script is in the form of string, we can **eval**uate it with `eval` or `new Function`.\n\nAnd the snippet code in [github gist](https://gist.github.com/AzrizHaziq/adcfdbf12c3b30b6523495e19f282b58#file-notify-js) is exactly like below \n```js\n// notify.js in gist github\n// code copied from https://developer.mozilla.org/en-US/docs/Web/API/notification\n// and was changed into iife\n\n(() => {\n  // Let's check if the browser supports notifications\n  if (!(\"Notification\" in window)) {\n    alert(\"This browser does not support desktop notification\");\n  }\n\n  // Let's check whether notification permissions have already been granted\n  else if (Notification.permission === \"granted\") {\n    // If it's okay let's create a notification\n    var notification = new Notification(\"Hi there!\");\n  }\n\n  // Otherwise, we need to ask the user for permission\n  else if (Notification.permission !== \"denied\") {\n    Notification.requestPermission().then(function (permission) {\n      // If the user accepts, let's create a notification\n      if (permission === \"granted\") {\n        var notification = new Notification(\"Hi there!\");\n      }\n    });\n  }\n\n  // At last, if the user has denied notifications, and you\n  // want to be respectful there is no need to bother them any more.\n})()\n```\n\nOnce you save into bookmark it will look like this:\n![image](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5h77x4u5nm89161d4ap8.png) \n\n2. Go to https://example.com.\n3. Just for the sake of this example, please `allow` notification. Since our script in gist will trigger notification. (For chrome, click the padlock icon in url bar and Allow notification)\n4. Click the bookmark that you just create. \n5. If you didn't see the notification then that's mean, I can panic 🤣🤣. If yes, well done you follow the steps correctly 😀.\n6. You can block notification, and delete the bookmark too. \n\nNow of course this example does not have big impact to you, since my objective is to make it interactive. But, I would like to highlight one thing here. \n\n> Imagine that if let say after a few month or years after I published this article, I can just silently edit my `notify.js` to any nasty code. Anyone who click the bookmark  usually would assume it just the same old script and will fall into my trap. Pretty slick right?\n\nThere is also another scenario I want to share. In future, we will have [read & write permission](https://web.dev/browser-fs-access/) in browser. What will happen if you just blindly run a script that you copy and paste? That script may hog your file-size, plant a malware, read sensitive file, and it could be anything else.\n\n## As developer, how do you prevent this\nThis example work because at time of me writing this article https://example.com doesn't have [CSP protection](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP). CSP is big topic which I'm not an expert. It has a lot of configs and in case this is your first time hearing it, let me try to give a tldr(too long didn't read). \n\n> Explicitly define what kind of tasks/scrips/images/domain/styles/things that can run/load in your document. (psst: I might be wrong, please correct me 🙂)\n\nFor example:\n- Let say I'm on https://example.com\n- I also specify images to load only from https://unsplash.com. \n- And if there is a request to different domain then it will trigger CSP error in Devtools.\n\n```html\n<!-- these should load fine in dom -->  \n<img src=\"https://example.com/static/logo.png\"> \n<img src=\"https://unsplash.com/static/my-image.png\"> \n\n<!-- CSP errors and it will not load -->  \n<img src=\"https://s3.aws.com/bucket...\">\n\n// please check the MDN doc as it is more detail example\n```\n\nJust in case if you click the bookmark while you are currently in `twitter.com` it will not trigger the notification since `twitter.com` already have CSP layer. And if you want to see how they implement it, you can go to network tool and look at the first downloaded document, then look for `content-security-policy` in response header. You will be surprise to see how long it is.\n\n![twitter CSP](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6ct51pj8xlm2e7b7fz5t.png) \n\n\n## In Conclusion.\n* Please be aware **copying and pasting** any code from online. Especially obfuscated code.\n* Please take you time understand the code. Any term or keyword that you never heard of it just search in MDN or google.\n\n\nOriginally, the idea for this article is coming from [DebugCSS](http://imbrianj.github.io/debugCSS/). After I knew how they implement it and ensure that every user who click it, will always run the latest version, I just write a draft for this article. For you information, while they are using <style> and inject to dom, mine was using http get and eval the script.\n\nImage Source: [firmbee](https://unsplash.com/@firmbee)",
+    "body_markdown": "---\ntitle: How self-xss work in bookmark.\npublished: true\ndescription: How self-xss work in bookmark and how you can prevent it\ntags: xss, javascript, bookmark\ncover_image: https://source.unsplash.com/eMemmpUojlw\n---\n\nOn my previous [article](https://dev.to/azrizhaziq/github-on-steroids-3d23), I share on how to add javascript code in bookmark which later user can just click on it and browser will run it. And after published the article, I had another idea of writing this article. Before I share my findings, I would like to share with the audience what is the definition of `Self-XSS`.\n\n> Self-XSS operates by tricking users into **copying and pasting** malicious content into their browsers' web developer console\n###### wikipedia\n\n\n## So let's continue on our example.\n\n1. First let setup our bookmark script. But before you copy the code, let me brief what the code does. \n\n```js\njavascript: ((url) =>\n  fetch(url)\n    .then((response) => response.text())\n    .then((scriptInString) => eval(scriptInString))\n    /* .then(scriptInString => new Function(scriptInString)()) */\n)(`https://gist.githubusercontent.com/AzrizHaziq/adcfdbf12c3b30b6523495e19f282b58/raw/a959157530b4c282aae0386fda1b3c3b1656bb7d/notify.js`);\n```\n\nFirst we wrap our code in IIFE. Which mean it will execute it right away. Also I used it because, I want to avoid naming a function. Hence, it will make shorter scripts.\n\nNext, we use fetch to trigger **http GET**(pun intended) to our script. Once the http is resolve, we want to convert it to **string**. And finally, since our script is in the form of string, we can **eval**uate it with `eval` or `new Function`.\n\nAnd the snippet code in [github gist](https://gist.github.com/AzrizHaziq/adcfdbf12c3b30b6523495e19f282b58#file-notify-js) is exactly like below \n```js\n// notify.js in gist github\n// code copied from https://developer.mozilla.org/en-US/docs/Web/API/notification\n// and was changed into iife\n\n(() => {\n  // Let's check if the browser supports notifications\n  if (!(\"Notification\" in window)) {\n    alert(\"This browser does not support desktop notification\");\n  }\n\n  // Let's check whether notification permissions have already been granted\n  else if (Notification.permission === \"granted\") {\n    // If it's okay let's create a notification\n    var notification = new Notification(\"Hi there!\");\n  }\n\n  // Otherwise, we need to ask the user for permission\n  else if (Notification.permission !== \"denied\") {\n    Notification.requestPermission().then(function (permission) {\n      // If the user accepts, let's create a notification\n      if (permission === \"granted\") {\n        var notification = new Notification(\"Hi there!\");\n      }\n    });\n  }\n\n  // At last, if the user has denied notifications, and you\n  // want to be respectful there is no need to bother them any more.\n})()\n```\n\nOnce you save into bookmark it will look like this:\n![image](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5h77x4u5nm89161d4ap8.png) \n\n2. Go to https://example.com.\n3. Just for the sake of this example, please `allow` notification. Since our script in gist will trigger notification. (For chrome, click the padlock icon in url bar and Allow notification)\n4. Click the bookmark that you just create. \n5. If you didn't see the notification then that's mean, I can panic 🤣🤣. If yes, well done you follow the steps correctly 😀.\n6. You can block notification, and delete the bookmark too. \n\nNow of course this example does not have big impact to you, since my objective is to make it interactive. But, I would like to highlight one thing here. \n\n> Imagine that if let say after a few month or years after I published this article, I can just silently edit my `notify.js` to any nasty code. Anyone who click the bookmark  usually would assume it just the same old script and will fall into my trap. Pretty slick right?\n\nThere is also another scenario I want to share. In future, we will have [read & write permission](https://web.dev/browser-fs-access/) in browser. What will happen if you just blindly run a script that you copy and paste? That script may hog your file-size, plant a malware, read sensitive file, and it could be anything else.\n\n## As developer, how do you prevent this\nThis example work because at time of me writing this article https://example.com doesn't have [CSP protection](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP). CSP is big topic which I'm not an expert. It has a lot of configs and in case this is your first time hearing it, let me try to give a tldr(too long didn't read). \n\n> Explicitly define what kind of tasks/scrips/images/domain/styles/things that can run/load in your document. (psst: I might be wrong, please correct me 🙂)\n\nFor example:\n- Let say I'm on https://example.com\n- I also specify images to load only from https://unsplash.com. \n- And if there is a request to different domain then it will trigger CSP error in Devtools.\n\n```html\n<!-- these should load fine in dom -->  \n<img src=\"https://example.com/static/logo.png\"> \n<img src=\"https://unsplash.com/static/my-image.png\"> \n\n<!-- CSP errors and it will not load -->  \n<img src=\"https://s3.aws.com/bucket...\">\n\n// please check the MDN doc as it is more detail example\n```\n\nJust in case if you click the bookmark while you are currently in `twitter.com` it will not trigger the notification since `twitter.com` already have CSP layer. And if you want to see how they implement it, you can go to network tool and look at the first downloaded document, then look for `content-security-policy` in response header. You will be surprise to see how long it is.\n\n![twitter CSP](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6ct51pj8xlm2e7b7fz5t.png) \n\n\n## In Conclusion.\n* Please be aware **copying and pasting** any code from online. Especially obfuscated code.\n* Please take you time understand the code. Any term or keyword that you never heard of it just search in MDN or google.\n\n\nOriginally, the idea for this article is coming from [DebugCSS](http://imbrianj.github.io/debugCSS/). After I knew how they implement it and ensure that every user who click it, will always run the latest version, I just write a draft for this article. For you information, while they are using `<style>` and inject to dom, mine was using http get and eval the script.\n\nImage Source: [firmbee](https://unsplash.com/@firmbee)",
     "positive_reactions_count": 6,
     "cover_image": "https://res.cloudinary.com/practicaldev/image/fetch/s--6vhkS6eX--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://source.unsplash.com/eMemmpUojlw",
     "tag_list": [
@@ -120,16 +93,7 @@
       "bookmark"
     ],
     "canonical_url": "https://dev.to/azrizhaziq/how-self-xss-work-in-bookmark-15ok",
-    "reading_time_minutes": 4,
-    "user": {
-      "name": "Azriz Jasni",
-      "username": "azrizhaziq",
-      "twitter_username": null,
-      "github_username": "AzrizHaziq",
-      "website_url": null,
-      "profile_image": "https://res.cloudinary.com/practicaldev/image/fetch/s--C2GJLJGy--/c_fill,f_auto,fl_progressive,h_640,q_auto,w_640/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg",
-      "profile_image_90": "https://res.cloudinary.com/practicaldev/image/fetch/s--QKw4f0Eo--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg"
-    }
+    "reading_time_minutes": 4
   },
   {
     "type_of": "article",
@@ -155,22 +119,13 @@
       "debugging"
     ],
     "canonical_url": "https://dev.to/azrizhaziq/github-on-steroids-3d23",
-    "reading_time_minutes": 3,
-    "user": {
-      "name": "Azriz Jasni",
-      "username": "azrizhaziq",
-      "twitter_username": null,
-      "github_username": "AzrizHaziq",
-      "website_url": null,
-      "profile_image": "https://res.cloudinary.com/practicaldev/image/fetch/s--C2GJLJGy--/c_fill,f_auto,fl_progressive,h_640,q_auto,w_640/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg",
-      "profile_image_90": "https://res.cloudinary.com/practicaldev/image/fetch/s--QKw4f0Eo--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg"
-    }
+    "reading_time_minutes": 3
   },
   {
     "type_of": "article",
     "id": 281995,
     "title": "Better way to unsubscribe in Angular",
-    "description": "You might be wondering why do we need to unsubscribe every subscriptions. Well, you can get the ans...",
+    "description": "You might be wondering why do we need to unsubscribe every subscriptions. Well, you can get the...",
     "published": true,
     "published_at": "2020-03-16T01:48:09.150Z",
     "slug": "better-way-to-unsubscribe-in-angular-4dcl",
@@ -189,16 +144,7 @@
       "typescript"
     ],
     "canonical_url": "https://dev.to/azrizhaziq/better-way-to-unsubscribe-in-angular-4dcl",
-    "reading_time_minutes": 2,
-    "user": {
-      "name": "Azriz Jasni",
-      "username": "azrizhaziq",
-      "twitter_username": null,
-      "github_username": "AzrizHaziq",
-      "website_url": null,
-      "profile_image": "https://res.cloudinary.com/practicaldev/image/fetch/s--C2GJLJGy--/c_fill,f_auto,fl_progressive,h_640,q_auto,w_640/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg",
-      "profile_image_90": "https://res.cloudinary.com/practicaldev/image/fetch/s--QKw4f0Eo--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg"
-    }
+    "reading_time_minutes": 2
   },
   {
     "type_of": "article",
@@ -223,16 +169,7 @@
       "angular"
     ],
     "canonical_url": "https://dev.to/azrizhaziq/secure-your-apps-with-angular-directive-for-target-blank-fi9",
-    "reading_time_minutes": 2,
-    "user": {
-      "name": "Azriz Jasni",
-      "username": "azrizhaziq",
-      "twitter_username": null,
-      "github_username": "AzrizHaziq",
-      "website_url": null,
-      "profile_image": "https://res.cloudinary.com/practicaldev/image/fetch/s--C2GJLJGy--/c_fill,f_auto,fl_progressive,h_640,q_auto,w_640/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg",
-      "profile_image_90": "https://res.cloudinary.com/practicaldev/image/fetch/s--QKw4f0Eo--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg"
-    }
+    "reading_time_minutes": 2
   },
   {
     "type_of": "article",
@@ -258,16 +195,7 @@
       "rxjs"
     ],
     "canonical_url": "https://dev.to/azrizhaziq/inspect-stateless-component-props-in-reactjs-501a",
-    "reading_time_minutes": 2,
-    "user": {
-      "name": "Azriz Jasni",
-      "username": "azrizhaziq",
-      "twitter_username": null,
-      "github_username": "AzrizHaziq",
-      "website_url": null,
-      "profile_image": "https://res.cloudinary.com/practicaldev/image/fetch/s--C2GJLJGy--/c_fill,f_auto,fl_progressive,h_640,q_auto,w_640/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg",
-      "profile_image_90": "https://res.cloudinary.com/practicaldev/image/fetch/s--QKw4f0Eo--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg"
-    }
+    "reading_time_minutes": 2
   },
   {
     "type_of": "article",
@@ -292,15 +220,6 @@
       "debugging"
     ],
     "canonical_url": "https://dev.to/azrizhaziq/tip-when-in-javascript-497f",
-    "reading_time_minutes": 0,
-    "user": {
-      "name": "Azriz Jasni",
-      "username": "azrizhaziq",
-      "twitter_username": null,
-      "github_username": "AzrizHaziq",
-      "website_url": null,
-      "profile_image": "https://res.cloudinary.com/practicaldev/image/fetch/s--C2GJLJGy--/c_fill,f_auto,fl_progressive,h_640,q_auto,w_640/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg",
-      "profile_image_90": "https://res.cloudinary.com/practicaldev/image/fetch/s--QKw4f0Eo--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/86582/93c78063-72ac-4713-a4b9-0a7b2fa63de6.jpeg"
-    }
+    "reading_time_minutes": 0
   }
 ]

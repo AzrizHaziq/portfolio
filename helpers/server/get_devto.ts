@@ -1,31 +1,32 @@
 import path from 'path'
 import axios from 'axios'
 import fs from 'fs/promises'
-import matter from 'gray-matter'
 import readingTime from 'reading-time'
-import { convertMarkdownToHtml, sanitizeDevToMarkdown } from '../markdown'
+import { markdownTransform } from './markdown'
+import type { Post } from '@helpers/server/post'
 
-const _5min = 300
-let timestamp = 0
-export const getDevto = async (mapper: any = Identity): Promise<Devto.Post[]> => {
-  let data: Devto.FromResponse[] = await readCache()
+const cacheFile = 'devto-cache.json'
+export const getDevto = async (): Promise<Post.Devto[]> => {
+  let data: Post.FromResponse[] = await readCache()
 
   try {
     // at the moment just disable http
-    if (new Date().getTime() - timestamp < _5min && false) {
+    if (0) {
       // eslint-disable-next-line no-console
       console.log('>>>> DEVTO: Hit Api')
 
-      const { data: response }: { data: Devto.FromResponse[] } = await axios.get('https://dev.to/api/articles/me/all', {
-        headers: {
-          'Content-Type': 'application/json',
-          'api-key': process.env.NEXT_PUBLIC_DEVTO_TOKEN,
+      const { data: response }: { data: (Post.Devto & { user: null })[] } = await axios.get(
+        'https://dev.to/api/articles/me/all',
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'api-key': process.env.NEXT_PUBLIC_DEVTO_TOKEN,
+          },
         },
-      })
+      )
 
-      data = response
+      data = response.map(({ user, ...post }) => post)
       await saveToFile(data)
-      timestamp = new Date().getTime()
     } else {
       // eslint-disable-next-line no-console
       console.log('>>>> DEVTO: From cache file')
@@ -34,26 +35,29 @@ export const getDevto = async (mapper: any = Identity): Promise<Devto.Post[]> =>
     throw new Error('Failed to get Devto')
   }
 
-  return data.map(mapper)
+  return data.map(d => ({ ...d, type: 'devto', code: '' }))
 }
 
-export const getDevToBySlug = async (slug: string): Promise<Devto.Post | undefined> => {
+export const getDevToBySlug = async (slug: string): Promise<Post.Devto | undefined> => {
   try {
-    const data: Devto.Post[] = await getDevto()
+    const data: Post.Devto[] = await getDevto()
     const post = data.find(item => item.slug === slug)
 
     if (!post) {
       return undefined
     }
 
-    const { content, data: frontMatter } = matter(post.body_markdown as string)
-    const markdown = sanitizeDevToMarkdown(post.body_markdown as string)
-    const html = convertMarkdownToHtml(markdown)
+    const source = sanitizeDevToMarkdown(post.body_markdown as string)
+    const {
+      code,
+      frontmatter,
+      matter: { content },
+    } = await markdownTransform(source)
 
     return {
       ...post,
-      ...frontMatter,
-      body_markdown: html,
+      ...frontmatter,
+      code,
       reading_time: readingTime(content),
     }
   } catch (e) {
@@ -61,78 +65,22 @@ export const getDevToBySlug = async (slug: string): Promise<Devto.Post | undefin
   }
 }
 
-const Identity = <T>(data: T): T => ({ ...data, type: 'devto' })
-
-export const frequentDevtoMapper = ({
-  id,
-  title,
-  url,
-  description,
-  slug,
-  published_timestamp,
-  tag_list,
-  cover_image,
-}: Devto.FromResponse): Devto.PostList => ({
-  id,
-  title,
-  description,
-  slug,
-  published_timestamp,
-  tag_list,
-  url,
-  cover_image,
-  type: 'devto',
-})
-
-const cacheFile = 'devto-cache.json'
-const saveToFile = async (data: Devto.FromResponse[]): Promise<void> => {
+const saveToFile = async (data: Post.FromResponse[]): Promise<void> => {
   await fs.writeFile(path.join(`${process.cwd()}/public`, cacheFile), JSON.stringify(data, null, 2))
 }
 
-const readCache = async (): Promise<Devto.FromResponse[]> => {
+const readCache = async (): Promise<Post.Devto[]> => {
   const data = await fs.readFile(path.join(`${process.cwd()}/public`, cacheFile))
   return JSON.parse(Buffer.from(data).toString())
 }
 
-export declare module Devto {
-  export type Post = { type: 'devto' } & FromResponse
+const sanitizeDevToMarkdown = (markdown: string): string => {
+  const replaceSpaceCharRegex = new RegExp(String.fromCharCode(160), 'g') // Dev.to sometimes turns "# header" into "#&nbsp;header"
+  const addSpaceAfterHeaderHashtagRegex = /##(?=[a-z|A-Z])/g // Dev.to allows headers with no space after the hashtag (I don't use # on Dev.to due to the title)
 
-  export type PostList = { type: 'devto' } & Pick<
-    FromResponse,
-    'id' | 'title' | 'description' | 'slug' | 'published_timestamp' | 'tag_list' | 'url' | 'cover_image'
-  >
-
-  interface User {
-    name: string
-    username: string
-    twitter_username?: any
-    github_username: string
-    website_url?: any
-    profile_image: string
-    profile_image_90: string
-  }
-
-  export interface FromResponse {
-    tags: string
-    type_of: string
-    reading_time: { text: string } // custom
-    id: number
-    title: string
-    description: string
-    published: boolean
-    published_at: Date | string
-    slug: string
-    path: string
-    url: string
-    comments_count: number
-    public_reactions_count: number
-    page_views_count: number
-    published_timestamp: string
-    body_markdown: string
-    positive_reactions_count: number
-    cover_image: string
-    tag_list: string[]
-    canonical_url: string
-    user: User
-  }
+  return markdown
+    .replace(/{%/g, ' ')
+    .replace(/%}/g, ' ')
+    .replace(replaceSpaceCharRegex, ' ')
+    .replace(addSpaceAfterHeaderHashtagRegex, '$& ')
 }

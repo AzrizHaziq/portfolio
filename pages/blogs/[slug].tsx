@@ -1,11 +1,14 @@
 import prism from 'prismjs'
 import Image from 'next/image'
-import React, { useEffect } from 'react'
 import type { GetStaticProps } from 'next'
-import { useTrackPage } from '@helpers/analytics'
-import { Devto, getDevto, getDevToBySlug } from '@helpers/server/get_devto'
-import { CustomPost, DevtoPost, ExtendHead, ImgSkeleton, Nav } from '@components'
-import { Custom, getAllCustomPosts, getSinglePost } from '@helpers/server/get_custom_post'
+import { Post } from '@helpers/server/post'
+import React, { useEffect, useMemo } from 'react'
+import { getMDXComponent } from 'mdx-bundler/client'
+import { getDevToBySlug } from '@helpers/server/get_devto'
+import { trackEvent, useTrackPage } from '@helpers/analytics'
+import { getSinglePost } from '@helpers/server/get_custom_post'
+import { getAllPostSortedByDate } from '@helpers/server/get_all_posts'
+import { ExtendHead, IconBox, ImgSkeleton, Metadata, Nav } from '@components'
 
 import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-css'
@@ -14,7 +17,10 @@ import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-typescript'
 
-export default function BlogPost({ post }: { post: Devto.Post | Custom.Post }) {
+export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
+  const Component = useMemo(() => getMDXComponent(post.code), [post.code])
+  const handleClick = () => trackEvent('blog_devto_read_external', { category: 'blog', label: post.title })
+
   useTrackPage({ title: post.title, path: `/blogs/${post.slug}` })
 
   useEffect(() => {
@@ -92,36 +98,61 @@ export default function BlogPost({ post }: { post: Devto.Post | Custom.Post }) {
             scroll-snap-type: y mandatory;
           }
         `}</style>
-        {post.type === 'devto' ? <DevtoPost post={post} /> : <CustomPost post={post} />}
+
+        {/* devto banner info */}
+        {post.type === 'devto' && (
+          <a
+            href={post.url}
+            target='_blank'
+            rel='noopener noreferrer'
+            onClick={handleClick}
+            className='flex p-3 mt-5 bg-indigo-200 border-2 border-indigo-400 border-dashed rounded dark:bg-indigo-100 dark:text-black md:items-center group space-x-1 hover:shadow-md'>
+            <IconBox icon='Devto' className='hidden w-10 h-10 md:block' title='Read this article at Devto website' />
+            <div className='flex flex-col'>
+              <span>Read this article at Devto Website</span>
+              <small>
+                Few of below content does not render properly so instead of reading here, you can read this in Devto
+                instead.
+              </small>
+            </div>
+          </a>
+        )}
+
+        <article className='prose lg:prose-xl'>
+          <header>
+            <h1 className='flex !my-2 space-x-2'>{post.title}</h1>
+          </header>
+          <Metadata
+            tag_list={post.tag_list}
+            reading_time={post.reading_time.text}
+            published_timestamp={post.published_timestamp as string}
+          />
+          <Component />
+        </article>
       </main>
     </>
   )
 }
 
 // @ts-ignore
-export const getStaticProps: GetStaticProps<Devto.Post, { slug: string }> = async context => {
-  const revalidate = 60 * 60
+export const getStaticProps: GetStaticProps<Post.Devto, { slug: string }> = async context => {
+  const revalidate = 60 * 60 * 24
   const slug = context.params!.slug
 
-  const post = (await getDevToBySlug(slug)) || (await getSinglePost(slug))
+  const post = (await getDevToBySlug(slug)) ?? (await getSinglePost(slug))
 
   if (post) {
-    return {
-      props: { post },
-      revalidate,
-    }
+    return { props: { post }, revalidate }
   }
 
   return { redirect: '/404' }
 }
 
 export async function getStaticPaths() {
-  const pluck = (key: string) => (item: any) => item[key]
-  const customPaths = getAllCustomPosts().map(pluck('slug'))
-  const devtoPaths = await getDevto(({ slug }: Devto.FromResponse) => slug)
+  const sortedData = await getAllPostSortedByDate()
 
   return {
-    paths: [...devtoPaths, ...customPaths].map(slug => ({ params: { slug } })),
+    paths: sortedData.map(({ slug }) => ({ params: { slug } })),
     fallback: false,
   }
 }
