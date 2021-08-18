@@ -22,17 +22,6 @@ export declare module Post {
     cover_image: string
     tag_list: string[]
     canonical_url: string
-    user: User
-  }
-
-  interface User {
-    name: string
-    username: string
-    twitter_username?: any
-    github_username: string
-    website_url?: any
-    profile_image: string
-    profile_image_90: string
   }
 
   ////////////////////// Custom

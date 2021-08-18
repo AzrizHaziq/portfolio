@@ -5,28 +5,28 @@ import readingTime from 'reading-time'
 import { markdownTransform } from './markdown'
 import type { Post } from '@helpers/server/post'
 
-const _5min = 300
-let timestamp = 0
 const cacheFile = 'devto-cache.json'
 export const getDevto = async (): Promise<Post.Devto[]> => {
   let data: Post.FromResponse[] = await readCache()
 
   try {
     // at the moment just disable http
-    if (new Date().getTime() - timestamp < _5min && false) {
+    if (0) {
       // eslint-disable-next-line no-console
       console.log('>>>> DEVTO: Hit Api')
 
-      const { data: response }: { data: Post.Devto[] } = await axios.get('https://dev.to/api/articles/me/all', {
-        headers: {
-          'Content-Type': 'application/json',
-          'api-key': process.env.NEXT_PUBLIC_DEVTO_TOKEN,
+      const { data: response }: { data: (Post.Devto & { user: null })[] } = await axios.get(
+        'https://dev.to/api/articles/me/all',
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'api-key': process.env.NEXT_PUBLIC_DEVTO_TOKEN,
+          },
         },
-      })
+      )
 
-      data = response
+      data = response.map(({ user, ...post }) => post)
       await saveToFile(data)
-      timestamp = new Date().getTime()
     } else {
       // eslint-disable-next-line no-console
       console.log('>>>> DEVTO: From cache file')
