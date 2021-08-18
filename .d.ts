@@ -1,14 +1,14 @@
-declare module 'remark-highlight.js' {
-  const value: any
-  export = value
-}
-
 declare module 'strip-html-comments' {
   const value: any
   export = value
 }
 
 declare module 'remark-code-titles' {
+  const value: any
+  export = value
+}
+
+declare module 'remark-capitalize' {
   const value: any
   export = value
 }
