@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next'
-import { getAllPostSortedByDate } from '@helpers/server/all_posts'
 import { getServerSideSitemap, ISitemapField } from 'next-sitemap'
+import { getAllPostSortedByDate } from '@helpers/server/get_all_posts'
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
   const sortedData = await getAllPostSortedByDate()
