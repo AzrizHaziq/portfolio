@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import { useTrackPage } from '@helpers/analytics'
 import { Devto } from '@helpers/server/get_devto'
-import { getAllPostSortedByDate } from '@helpers/server'
+import { getAllPostSortedByDate } from '@helpers/server/all_posts'
 import { CustomPostList, DevtoPostList, ExtendHead, Nav } from '@components'
 
 export default function Index({ data }: { data: Devto.Post[] }) {

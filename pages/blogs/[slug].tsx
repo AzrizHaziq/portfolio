@@ -3,9 +3,10 @@ import Image from 'next/image'
 import React, { useEffect } from 'react'
 import type { GetStaticProps } from 'next'
 import { useTrackPage } from '@helpers/analytics'
-import { Devto, getDevto, getDevToBySlug } from '@helpers/server/get_devto'
+import { getAllPostSortedByDate } from '@helpers/server/all_posts'
+import { Devto, getDevToBySlug } from '@helpers/server/get_devto'
+import { Custom, getSinglePost } from '@helpers/server/get_custom_post'
 import { CustomPost, DevtoPost, ExtendHead, ImgSkeleton, Nav } from '@components'
-import { Custom, getAllCustomPosts, getSinglePost } from '@helpers/server/get_custom_post'
 
 import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-css'
@@ -100,10 +101,10 @@ export default function BlogPost({ post }: { post: Devto.Post | Custom.Post }) {
 
 // @ts-ignore
 export const getStaticProps: GetStaticProps<Devto.Post, { slug: string }> = async context => {
-  const revalidate = 60 * 60
+  const revalidate = 60 * 60 * 24
   const slug = context.params!.slug
 
-  const post = (await getDevToBySlug(slug)) || (await getSinglePost(slug))
+  const post = (await getDevToBySlug(slug)) ?? (await getSinglePost(slug))
 
   if (post) {
     return {
@@ -116,12 +117,10 @@ export const getStaticProps: GetStaticProps<Devto.Post, { slug: string }> = asyn
 }
 
 export async function getStaticPaths() {
-  const pluck = (key: string) => (item: any) => item[key]
-  const customPaths = getAllCustomPosts().map(pluck('slug'))
-  const devtoPaths = await getDevto(({ slug }: Devto.FromResponse) => slug)
+  const sortedData = await getAllPostSortedByDate()
 
   return {
-    paths: [...devtoPaths, ...customPaths].map(slug => ({ params: { slug } })),
+    paths: sortedData.map(({ slug }) => ({ params: { slug } })),
     fallback: false,
   }
 }
