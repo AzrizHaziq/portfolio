@@ -14,6 +14,8 @@ import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-css'
 import 'prismjs/components/prism-scss'
 import 'prismjs/components/prism-bash'
+import 'prismjs/components/prism-jsx'
+import 'prismjs/components/prism-tsx'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-typescript'
 
@@ -86,8 +88,7 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
           </a>
         )}
 
-        <article className='prose lg:prose-xl'>
-          <style jsx>{CustomStyles}</style>
+        <article className='prose lg:prose-xl ah-articles'>
           <header>
             <h1 className='flex !my-2 space-x-2'>{post.title}</h1>
           </header>
@@ -125,48 +126,3 @@ export async function getStaticPaths() {
     fallback: false,
   }
 }
-
-const CustomStyles = `
-.prose code::before { display: none }
-.prose code::after { display: none }
-.prose code:not([class]) { padding: .25rem .5rem; border-radius: .25rem; font-weight: bold; background: #1f2938; color: white; }
-.dark .prose code:not([class]) { background: white; color: #1f2938; } 
-
-.dark .prose pre {
-  background: #2d2d2d;
-  color: #ccc;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  scroll-margin-top: 100px;
-}
-
-:where(h1, h2, h3, h4, h5, h6):target a[href^='#']::before {
-  opacity: 1;
-}
-
-:where(h1, h2, h3, h4, h5, h6):hover a[href^='#']::before {
-  opacity: 1;
-}
-
-:where(h1, h2, h3, h4, h5, h6) a[href^='#']::before {
-  opacity: 0;
-  content: '#';
-  position: absolute;
-  left: -30px;
-}
-
-:where(h1, h2, h3, h4, h5, h6) a[href^='#'] {
-  text-decoration: none;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-}
-`

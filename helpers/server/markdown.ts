@@ -20,7 +20,12 @@ export const markdownTransform = async (source: string) => {
 
   return await bundleMDX(source, {
     xdmOptions(options) {
-      options.remarkPlugins = [...(options?.remarkPlugins ?? []), remarkGfm, remarkCapitalize]
+      options.remarkPlugins = [
+        ...(options?.remarkPlugins ?? []),
+        remarkGfm,
+        remarkCapitalize,
+        //////////////
+      ]
       options.rehypePlugins = [
         ...(options?.rehypePlugins ?? []),
         rehypeSlug,
