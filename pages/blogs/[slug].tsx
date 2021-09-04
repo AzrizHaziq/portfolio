@@ -8,7 +8,7 @@ import { getDevToBySlug } from '@helpers/server/get_devto'
 import { trackEvent, useTrackPage } from '@helpers/analytics'
 import { getSinglePost } from '@helpers/server/get_custom_post'
 import { getAllPostSortedByDate } from '@helpers/server/get_all_posts'
-import { Pre, ExtendHead, IconBox, ImgSkeleton, Metadata, Nav } from '@components'
+import { UtterancesComments, Pre, ExtendHead, IconBox, ImgSkeleton, Metadata, Nav } from '@components'
 
 import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-css'
@@ -99,6 +99,7 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
           />
           <Component components={MDXComponents} />
         </article>
+        <UtterancesComments />
       </main>
     </>
   )
