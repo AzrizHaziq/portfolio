@@ -6,7 +6,7 @@ TODO
     - [X] Create new comp in /components/custom/CustomPost.jsx(for /blogs/:slug) and CustomPostList.jsx(for /blogs)
     - [ ] Currently, external links in devto blogs, it's not properly render. `gist github`, `youtube`, etc. 
     - [X] Add cover_image if exist
-    - [ ] Make blog prettier with custom component
+    - [X] Make blog prettier with custom component
     - [ ] /blogs to have filter feature with tags
 - [X] Setup analytics with https://github.com/DavidWells/analytics
 - [X] Node-canvas to generate dynamic img
