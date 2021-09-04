@@ -1,5 +1,5 @@
-// credit to https://github.com/james-wallis/wallis.dev/blob/master/lib/markdown.ts
-import mdx_prism from 'mdx-prism'
+import path from 'path'
+import mdxPrism from 'mdx-prism'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import { bundleMDX } from 'mdx-bundler'
@@ -11,6 +11,13 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 export const markdownTransform = async (source: string) => {
   source = stripHtmlComment(source)
 
+  // https://github.com/kentcdodds/mdx-bundler#nextjs-esbuild-enoent
+  if (process.platform === 'win32') {
+    process.env.ESBUILD_BINARY_PATH = path.join(process.cwd(), 'node_modules', 'esbuild', 'esbuild.exe')
+  } else {
+    process.env.ESBUILD_BINARY_PATH = path.join(process.cwd(), 'node_modules', 'esbuild', 'bin', 'esbuild')
+  }
+
   return await bundleMDX(source, {
     xdmOptions(options) {
       options.remarkPlugins = [...(options?.remarkPlugins ?? []), remarkGfm, remarkCapitalize]
@@ -18,7 +25,7 @@ export const markdownTransform = async (source: string) => {
         ...(options?.rehypePlugins ?? []),
         rehypeSlug,
         rehypeCodeTitles,
-        mdx_prism,
+        mdxPrism,
         [
           rehypeAutolinkHeadings,
           {

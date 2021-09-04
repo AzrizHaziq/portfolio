@@ -147,11 +147,11 @@ h6 {
 }
 
 :where(h1, h2, h3, h4, h5, h6):target a[href^='#']::before {
-  opacity: 100;
+  opacity: 1;
 }
 
 :where(h1, h2, h3, h4, h5, h6):hover a[href^='#']::before {
-  opacity: 100;
+  opacity: 1;
 }
 
 :where(h1, h2, h3, h4, h5, h6) a[href^='#']::before {
