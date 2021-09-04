@@ -27,6 +27,7 @@ export interface EventMap {
   skills_add: { category: 'skill'; label: string }
   skills_remove: { category: 'skill'; label: string }
   skills_copied: { category: 'skill'; label: string }
+  code_copied: { category: 'blog'; label: string }
   blog_devto_read_external: { category: 'blog'; label: string }
   theme: { category: 'user_preference'; label: 'dark' | 'light' }
   side_projects_open: { category: 'side_projects'; label: string }

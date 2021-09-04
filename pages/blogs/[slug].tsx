@@ -8,7 +8,7 @@ import { getDevToBySlug } from '@helpers/server/get_devto'
 import { trackEvent, useTrackPage } from '@helpers/analytics'
 import { getSinglePost } from '@helpers/server/get_custom_post'
 import { getAllPostSortedByDate } from '@helpers/server/get_all_posts'
-import { ExtendHead, IconBox, ImgSkeleton, Metadata, Nav } from '@components'
+import { Pre, ExtendHead, IconBox, ImgSkeleton, Metadata, Nav } from '@components'
 
 import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-css'
@@ -16,6 +16,14 @@ import 'prismjs/components/prism-scss'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-typescript'
+
+export const MDXComponents = {
+  // Image,
+  // TOCInline,
+  // a: CustomLink,
+  // Code: Code,
+  pre: Pre,
+}
 
 export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
   const Component = useMemo(() => getMDXComponent(post.code), [post.code])
@@ -59,46 +67,6 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
       )}
 
       <main className='container max-w-xl px-5 mx-auto md:max-w-3xl'>
-        <style global jsx>{`
-          .dark .prose pre {
-            background: #2d2d2d;
-            color: #ccc;
-          }
-
-          h1,
-          h2,
-          h3,
-          h4,
-          h5,
-          h6 {
-            scroll-margin-top: 100px;
-          }
-
-          :where(h1, h2, h3, h4, h5, h6):target a[href^='#']::before {
-            opacity: 100;
-          }
-
-          :where(h1, h2, h3, h4, h5, h6):hover a[href^='#']::before {
-            opacity: 100;
-          }
-
-          :where(h1, h2, h3, h4, h5, h6) a[href^='#']::before {
-            opacity: 0;
-            content: '#';
-            position: absolute;
-            left: -30px;
-          }
-
-          :where(h1, h2, h3, h4, h5, h6) a[href^='#'] {
-            text-decoration: none;
-          }
-
-          html {
-            scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-          }
-        `}</style>
-
         {/* devto banner info */}
         {post.type === 'devto' && (
           <a
@@ -119,6 +87,7 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
         )}
 
         <article className='prose lg:prose-xl'>
+          <style jsx>{CustomStyles}</style>
           <header>
             <h1 className='flex !my-2 space-x-2'>{post.title}</h1>
           </header>
@@ -127,7 +96,7 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
             reading_time={post.reading_time.text}
             published_timestamp={post.published_timestamp as string}
           />
-          <Component />
+          <Component components={MDXComponents} />
         </article>
       </main>
     </>
@@ -156,3 +125,48 @@ export async function getStaticPaths() {
     fallback: false,
   }
 }
+
+const CustomStyles = `
+.prose code::before { display: none }
+.prose code::after { display: none }
+.prose code:not([class]) { padding: .25rem .5rem; border-radius: .25rem; font-weight: bold; background: #1f2938; color: white; }
+.dark .prose code:not([class]) { background: white; color: #1f2938; } 
+
+.dark .prose pre {
+  background: #2d2d2d;
+  color: #ccc;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  scroll-margin-top: 100px;
+}
+
+:where(h1, h2, h3, h4, h5, h6):target a[href^='#']::before {
+  opacity: 100;
+}
+
+:where(h1, h2, h3, h4, h5, h6):hover a[href^='#']::before {
+  opacity: 100;
+}
+
+:where(h1, h2, h3, h4, h5, h6) a[href^='#']::before {
+  opacity: 0;
+  content: '#';
+  position: absolute;
+  left: -30px;
+}
+
+:where(h1, h2, h3, h4, h5, h6) a[href^='#'] {
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+`
