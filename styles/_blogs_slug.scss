@@ -1,0 +1,90 @@
+$preBgColor: #2d2d2d;
+
+.ah-articles {
+  // single backticks
+  &.prose code {
+    &::before,
+    &::after {
+      display: none;
+    }
+
+    &:not([class]) {
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-weight: bold;
+      background: theme('colors.gray.800');
+      color: theme('colors.indigo.200');
+    }
+  }
+
+  .dark &.prose code:not([class]) {
+    background: theme('colors.indigo.200');
+    color: #1f2938;
+  }
+
+  .dark &.prose pre {
+    background: $preBgColor;
+    color: #ccc;
+  }
+
+  // for header to be clickable
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    scroll-margin-top: 100px;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    &:target a[href^='#']::before {
+      opacity: 1;
+    }
+
+    &:hover a[href^='#']::before {
+      opacity: 1;
+    }
+
+    & a[href^='#'] {
+      text-decoration: none;
+
+      &::before {
+        opacity: 0;
+        content: '#';
+        position: absolute;
+        left: -30px;
+      }
+    }
+  }
+
+  // if code have title
+  .rehype-code-title {
+    position: relative;
+    top: 10px;
+    color: $preBgColor;
+    border-top-left-radius: theme('borderRadius.DEFAULT');
+    border-top-right-radius: theme('borderRadius.DEFAULT');
+    background: theme('colors.indigo.300');
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    font-family: monospace;
+    padding-top: 0;
+    border: 3px solid $preBgColor;
+
+    .dark & {
+      border-color: theme('colors.indigo.300');
+    }
+
+    & ~ div pre {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+  // overwrite copy color
+  .cursor-pointer.hover\:text-indigo-500 {
+    color: #f9fafb; // color from .rose
+  }
+}

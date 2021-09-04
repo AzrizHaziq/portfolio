@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import '_blogs_slug.scss';
+
+// if user have selected h tags, then make it smooth scroll
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}

@@ -57,9 +57,12 @@ export const Skills = (): JSX.Element => {
               onKeyUp={e => ['Enter', 'Space'].includes(e.code) && clear()}>
               <IconBox icon='Refresh' className={`refresh-spin w-7`} title='Clear' />
             </a>
-            <div className='cursor-pointer hover:text-indigo-500'>
-              <CopyClipboard texts={selectedSkills.join(', ')} />
-            </div>
+            <CopyClipboard
+              texts={selectedSkills.join(', ')}
+              onClick={texts => {
+                trackEvent('skills_copied', { category: 'skill', label: texts })
+              }}
+            />
           </>
         ) : (
           <span>Click below 👇</span>

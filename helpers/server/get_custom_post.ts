@@ -1,7 +1,7 @@
 // copied from https://dipeshwagle.com/blog/use-mdx-bundler-next-js
 import fs from 'fs'
 import path from 'path'
-import matter from 'gray-matter'
+import fsp from 'fs/promises'
 import { v4 as uuid } from 'uuid'
 import readingTime from 'reading-time'
 import { Post } from '@helpers/server/post'
@@ -13,31 +13,41 @@ export const getSourceOfFile = (folderName: string) => {
   return fs.readFileSync(path.join(POSTS_PATH, `${folderName}/index.mdx`), 'utf8')
 }
 
-export const getAllCustomPosts = (): Post.Devto[] => {
-  return fs
-    .readdirSync(POSTS_PATH)
-    .map(file => {
+export const getAllCustomPosts = async (): Promise<Post.Custom[]> => {
+  let temp: Post.Custom[] = []
+
+  try {
+    let files: string[] = await fsp.readdir(POSTS_PATH)
+    for (let file of files) {
       const [published_timestamp, slug] = file.split('_')
       const source = getSourceOfFile(file)
-      const { data, content } = matter(source)
+      const {
+        frontmatter,
+        matter: { content },
+      } = await markdownTransform(source)
 
       // if article is not published and its on production then don't show it
-      if (!data.published && process.env.NODE_ENV === 'production') {
-        return null as any
+      if (!frontmatter.published && process.env.NODE_ENV === 'production') {
+        continue
       }
 
-      return {
+      temp.push({
         type: 'custom_post',
         id: uuid(),
         slug,
-        mdxSource: '',
+        code: '',
         reading_time: readingTime(content),
         published_timestamp: new Date(published_timestamp).toJSON(),
         title: slug.replace(/-/g, ' '),
-        ...(data as { tag_list: string[]; description: string; published: boolean }),
-      }
-    })
-    .filter(Boolean)
+        ...(frontmatter as { tag_list: string[]; description: string; published: boolean }),
+      })
+    }
+
+    return temp
+  } catch (e) {
+    console.error(`Error at  getAllCustomPosts: ${e}`)
+    return []
+  }
 }
 
 export const getSinglePost = async (slug: string): Promise<Post.Custom> => {
@@ -53,7 +63,11 @@ export const getSinglePost = async (slug: string): Promise<Post.Custom> => {
 
     const [published_timestamp] = foundFilename.split('_')
     const source = getSourceOfFile(`${published_timestamp}_${slug}`)
-    const { frontmatter, code } = await markdownTransform(source)
+    const {
+      frontmatter,
+      code,
+      matter: { content },
+    } = await markdownTransform(source)
 
     // if article is not published and its on production then don't show it
     if (!frontmatter.published && process.env.NODE_ENV === 'production') {
@@ -65,7 +79,7 @@ export const getSinglePost = async (slug: string): Promise<Post.Custom> => {
       id: uuid(),
       slug,
       code,
-      reading_time: readingTime(''),
+      reading_time: readingTime(content),
       published_timestamp,
       title: slug.replace(/-/g, ' '),
       ...(frontmatter as { tag_list: string[]; description: string; published: boolean }),
