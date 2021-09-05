@@ -7,33 +7,32 @@ published: false
 
 `tests`
 
-There's a simple secret to building a faster website — _just ship less_.
-
-- **Bring Your Own Framework (BYOF):** Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.
-
-- **100% Static HTML, No JS:** Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.
-
-- **On-Demand Components:** Need some JS? Astro can automatically hydrate interactive components when they become visible on the page. If the user never sees it, they never load it.
-
-- **Fully-Featured:** Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any of your favorite npm packages.
-
 - **SEO Enabled:** Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication.
 
-This post marks the first public beta release of Astro. **Missing features and bugs are still to be expected at this early stage.** There are still some months to go before an official 1.0 release, but there are already several fast sites built with Astro in production today. We would love your early feedback as we move towards a v1.0 release later this year.
-
-To learn more about Astro and start building your first site, check out [the project README.](https://github.com/snowpackjs/astro#-guides)
 
 ```javascript:hello.js
-const a = 0
+// comments
+const a = 0;
 
 a.toExponential()
 
 document.body.addEventListener('click', () => {
   console.log(a)
 })
+
+const b = () => { return 1;}
 ```
 
-```tsx:hello.tsx
+```js {1,3-4}
+function fancyAlert(arg) {
+  if (arg) {
+    $.facebox({ div: '#foo' })
+  }
+}
+```
+
+```tsx:hello.tsx {1,3-4}
+// comments
 export function Metadata({
   tag_list,
   reading_time,

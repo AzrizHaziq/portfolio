@@ -1,23 +1,13 @@
-import prism from 'prismjs'
 import Image from 'next/image'
+import React, { useMemo } from 'react'
 import type { GetStaticProps } from 'next'
 import { Post } from '@helpers/server/post'
-import React, { useEffect, useMemo } from 'react'
 import { getMDXComponent } from 'mdx-bundler/client'
 import { getDevToBySlug } from '@helpers/server/get_devto'
 import { trackEvent, useTrackPage } from '@helpers/analytics'
 import { getSinglePost } from '@helpers/server/get_custom_post'
 import { getAllPostSortedByDate } from '@helpers/server/get_all_posts'
 import { UtterancesComments, Pre, ExtendHead, IconBox, ImgSkeleton, Metadata, Nav } from '@components'
-
-import 'prismjs/themes/prism-tomorrow.css'
-import 'prismjs/components/prism-css'
-import 'prismjs/components/prism-scss'
-import 'prismjs/components/prism-bash'
-import 'prismjs/components/prism-jsx'
-import 'prismjs/components/prism-tsx'
-import 'prismjs/components/prism-javascript'
-import 'prismjs/components/prism-typescript'
 
 export const MDXComponents = {
   // Image,
@@ -32,10 +22,6 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
   const handleClick = () => trackEvent('blog_devto_read_external', { category: 'blog', label: post.title })
 
   useTrackPage({ title: post.title, path: `/blogs/${post.slug}` })
-
-  useEffect(() => {
-    prism.highlightAll()
-  }, [])
 
   return (
     <>
@@ -88,7 +74,7 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
           </a>
         )}
 
-        <article className='prose lg:prose-xl ah-articles'>
+        <article className='prose lg:prose-xl ah-article'>
           <header>
             <h1 className='flex !my-2 space-x-2'>{post.title}</h1>
           </header>
@@ -99,6 +85,7 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
           />
           <Component components={MDXComponents} />
         </article>
+        <hr className='my-4' />
         <UtterancesComments />
       </main>
     </>

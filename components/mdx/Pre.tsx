@@ -12,7 +12,7 @@ export const Pre = (props: any) => {
 
   return (
     <div className='relative'>
-      <div className='absolute right-[10px] top-[10px]'>
+      <div className='absolute right-[10px] top-[10px] ah-article--copy-code'>
         <CopyClipboard
           texts={texts}
           onClick={texts => {
