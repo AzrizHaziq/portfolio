@@ -21,6 +21,7 @@ export const UtterancesComments: React.FC = () => {
     scriptElem.setAttribute('label', 'blog-comment')
     scriptElem.setAttribute('theme', t)
     elementRef.current.appendChild(scriptElem)
+    // eslint-disable-next-line
   }, [])
 
   // when theme change
