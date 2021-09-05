@@ -22,6 +22,21 @@ const tokenClassNames = {
   function: 'text-code-blue',
   boolean: 'text-code-red',
   comment: 'text-gray-400 italic',
+
+  operator: '',
+  number: 'text-code-green',
+  method: 'text-code-blue',
+  dom: 'text-code-yellow',
+  'property-access': 'text-code-blue',
+  arrow: '',
+  console: '',
+  parameter: '',
+  'plain-text': '',
+  'class-name': '',
+  script: '',
+  'script-punctuation': '',
+  builtin: '',
+  // 'maybe-class-name': '',
 }
 
 export const markdownTransform = async (source: string) => {
@@ -63,10 +78,7 @@ export const markdownTransform = async (source: string) => {
             visit(tree, 'element', (node, index, parent) => {
               let [token, type] = node.properties.className || []
               if (token === 'token') {
-                node.properties.className = [
-                  node.properties.className[0],
-                  tokenClassNames[type as keyof typeof tokenClassNames],
-                ]
+                node.properties.className = [type, tokenClassNames[type as keyof typeof tokenClassNames]]
               }
             })
           }

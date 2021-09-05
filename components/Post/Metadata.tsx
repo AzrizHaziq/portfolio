@@ -11,14 +11,13 @@ export function Metadata({
   published_timestamp: string
 }) {
   return (
-    <div className='flex flex-col md:flex-row'>
+    <div className='flex flex-col gap-y-2'>
       <div className='flex flex-wrap items-center space-x-1'>
         {tag_list.map((tag: string, index: number) => (
           <Tag key={index}>{tag}</Tag>
         ))}
       </div>
       <div className='flex gap-0.5'>
-        <span className='hidden md:block'>{'・'}</span>
         <span>{reading_time}</span>
         {'・'}
         <TimeStamp time={published_timestamp as string} />
