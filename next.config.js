@@ -50,6 +50,7 @@ const securityHeaders = [
       `child-src *.youtube.com *.google.com *.twitter.com`,
       `style-src 'self' 'unsafe-inline' *.googleapis.com`,
       `img-src * blob: data:`,
+      `worker-src *.azrizhaziq.com`,
       `media-src 'none'`,
       `connect-src *`,
       `font-src 'self'`,
