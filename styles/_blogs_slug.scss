@@ -1,6 +1,6 @@
 $preBgColor: #2d2d2d;
 
-.ah-articles {
+.ah-article {
   // single backticks
   &.prose code {
     &::before,
@@ -14,17 +14,17 @@ $preBgColor: #2d2d2d;
       font-weight: bold;
       background: theme('colors.gray.800');
       color: theme('colors.indigo.200');
-    }
-  }
 
-  .dark &.prose code:not([class]) {
-    background: theme('colors.indigo.200');
-    color: #1f2938;
+      .dark & {
+        background: theme('colors.indigo.200');
+        color: #1f2938;
+      }
+    }
   }
 
   .dark &.prose pre {
     background: $preBgColor;
-    color: #ccc;
+    color: theme('colors.white');
   }
 
   // for header to be clickable
@@ -83,8 +83,14 @@ $preBgColor: #2d2d2d;
     }
   }
 
-  // overwrite copy color
-  .cursor-pointer.hover\:text-indigo-500 {
-    color: #f9fafb; // color from .rose
+  // prevent history.back when user scroll horizontal at code
+  pre[class*='language-'] {
+    overscroll-behavior-x: contain;
+  }
+
+  // make sure copy code is accessible
+  &--copy-code a,
+  .dark &--copy-code a {
+    color: theme('colors.white');
   }
 }

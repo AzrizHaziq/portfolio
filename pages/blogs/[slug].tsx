@@ -88,7 +88,7 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
           </a>
         )}
 
-        <article className='prose lg:prose-xl ah-articles'>
+        <article className='prose lg:prose-xl ah-article'>
           <header>
             <h1 className='flex !my-2 space-x-2'>{post.title}</h1>
           </header>
@@ -99,6 +99,7 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
           />
           <Component components={MDXComponents} />
         </article>
+        <hr className='my-4' />
         <UtterancesComments />
       </main>
     </>
