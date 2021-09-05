@@ -1,85 +1,59 @@
-$preBgColor: #2d2d2d;
-
 .ah-article {
   // single backticks
   &.prose code {
     &::before,
     &::after {
-      display: none;
+      @apply hidden;
     }
 
     &:not([class]) {
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.25rem;
-      font-weight: bold;
-      background: theme('colors.gray.800');
-      color: theme('colors.indigo.200');
+      @apply rounded font-bold py-1 px-2 bg-gray-800 text-primary-200;
 
       .dark & {
-        background: theme('colors.indigo.200');
-        color: #1f2938;
+        @apply bg-primary-200 text-gray-800;
       }
     }
   }
 
+  // force pre to be dark mode
   .dark &.prose pre {
-    background: $preBgColor;
-    color: theme('colors.white');
+    @apply text-white bg-gray-800;
   }
 
   // for header to be clickable
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    scroll-margin-top: 100px;
-  }
-
   :where(h1, h2, h3, h4, h5, h6) {
-    &:target a[href^='#']::before {
-      opacity: 1;
-    }
+    scroll-margin-top: 100px;
 
-    &:hover a[href^='#']::before {
-      opacity: 1;
+    &:hover a[href^='#']::before,
+    &:target a[href^='#']::before {
+      @apply opacity-100;
     }
 
     & a[href^='#'] {
-      text-decoration: none;
+      @apply no-underline;
 
       &::before {
-        opacity: 0;
         content: '#';
-        position: absolute;
         left: -30px;
+        @apply opacity-0 absolute;
       }
     }
   }
 
   // if code have title
   .rehype-code-title {
-    position: relative;
-    top: 10px;
-    color: $preBgColor;
-    border-top-left-radius: theme('borderRadius.DEFAULT');
-    border-top-right-radius: theme('borderRadius.DEFAULT');
-    background: theme('colors.indigo.300');
-    padding-left: 10px;
-    padding-right: 10px;
-    font-weight: bold;
-    font-family: monospace;
-    padding-top: 0;
-    border: 3px solid $preBgColor;
+    top: 25px;
+    color: white;
+    @apply bg-gradient-to-r from-indigo-500 to-indigo-300;
+    @apply relative py-2 px-4 font-bold font-mono rounded-t;
 
-    .dark & {
-      border-color: theme('colors.indigo.300');
+    & + div > pre {
+      @apply rounded-t-none;
     }
 
-    & ~ div pre {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
+    // lg:prose-xl add few more margin so need to add top
+    @screen lg {
+      top: 36px;
     }
   }
 
@@ -91,6 +65,34 @@ $preBgColor: #2d2d2d;
   // make sure copy code is accessible
   &--copy-code a,
   .dark &--copy-code a {
-    color: theme('colors.white');
+    @apply text-white;
+  }
+
+  .code-line {
+    @apply pl-4 -mx-4 border-l-4 border-gray-800;
+
+    .dark & {
+      @apply border-gray-800;
+    }
+  }
+
+  .highlight-line {
+    @apply -mx-4 bg-gray-700 bg-opacity-50 border-l-4 border-primary-500;
+
+    .dark & {
+      @apply bg-opacity-10;
+    }
+  }
+
+  .line-number::before {
+    @apply pr-4 -ml-2 text-gray-400;
+    content: attr(line);
+  }
+}
+
+@screen lg {
+  .lg\:prose-xl pre {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 }
