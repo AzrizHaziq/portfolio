@@ -21,7 +21,7 @@
   }
 
   // for header to be clickable
-  :where(h1, h2, h3, h4, h5, h6) {
+  & :where(h1, h2, h3, h4, h5, h6) {
     scroll-margin-top: 100px;
 
     &:hover a[href^='#']::before,
@@ -60,6 +60,12 @@
   // prevent history.back when user scroll horizontal at code
   pre[class*='language-'] {
     overscroll-behavior-x: contain;
+  }
+
+  // make sure highlight line expand till end
+  pre > code {
+    float: left;
+    min-width: 100%;
   }
 
   // make sure copy code is accessible
