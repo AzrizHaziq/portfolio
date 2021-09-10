@@ -38,7 +38,7 @@ export const CopyClipboard = ({ texts, onClick = () => {} }: { onClick?: (text: 
         <a
           tabIndex={0}
           onClick={onClickCopy}
-          className='cursor-pointer hover:text-indigo-500'
+          className='cursor-pointer'
           onKeyUp={e => ['Enter', 'Space'].includes(e.code) && onClickCopy()}>
           <IconBox icon='Copy' />
         </a>

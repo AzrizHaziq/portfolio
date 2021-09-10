@@ -85,8 +85,9 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
           />
           <Component components={MDXComponents} />
         </article>
-        <hr className='my-4' />
+        <div className='mb-5' />
         <UtterancesComments />
+        <div className='mb-20' />
       </main>
     </>
   )

@@ -4,8 +4,8 @@ import path from 'path'
 import fsp from 'fs/promises'
 import { v4 as uuid } from 'uuid'
 import readingTime from 'reading-time'
+import { markdownTransform } from './mdx'
 import { Post } from '@helpers/server/post'
-import { markdownTransform } from './markdown'
 
 export const POSTS_PATH = path.join(process.cwd(), 'contents/posts')
 
