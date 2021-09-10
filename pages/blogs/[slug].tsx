@@ -1,13 +1,13 @@
 import Image from 'next/image'
 import React, { useMemo } from 'react'
-import type { GetStaticProps } from 'next'
 import { Post } from '@helpers/server/post'
 import { getMDXComponent } from 'mdx-bundler/client'
 import { getDevToBySlug } from '@helpers/server/get_devto'
 import { trackEvent, useTrackPage } from '@helpers/analytics'
 import { getSinglePost } from '@helpers/server/get_custom_post'
+import type { GetStaticPaths, GetStaticPropsContext } from 'next'
 import { getAllPostSortedByDate } from '@helpers/server/get_all_posts'
-import { UtterancesComments, Pre, ExtendHead, IconBox, ImgSkeleton, Metadata, Nav } from '@components'
+import { ExtendHead, IconBox, ImgSkeleton, Metadata, Nav, Pre, UtterancesComments } from '@components'
 
 export const MDXComponents = {
   // Image,
@@ -74,7 +74,7 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
           </a>
         )}
 
-        <article className='prose lg:prose-xl ah-article'>
+        <article className='prose dark:prose-dark lg:prose-xl ah-article'>
           <header>
             <h1 className='flex !my-2 space-x-2'>{post.title}</h1>
           </header>
@@ -92,8 +92,7 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
   )
 }
 
-// @ts-ignore
-export const getStaticProps: GetStaticProps<Post.Devto, { slug: string }> = async context => {
+export const getStaticProps = async (context: GetStaticPropsContext<{ slug: string }>) => {
   const revalidate = 60 * 60 * 24
   const slug = context.params!.slug
 
@@ -106,7 +105,7 @@ export const getStaticProps: GetStaticProps<Post.Devto, { slug: string }> = asyn
   return { redirect: '/404' }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const sortedData = await getAllPostSortedByDate()
 
   return {

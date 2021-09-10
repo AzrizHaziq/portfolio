@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       nightwind: {
-        typography: true,
+        typography: false,
         transitionDuration: false,
         colorClasses: [
           // "gradient",
@@ -46,7 +46,7 @@ module.exports = {
       typography: theme => ({
         DEFAULT: {
           css: {
-            color: theme('colors.gray.700'),
+            color: theme('colors.gray.900'),
             a: {
               color: theme('colors.primary.500'),
               '&:hover': {
@@ -70,21 +70,6 @@ module.exports = {
             },
             'h4,h5,h6': {
               color: theme('colors.gray.900'),
-            },
-            code: {
-              color: theme('colors.pink.500'),
-              backgroundColor: theme('colors.gray.100'),
-              paddingLeft: '4px',
-              paddingRight: '4px',
-              paddingTop: '2px',
-              paddingBottom: '2px',
-              borderRadius: '0.25rem',
-            },
-            'code:before': {
-              content: 'none',
-            },
-            'code:after': {
-              content: 'none',
             },
             details: {
               backgroundColor: theme('colors.gray.100'),
@@ -169,7 +154,9 @@ module.exports = {
     },
   },
   variants: {
-    typography: ['dark'],
+    extend: {
+      typography: ['dark'],
+    },
   },
-  plugins: [require('nightwind'), require('@tailwindcss/typography'), require('@tailwindcss/line-clamp')],
+  plugins: [require('nightwind'), require('@tailwindcss/line-clamp'), require('@tailwindcss/typography')],
 }
