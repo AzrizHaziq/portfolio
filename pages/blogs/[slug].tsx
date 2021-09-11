@@ -25,6 +25,13 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
 
   return (
     <>
+      <style global jsx>{`
+        // if user have selected h tags, then make it smooth scroll
+        html {
+          scroll-behavior: smooth;
+          scroll-snap-type: y mandatory;
+        }
+      `}</style>
       <ExtendHead
         type='article'
         url={`/blogs/${post.slug}`}
@@ -62,7 +69,7 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
             target='_blank'
             rel='noopener noreferrer'
             onClick={handleClick}
-            className='flex p-3 mt-5 bg-indigo-200 border-2 border-indigo-400 border-dashed rounded dark:bg-indigo-100 dark:text-black md:items-center group space-x-1 hover:shadow-md'>
+            className='flex p-3 mt-5 border-2 border-dashed rounded bg-primary-200 border-primary-400 dark:bg-primary-100 dark:text-black md:items-center group space-x-1 hover:shadow-md'>
             <IconBox icon='Devto' className='hidden w-10 h-10 md:block' title='Read this article at Devto website' />
             <div className='flex flex-col'>
               <span>Read this article at Devto Website</span>

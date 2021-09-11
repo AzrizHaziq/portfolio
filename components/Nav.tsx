@@ -40,7 +40,7 @@ function Logo() {
             <IconBox
               icon='Home'
               title='Home'
-              className={'mr-2 w-8 h-8 text-indigo-400 dark:text-indigo-400 hover:opacity-80'}
+              className='w-8 h-8 mr-2 text-primary-400 dark:text-primary-400 hover:opacity-80'
             />
           </a>
         </Link>
@@ -53,8 +53,8 @@ function PageLinks({ navs, isMobile = false }: { navs: Nav[]; isMobile?: boolean
   const router = useRouter()
 
   const classNames = isMobile
-    ? 'text-indigo-600 hover:text-indigo-800 dark:text-indigo-300 dark:hover:text-indigo-200'
-    : 'text-gray-300 hover:text-gray-200 dark:text-indigo-300 dark:hover:text-indigo-200'
+    ? 'text-primary-600 hover:text-primary-800 dark:text-primary-300 dark:hover:text-primary-200'
+    : 'text-gray-300 hover:text-gray-200 dark:text-primary-300 dark:hover:text-primary-200'
 
   const isActive = ({ href }: Nav): string => (router.pathname === href ? 'font-extrabold' : '')
 
@@ -72,16 +72,16 @@ function PageLinks({ navs, isMobile = false }: { navs: Nav[]; isMobile?: boolean
 export function Nav() {
   return (
     <div className='sticky top-0 z-10'>
-      <Popover className='relative border-b-4 border-indigo-300 bg-gradient-to-r from-indigo-900 to-indigo-700'>
+      <Popover className='relative border-b-4 border-primary-300 bg-gradient-to-r from-primary-900 to-primary-700'>
         {({ open }) => (
           <>
             <div className='px-4 mx-auto max-w-7xl sm:px-6'>
               <div className='flex items-center justify-between py-6 border-gray-100 md:justify-start md:space-x-10'>
-                <div className='flex justify-start text-indigo-200 lg:w-0 lg:flex-1 hover:text-indigo-300 dark:text-indigo-300 dark:hover:text-indigo-200'>
+                <div className='flex justify-start text-primary-200 lg:w-0 lg:flex-1 hover:text-primary-300 dark:text-primary-300 dark:hover:text-primary-200'>
                   <Logo />
                 </div>
                 <div className='-my-2 -mr-2 md:hidden'>
-                  <Popover.Button className='inline-flex items-center justify-center p-2 text-indigo-300 dark:text-indigo-300 hover:text-indigo-100 dark:hover:text-indigo-100 rounded-md hover:bg-indigo-600 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
+                  <Popover.Button className='inline-flex items-center justify-center p-2 text-primary-300 dark:text-primary-300 hover:text-primary-100 dark:hover:text-primary-100 rounded-md hover:bg-primary-600 dark:hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500'>
                     <span className='sr-only'>Open menu</span>
                     <IconBox icon='Menu' />
                   </Popover.Button>
@@ -106,13 +106,13 @@ export function Nav() {
                 focus
                 static
                 className='absolute inset-x-0 top-0 p-2 transition transform origin-top-right md:hidden'>
-                <div className='border-2 border-indigo-400 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-gradient-to-r from-indigo-300 to-indigo-100 dark:from-indigo-900 dark:to-indigo-600'>
+                <div className='border-2 rounded-lg shadow-lg border-primary-400 ring-1 ring-black ring-opacity-5 bg-gradient-to-r from-primary-300 to-primary-100 dark:from-primary-900 dark:to-primary-600'>
                   <div className='relative px-5 pt-5 pb-6'>
-                    <div className='flex items-center justify-center text-indigo-500 hover:text-indigo-600 dark:text-indigo-300 dark:hover:text-indigo-200'>
+                    <div className='flex items-center justify-center text-primary-500 hover:text-primary-600 dark:text-primary-300 dark:hover:text-primary-200'>
                       <Logo />
                     </div>
                     <div className='absolute right-0 mr-2 top-1/4'>
-                      <Popover.Button className='inline-flex items-center justify-center p-2 text-gray-400 text-indigo-400 dark:text-indigo-300 hover:text-indigo-300 dark:hover:text-indigo-100 rounded-md hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-indigo-600 dark:hover:text-indigo-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500'>
+                      <Popover.Button className='inline-flex items-center justify-center p-2 text-gray-400 text-primary-400 dark:text-primary-300 hover:text-primary-300 dark:hover:text-primary-100 rounded-md hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-primary-600 dark:hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500'>
                         <span className='sr-only'>Close menu</span>
                         <IconBox icon='XMark' />
                       </Popover.Button>

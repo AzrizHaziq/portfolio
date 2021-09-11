@@ -16,7 +16,7 @@ export function HeroSection() {
         <span className='block text-center text-black md:text-left'>Hi {hi}</span>
         <div className='space-x-4'>
           <span className='hidden text-black sm:inline'>Im</span>
-          <div className='inline text-indigo-600'>{alias}</div>
+          <div className='inline text-primary-600'>{alias}</div>
         </div>
       </h1>
       <div className='flex text-base text-gray-500'>

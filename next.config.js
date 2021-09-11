@@ -15,29 +15,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-module.exports = withPlugins(
-  [
-    [withBundleAnalyzer],
-    [withPWA, { pwa: { dest: 'public', dynamicStartUrl: false, disable: process.env.NODE_ENV === 'development' } }],
-  ],
-  {
-    experimental: { esmExternals: true },
-    pageExtensions: ['ts', 'tsx'],
-    reactStrictMode: true,
-    images: {
-      domains: ['github.com', 'opengraph.githubassets.com', 'vercel.app', 'github.io', 'source.unsplash.com'],
-    },
-    async headers() {
-      return [
-        {
-          source: '/(.*)',
-          headers: securityHeaders,
-        },
-      ]
-    },
-  },
-)
-
 // https://github.com/leerob/leerob.io/blob/main/next.config.js
 const securityHeaders = [
   // https://securityheaders.com
@@ -77,3 +54,27 @@ const securityHeaders = [
   // Opt-out of Google FLoC: https://amifloced.org/
   { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()' },
 ]
+
+module.exports = withPlugins(
+  [
+    [withBundleAnalyzer],
+    [withPWA, { pwa: { dest: 'public', dynamicStartUrl: false, disable: process.env.NODE_ENV === 'development' } }],
+  ],
+  {
+    experimental: { esmExternals: true },
+    pageExtensions: ['ts', 'tsx'],
+    // scrollRestoration: false,
+    reactStrictMode: true,
+    images: {
+      domains: ['github.com', 'opengraph.githubassets.com', 'vercel.app', 'github.io', 'source.unsplash.com'],
+    },
+    async headers() {
+      return [
+        {
+          source: '/(.*)',
+          headers: securityHeaders,
+        },
+      ]
+    },
+  },
+)

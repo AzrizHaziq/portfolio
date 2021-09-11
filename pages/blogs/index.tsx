@@ -22,7 +22,7 @@ function PostList({ post }: { post: Post.Custom | Post.Devto }): JSX.Element {
           />
         </a>
       )}
-      <Link href={`/blogs/${post.slug}`}>
+      <Link scroll={false} href={`/blogs/${post.slug}`}>
         <a className={'space-y-2 text-gray-700 group opacity-80 hover:opacity-100'}>
           <span className='text-xs'>
             <TimeStamp separator={false} time={post.published_timestamp as string} />
