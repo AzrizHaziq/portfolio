@@ -9,6 +9,7 @@ import remarkCapitalize from 'remark-capitalize'
 import rehypeCodeTitles from 'rehype-code-titles'
 import stripHtmlComment from 'strip-html-comments'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import { asMdxBundler_RenderMediaQueries } from '@components'
 
 const tokenClassNames = {
   tag: 'text-code-red',
@@ -50,6 +51,9 @@ export const markdownTransform = async (source: string) => {
   }
 
   return await bundleMDX(source, {
+    files: {
+      './RenderMediaQuery.tsx': asMdxBundler_RenderMediaQueries,
+    },
     xdmOptions(options) {
       options.remarkPlugins = [
         ...(options?.remarkPlugins ?? []),

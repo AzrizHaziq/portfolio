@@ -1,0 +1,40 @@
+---
+description: "I have difficulty knowing what is the current media queries in my viewport, so in this post I'm sharing how to overcome it."
+tag_list: ['tailwind', 'dx']
+published: true
+---
+
+Working with a lot of media queries can be hard for someone like me. `xs` and `sm`, does look the same to my eyes.
+
+So I could not figure it out what is the current media query that is actually running at the moment.
+
+Below are the code that is render on the bottom of your screen right now, and if you had a lot more of sizes feel free to update it accordingly.
+Also noted that why it is wrapped with `<div>` block is that, when developer look at devtool, generally I wanted to reduce noise the html DOM.
+And same reason goes to `[data-render-media-queries='']`, which to notify user that this is a DOM for debugging.
+
+```html:RenderMediaQuery.html
+<div class="fixed bottom-0 w-screen text-center" data-render-media-queries="">
+  <div class="block w-full bg-red-500 sm:hidden">xs</div>
+  <div class="hidden w-full w-screen bg-pink-500 sm:block md:hidden">sm</div>
+  <div class="hidden w-full w-screen bg-yellow-500 md:block lg:hidden">md</div>
+  <div class="hidden w-full w-screen bg-green-500 lg:block xl:hidden">lg</div>
+  <div class="hidden w-full w-screen bg-blue-500 xl:block 2xl:hidden">xl</div>
+  <div class="hidden w-full w-screen bg-primary-500 2xl:block">2xl</div>
+</div>
+```
+
+You can also do to other media queries like `dark`, `prefer-reduce-motion`.
+Lastly, since this is for debugging purpose, it should not be shipped to production.
+And in case if you are using `nextjs` there is `env` variables that can help us
+
+```jsx {2}
+export function RenderMediaQueries () {
+  return process.env.NODE_ENV === 'development' && (
+    <div className='fixed bottom-0 ...'>...</div>
+  )
+}
+```
+
+import { RenderMediaQueries } from './RenderMediaQuery';
+
+<RenderMediaQueries />

@@ -7,6 +7,7 @@
     }
 
     &:not([class]) {
+      white-space: nowrap;
       @apply rounded font-bold py-1 px-2 bg-gray-800 text-primary-200;
 
       .dark & {
@@ -66,12 +67,6 @@
   pre > code {
     float: left;
     min-width: 100%;
-  }
-
-  // make sure copy code is accessible
-  &--copy-code a,
-  .dark &--copy-code a {
-    @apply text-white;
   }
 
   .code-line {

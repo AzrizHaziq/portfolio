@@ -2699,6 +2699,7 @@ __metadata:
     nightwind: ^1.1.12
     playwright-chromium: ^1.14.1
     postcss: ^8.3.6
+    preact: ^10.5.14
     prettier: ^2.3.2
     react: 17.0.2
     react-dom: 17.0.2
@@ -8929,6 +8930,13 @@ __metadata:
     nanoid: ^3.1.23
     source-map-js: ^0.6.2
   checksum: ff55b91bea21f42c2a94d77fd05c3f66dd15889c68506cf1dbb9cdee8c3b9e9d0e219bcbc6e61a107bd63e3cac0670176486e2a5794c106a4e1b9babceb79317
+  languageName: node
+  linkType: hard
+
+"preact@npm:^10.5.14":
+  version: 10.5.14
+  resolution: "preact@npm:10.5.14"
+  checksum: d936f83a2afad13aa5870812d7fa8fec111d4a1bb6b0bea6485f2656a062bcc01717398d8184c4bc589cba455f3b2def8e43ba23db846b208d9823e3804658ad
   languageName: node
   linkType: hard
 

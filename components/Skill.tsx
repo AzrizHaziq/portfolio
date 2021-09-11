@@ -31,7 +31,7 @@ export const Skills = (): JSX.Element => {
 
   return (
     <>
-      <div className={`flex justify-center md:justify-end text-black mb-3 cursor-default space-x-2`}>
+      <div className='flex justify-center mb-3 text-black cursor-default md:justify-end space-x-2'>
         <style global jsx>{`
           .refresh-wrapper:focus-within .refresh-spin,
           .refresh-wrapper:hover .refresh-spin {
@@ -52,17 +52,19 @@ export const Skills = (): JSX.Element => {
             <span title={`You have selected: ${selectedSkills.length}`}>{selectedSkills.length}</span>
             <a
               tabIndex={0}
-              className={`hover:text-indigo-500 cursor-pointer refresh-wrapper`}
+              className='cursor-pointer hover:text-primary-500 refresh-wrapper'
               onClick={clear}
               onKeyUp={e => ['Enter', 'Space'].includes(e.code) && clear()}>
-              <IconBox icon='Refresh' className={`refresh-spin w-7`} title='Clear' />
+              <IconBox icon='Refresh' className='refresh-spin w-7' title='Clear' />
             </a>
-            <CopyClipboard
-              texts={selectedSkills.join(', ')}
-              onClick={texts => {
-                trackEvent('skills_copied', { category: 'skill', label: texts })
-              }}
-            />
+            <div className='hover:text-primary-500'>
+              <CopyClipboard
+                texts={selectedSkills.join(', ')}
+                onClick={texts => {
+                  trackEvent('skills_copied', { category: 'skill', label: texts })
+                }}
+              />
+            </div>
           </>
         ) : (
           <span>Click below 👇</span>

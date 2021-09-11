@@ -15,29 +15,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-module.exports = withPlugins(
-  [
-    [withBundleAnalyzer],
-    [withPWA, { pwa: { dest: 'public', dynamicStartUrl: false, disable: process.env.NODE_ENV === 'development' } }],
-  ],
-  {
-    experimental: { esmExternals: true },
-    pageExtensions: ['ts', 'tsx'],
-    reactStrictMode: true,
-    images: {
-      domains: ['github.com', 'opengraph.githubassets.com', 'vercel.app', 'github.io', 'source.unsplash.com'],
-    },
-    async headers() {
-      return [
-        {
-          source: '/(.*)',
-          headers: securityHeaders,
-        },
-      ]
-    },
-  },
-)
-
 // https://github.com/leerob/leerob.io/blob/main/next.config.js
 const securityHeaders = [
   // https://securityheaders.com
@@ -46,12 +23,13 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       `default-src 'self'`,
-      `script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com *.google-analytics.com`,
-      `child-src *.youtube.com *.google.com *.twitter.com`,
+      `script-src 'self' 'unsafe-eval' 'unsafe-inline' utteranc.es *.youtube.com *.twitter.com cdn.usefathom.com *.google-analytics.com`,
+      `child-src *.youtube.com *.google.com *.twitter.com utteranc.es`,
       `style-src 'self' 'unsafe-inline' *.googleapis.com`,
       `img-src * blob: data:`,
       `worker-src 'self'`,
       `media-src 'none'`,
+      `frame-src utteranc.es`,
       `connect-src *`,
       `font-src 'self'`,
     ].join('; '),
@@ -76,3 +54,40 @@ const securityHeaders = [
   // Opt-out of Google FLoC: https://amifloced.org/
   { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()' },
 ]
+
+module.exports = withPlugins(
+  [
+    [withBundleAnalyzer],
+    [withPWA, { pwa: { dest: 'public', dynamicStartUrl: false, disable: process.env.NODE_ENV === 'development' } }],
+  ],
+  {
+    experimental: { esmExternals: true },
+    pageExtensions: ['ts', 'tsx'],
+    // scrollRestoration: false,
+    reactStrictMode: true,
+    images: {
+      domains: ['github.com', 'opengraph.githubassets.com', 'vercel.app', 'github.io', 'source.unsplash.com'],
+    },
+    async headers() {
+      return [
+        {
+          source: '/(.*)',
+          headers: securityHeaders,
+        },
+      ]
+    },
+
+    webpack: (config, { dev, isServer }) => {
+      // Replace React with Preact only in client production build
+      if (!dev && !isServer) {
+        Object.assign(config.resolve.alias, {
+          react: 'preact/compat',
+          'react-dom': 'preact/compat',
+          'react-dom/test-utils': 'preact/test-utils',
+        })
+      }
+
+      return config
+    },
+  },
+)

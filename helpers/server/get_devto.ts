@@ -2,7 +2,7 @@ import path from 'path'
 import axios from 'axios'
 import fs from 'fs/promises'
 import readingTime from 'reading-time'
-import { markdownTransform } from './markdown'
+import { markdownTransform } from './mdx'
 import type { Post } from '@helpers/server/post'
 
 const cacheFile = 'devto-cache.json'

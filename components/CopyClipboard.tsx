@@ -24,9 +24,9 @@ export const CopyClipboard = ({ texts, onClick = () => {} }: { onClick?: (text: 
   return (
     <>
       {show ? (
-        <div className={`relative`}>
+        <div className='relative'>
           <IconBox icon='CheckMark' className='z-0' title='Copy' />
-          <div className='absolute right-0 w-auto px-4 py-2 text-sm text-center text-indigo-800 bg-indigo-200 rounded bottom-[30px]'>
+          <div className='absolute right-0 w-auto px-4 py-2 text-sm text-center rounded text-primary-800 bg-primary-200 bottom-[30px]'>
             {copyState.error ? (
               <p className='!m-0'>Unable to copy value: {copyState.error.message}</p>
             ) : (
@@ -38,7 +38,7 @@ export const CopyClipboard = ({ texts, onClick = () => {} }: { onClick?: (text: 
         <a
           tabIndex={0}
           onClick={onClickCopy}
-          className='cursor-pointer hover:text-indigo-500'
+          className='cursor-pointer'
           onKeyUp={e => ['Enter', 'Space'].includes(e.code) && onClickCopy()}>
           <IconBox icon='Copy' />
         </a>
