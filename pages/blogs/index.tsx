@@ -84,6 +84,9 @@ export async function getStaticProps(context: GetStaticProps) {
   //     const { generateBlogImg, writeToFile: writeBlogImgToFile } = await import('../../scripts/generate-blog-img')
   //     const canvas = await generateBlogImg({ slug: mutateSlug, tags: post.tag_list })
   //     await writeBlogImgToFile(post.slug, canvas)
+  //
+  //     // eslint-disable-next-line no-console
+  //     console.log(post.title)
   //   }
 
   return { props: { data: sortedData } }
