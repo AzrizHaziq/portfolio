@@ -20,7 +20,7 @@ export const getDevto = async (): Promise<Post.Devto[]> => {
         {
           headers: {
             'Content-Type': 'application/json',
-            'api-key': process.env.NEXT_PUBLIC_DEVTO_TOKEN,
+            'api-key': process.env.NEXT_PUBLIC_DEVTO_TOKEN as string,
           },
         },
       )
