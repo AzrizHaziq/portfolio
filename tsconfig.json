@@ -1,11 +1,8 @@
 {
   "compilerOptions": {
+    "incremental": true,
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,27 +17,12 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@components": [
-        "components"
-      ],
-      "@helpers/*": [
-        "helpers/*"
-      ],
-      "@helper_client": [
-        "helpers/client"
-      ],
-      "@contents": [
-        "content"
-      ]
-    },
-    "incremental": true
+      "@components": ["components"],
+      "@helpers/*": ["helpers/*"],
+      "@helper_client": ["helpers/client"],
+      "@contents": ["content"]
+    }
   },
-  "include": [
-    "*.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["*.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
