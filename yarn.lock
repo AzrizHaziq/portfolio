@@ -1273,15 +1273,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.15.4":
-  version: 7.15.4
-  resolution: "@babel/runtime@npm:7.15.4"
-  dependencies:
-    regenerator-runtime: ^0.13.4
-  checksum: c40825430400e47c19b97e4142d5315d2910305b9714d44a711472587ee2fd4521fdba5f02ddd9df3902f5e988d9854fa83f4da1e0c091f70f6983fa52480606
-  languageName: node
-  linkType: hard
-
 "@babel/runtime@npm:^7.16.3":
   version: 7.17.2
   resolution: "@babel/runtime@npm:7.17.2"
@@ -1854,6 +1845,13 @@ __metadata:
   version: 1.0.2
   resolution: "@types/mdurl@npm:1.0.2"
   checksum: 79c7e523b377f53cf1f5a240fe23d0c6cae856667692bd21bf1d064eafe5ccc40ae39a2aa0a9a51e8c94d1307228c8f6b121e847124591a9a828c3baf65e86e2
+  languageName: node
+  linkType: hard
+
+"@types/mdx@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "@types/mdx@npm:2.0.1"
+  checksum: 521ee9f976af45859a4dd60b159e1cc09109de49ec5570fe70f34cddb0a7b5472b87c1bea743429270398207a997821dec34fd7bd63cbc2a1e5f2f6c701dd1c2
   languageName: node
   linkType: hard
 
@@ -2563,11 +2561,11 @@ __metadata:
     eslint-plugin-tailwind: ^0.2.1
     eslint-plugin-unused-imports: ^2.0.0
     husky: ^7.0.4
-    mdx-bundler: ^6.0.3
+    mdx-bundler: ^8.0.1
     next: 12.0.10
     next-compose-plugins: ^2.2.1
     next-pwa: 5.4.4
-    next-sitemap: ^1.9.12
+    next-sitemap: ^2.4.2
     next-themes: ^0.0.15
     nightwind: ^1.1.12
     playwright-chromium: ^1.19.1
@@ -4575,7 +4573,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"estree-util-is-identifier-name@npm:^1.1.0":
+"estree-util-is-identifier-name@npm:^1.0.0":
   version: 1.1.0
   resolution: "estree-util-is-identifier-name@npm:1.1.0"
   checksum: ec55a74708b2fdac7de8d5a1dd82caf36783993608f11b8bc0dcd3b426746ccf21ee7da86ab94e4500c292dc1dde48b7ce65e5dc41f3dc4363a499ea15db32cc
@@ -6464,17 +6462,6 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"loader-utils@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "loader-utils@npm:2.0.0"
-  dependencies:
-    big.js: ^5.2.2
-    emojis-list: ^3.0.0
-    json5: ^2.1.2
-  checksum: 6856423131b50b6f5f259da36f498cfd7fc3c3f8bb17777cf87fdd9159e797d4ba4288d9a96415fd8da62c2906960e88f74711dee72d03a9003bddcd0d364a51
-  languageName: node
-  linkType: hard
-
 "locate-path@npm:^2.0.0":
   version: 2.0.0
   resolution: "locate-path@npm:2.0.0"
@@ -6809,20 +6796,21 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mdast-util-to-hast@npm:^11.0.0":
-  version: 11.2.0
-  resolution: "mdast-util-to-hast@npm:11.2.0"
+"mdast-util-to-hast@npm:^12.1.0":
+  version: 12.1.1
+  resolution: "mdast-util-to-hast@npm:12.1.1"
   dependencies:
     "@types/hast": ^2.0.0
     "@types/mdast": ^3.0.0
     "@types/mdurl": ^1.0.0
     mdast-util-definitions: ^5.0.0
     mdurl: ^1.0.0
+    micromark-util-sanitize-uri: ^1.0.0
     unist-builder: ^3.0.0
     unist-util-generated: ^2.0.0
     unist-util-position: ^4.0.0
-    unist-util-visit: ^3.0.0
-  checksum: b7259b7d45ce3c40676e5f70ce4db638e22f8addd11946c5c4368315e9210e40d99f78e66749585002b8eba52917100c533d435b459b930fe415cea10fa2f7cd
+    unist-util-visit: ^4.0.0
+  checksum: 4c5a73e0463493d5ab2c033d42f8daead24d0808969bf21c3a720786784a347cedc1d3ae26b37737dbe3ea0839bc130bf7e20f3bc02e2387e6e7b0a5f94bafe4
   languageName: node
   linkType: hard
 
@@ -6861,21 +6849,21 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mdx-bundler@npm:^6.0.3":
-  version: 6.0.3
-  resolution: "mdx-bundler@npm:6.0.3"
+"mdx-bundler@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "mdx-bundler@npm:8.0.1"
   dependencies:
-    "@babel/runtime": ^7.15.4
+    "@babel/runtime": ^7.16.3
     "@esbuild-plugins/node-resolve": ^0.1.4
     "@fal-works/esbuild-plugin-global-externals": ^2.1.2
     gray-matter: ^4.0.3
-    remark-frontmatter: ^4.0.0
-    remark-mdx-frontmatter: ^1.0.1
+    remark-frontmatter: ^4.0.1
+    remark-mdx-frontmatter: ^1.1.1
     uuid: ^8.3.2
-    xdm: ^2.1.0
+    xdm: ^3.3.0
   peerDependencies:
-    esbuild: 0.11.x || 0.12.x || 0.13.x
-  checksum: c026bbb4d02245ca804f7ac0662b5bc6b85e911d8a00e0a7a44d46a272612a11281aad134cb2a786035c175f942187ae40c36c5bfb894f6000c12095a34c1c02
+    esbuild: 0.11.x || 0.12.x || 0.13.x || 0.14.x
+  checksum: a5cbe02c8e0d7bc7bc63cfdf76079e6f5b02933c2fa246a21ca5b40fb5ae0ab1c5e97729afbe3b522c19dd5b3226acea045f84be38180ca70110fd99163e6840
   languageName: node
   linkType: hard
 
@@ -7621,9 +7609,9 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^1.9.12":
-  version: 1.9.12
-  resolution: "next-sitemap@npm:1.9.12"
+"next-sitemap@npm:^2.4.2":
+  version: 2.4.2
+  resolution: "next-sitemap@npm:2.4.2"
   dependencies:
     "@corex/deepmerge": ^2.6.148
     minimist: ^1.2.5
@@ -7631,7 +7619,7 @@ fsevents@~2.3.2:
     next: "*"
   bin:
     next-sitemap: bin/next-sitemap
-  checksum: 069b3c2c26dadc970b0768f6bc525784a4a75d9b3ab6ea6da6024034d078a0ac4954251040ffa9dd089f4960ff15aa02d572cfe9064e24b7101f2d423e405e73
+  checksum: 06589454f7d4a8700bb2c906a028a1b68d8e165ee42466e4948e591d975903b9b9cd547eb98dc246862912f5d85ae672179080f65b7d46bbcc0666c639324de2
   languageName: node
   linkType: hard
 
@@ -8971,15 +8959,15 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"remark-frontmatter@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "remark-frontmatter@npm:4.0.0"
+"remark-frontmatter@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "remark-frontmatter@npm:4.0.1"
   dependencies:
     "@types/mdast": ^3.0.0
     mdast-util-frontmatter: ^1.0.0
     micromark-extension-frontmatter: ^1.0.0
     unified: ^10.0.0
-  checksum: 7f3728716da980abb89c32fc42fcd595196c63a660b70d16fc38edfde8daf15492e6292453ea0df0bbfe0c06a62972d5baafd4f5ec6e05b181eef1676c1bbc06
+  checksum: c1c448923cd0239e9eeafb42d7129c05081c9a1bca4c8164b562cbb748e80d103bfd058597a48d54000ce3c776200ab8ccd64a9679d955423f07e4a4e77f10c3
   languageName: node
   linkType: hard
 
@@ -8995,16 +8983,15 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"remark-mdx-frontmatter@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "remark-mdx-frontmatter@npm:1.0.1"
+"remark-mdx-frontmatter@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "remark-mdx-frontmatter@npm:1.1.1"
   dependencies:
-    estree-util-is-identifier-name: ^1.1.0
+    estree-util-is-identifier-name: ^1.0.0
     estree-util-value-to-estree: ^1.0.0
     js-yaml: ^4.0.0
     toml: ^3.0.0
-    unist-util-visit: ^2.0.3
-  checksum: cd680c80da0323f99d69d7003226fa178b920030ea586c09794ceecb6810d1d0331bf5893640b19f104b2481624ac0bbe3384f15fb754a686e4024d8ac4271f6
+  checksum: a2d87e0d6cc7f541f7c854270e740da3bb403ee0398414aa77ee17df157853b692072eaff6242d439c20bf416c80908fdf44096771e25bfefd30e3463dace5e7
   languageName: node
   linkType: hard
 
@@ -9019,15 +9006,15 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"remark-rehype@npm:^9.0.0":
-  version: 9.0.0
-  resolution: "remark-rehype@npm:9.0.0"
+"remark-rehype@npm:^10.0.0":
+  version: 10.1.0
+  resolution: "remark-rehype@npm:10.1.0"
   dependencies:
     "@types/hast": ^2.0.0
     "@types/mdast": ^3.0.0
-    mdast-util-to-hast: ^11.0.0
+    mdast-util-to-hast: ^12.1.0
     unified: ^10.0.0
-  checksum: 7b0bb7eb10689786ad967e945eafdcb7f91c00c29e76f531417cf5e75c3547a5e75cf7ce3370f71d0282f50983121af8d88e8eb43548482c76f253a45f1625f1
+  checksum: b9ac8acff3383b204dfdc2599d0bdf86e6ca7e837033209584af2e6aaa6a9013e519a379afa3201299798cab7298c8f4b388de118c312c67234c133318aec084
   languageName: node
   linkType: hard
 
@@ -10647,13 +10634,6 @@ typescript@4.5.5:
   languageName: node
   linkType: hard
 
-"unist-util-is@npm:^4.0.0":
-  version: 4.1.0
-  resolution: "unist-util-is@npm:4.1.0"
-  checksum: 726484cd2adc9be75a939aeedd48720f88294899c2e4a3143da413ae593f2b28037570730d5cf5fd910ff41f3bc1501e3d636b6814c478d71126581ef695f7ea
-  languageName: node
-  linkType: hard
-
 "unist-util-is@npm:^5.0.0":
   version: 5.1.1
   resolution: "unist-util-is@npm:5.1.1"
@@ -10696,16 +10676,6 @@ typescript@4.5.5:
   languageName: node
   linkType: hard
 
-"unist-util-visit-parents@npm:^3.0.0":
-  version: 3.1.1
-  resolution: "unist-util-visit-parents@npm:3.1.1"
-  dependencies:
-    "@types/unist": ^2.0.0
-    unist-util-is: ^4.0.0
-  checksum: 1170e397dff88fab01e76d5154981666eb0291019d2462cff7a2961a3e76d3533b42eaa16b5b7e2d41ad42a5ea7d112301458283d255993e660511387bf67bc3
-  languageName: node
-  linkType: hard
-
 "unist-util-visit-parents@npm:^4.0.0":
   version: 4.1.1
   resolution: "unist-util-visit-parents@npm:4.1.1"
@@ -10732,17 +10702,6 @@ typescript@4.5.5:
   dependencies:
     unist-util-is: ^2.1.1
   checksum: 212a3475413b32aa25f457665bf618a1662d7acdbbd7a4ff070d220e4e3480e5dd345986aa9c188778638e045c5c3e7636e5b825922e2f6bcda28957c4ac0842
-  languageName: node
-  linkType: hard
-
-"unist-util-visit@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "unist-util-visit@npm:2.0.3"
-  dependencies:
-    "@types/unist": ^2.0.0
-    unist-util-is: ^4.0.0
-    unist-util-visit-parents: ^3.0.0
-  checksum: 1fe19d500e212128f96d8c3cfa3312846e586b797748a1fd195fe6479f06bc90a6f6904deb08eefc00dd58e83a1c8a32fb8677252d2273ad7a5e624525b69b8f
   languageName: node
   linkType: hard
 
@@ -11261,12 +11220,13 @@ typescript@4.5.5:
   languageName: node
   linkType: hard
 
-"xdm@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "xdm@npm:2.1.0"
+"xdm@npm:^3.3.0":
+  version: 3.3.4
+  resolution: "xdm@npm:3.3.4"
   dependencies:
     "@rollup/pluginutils": ^4.0.0
     "@types/estree-jsx": ^0.0.1
+    "@types/mdx": ^2.0.0
     astring: ^1.6.0
     deasync: ^0.1.0
     estree-util-build-jsx: ^2.0.0
@@ -11274,13 +11234,12 @@ typescript@4.5.5:
     estree-walker: ^3.0.0
     got: ^11.0.0
     hast-util-to-estree: ^2.0.0
-    loader-utils: ^2.0.0
     markdown-extensions: ^1.0.0
     mdast-util-mdx: ^1.0.0
     micromark-extension-mdxjs: ^1.0.0
     periscopic: ^3.0.0
     remark-parse: ^10.0.0
-    remark-rehype: ^9.0.0
+    remark-rehype: ^10.0.0
     source-map: ^0.7.0
     unified: ^10.0.0
     unist-util-position-from-estree: ^1.0.0
@@ -11290,7 +11249,7 @@ typescript@4.5.5:
   dependenciesMeta:
     deasync:
       optional: true
-  checksum: 5a3f2434a5390aaebc66aa7d1a90d582de29c2256c94e542df7476cd5ffac6c160ebcb4f75a1a0593dfd8c6d0e650e1ad18f023a57262e0b3abc89c3e1f5c86e
+  checksum: 9c0f189e8c172effc0fbcc71dfb8f4042e79d078b6d33e3ee5d89f1808d38fa43baa0bf55e35dd706e68c0da9eb467b0fb35febf33f2e2efd00f4c24aebdbd9c
   languageName: node
   linkType: hard
 
