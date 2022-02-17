@@ -61,8 +61,12 @@
       "github_url": "https://github.com/AzrizHaziq/portfolio",
       "web_url": "",
       "descriptions": "this website made from this repo",
-      "build_with": ["nextjs", "tailwind", "playwright"],
-      "img": "https://opengraph.githubassets.com/242e64295e8e056028e5ad4cde4c767110866c7c12491b866de3850f1e36ad60/AzrizHaziq/portfolio",
+      "build_with": [
+        "nextjs",
+        "tailwind",
+        "playwright"
+      ],
+      "img": "https://opengraph.githubassets.com/4f6b603d2f2c39fc587291b277dc1748a0c81bed51b4f4a27fa388b2ade0d42c/AzrizHaziq/portfolio",
       "status": "active"
     },
     {
@@ -70,8 +74,13 @@
       "github_url": "https://github.com/AzrizHaziq/tradingview-syariah-indicator",
       "web_url": "https://tsi.azrizhaziq.com",
       "descriptions": "Display Shariah Indicator to Shariah stocks(Malaysia, NYSE, Nasdaq, Shenzhen and Shanghai only)",
-      "build_with": ["React", "Webpack", "Vanilla JS", "Puppeteer"],
-      "img": "/assets/projects/tsi.png",
+      "build_with": [
+        "React",
+        "Webpack",
+        "Vanilla JS",
+        "Puppeteer"
+      ],
+      "img": "/assets/projects/Tradingview Shariah Indicator.png",
       "status": "active"
     },
     {
@@ -79,7 +88,11 @@
       "github_url": "https://github.com/AzrizHaziq/ts-angular-tips",
       "web_url": "https://ts-angular-tips.vercel.app/#/0/0/6",
       "descriptions": "Slide ",
-      "build_with": ["Vite", "tailwind", "RevealJS"],
+      "build_with": [
+        "Vite",
+        "tailwind",
+        "RevealJS"
+      ],
       "img": "/assets/projects/Typescript & Angular tips.png",
       "status": "stop"
     },
@@ -88,7 +101,10 @@
       "github_url": "https://github.com/AzrizHaziq/bnm-consumer-alert",
       "web_url": "https://azrizhaziq.github.io/bnm-consumer-alert/",
       "descriptions": "List potential scammer or huge Red flag in Malaysia",
-      "build_with": ["create-react-app", "react"],
+      "build_with": [
+        "create-react-app",
+        "react"
+      ],
       "img": "/assets/projects/BNM Consumer Alert.png",
       "status": "stop"
     },
@@ -97,7 +113,10 @@
       "github_url": "",
       "web_url": "https://eldoart.vercel.app",
       "descriptions": "My sister business",
-      "build_with": ["nextjs", "tailwind"],
+      "build_with": [
+        "nextjs",
+        "tailwind"
+      ],
       "img": "/assets/projects/Eldoart.png",
       "status": "archive"
     },
@@ -106,7 +125,10 @@
       "github_url": "",
       "web_url": "https://dapurkayangan.com/",
       "descriptions": "My mother website for her business online",
-      "build_with": ["Gatsby", "tailwind"],
+      "build_with": [
+        "Gatsby",
+        "tailwind"
+      ],
       "img": "/assets/projects/Dapur Kayangan.png",
       "status": "active"
     },
@@ -115,7 +137,9 @@
       "github_url": "https://github.com/AzrizHaziq/automate",
       "web_url": "",
       "descriptions": "Archived, it's for my personal interest",
-      "build_with": ["playwright"],
+      "build_with": [
+        "playwright"
+      ],
       "img": "https://opengraph.githubassets.com/0acf8ffb53c30dc3c10b876838f879efc5fde74b4d59b7f1d402a25a841dc454/AzrizHaziq/automate",
       "status": "archive"
     }
