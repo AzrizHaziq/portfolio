@@ -2,6 +2,9 @@
 //.dark .ah-article.prose pre {
 //  @apply text-white bg-gray-800;
 //}
+.prose :where(a):not(:where([class~='not-prose'] *)) {
+  overflow-wrap: break-word;
+}
 
 .dark .ah-article .code-line {
   border-color: #0b0b0b !important;
@@ -9,6 +12,8 @@
 }
 
 .ah-article {
+  @apply overflow-hidden;
+
   // single backticks
   &.prose code {
     &::before,

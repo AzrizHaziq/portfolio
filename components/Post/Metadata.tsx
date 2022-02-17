@@ -18,8 +18,8 @@ export function Metadata({
         ))}
       </div>
       <div className='flex gap-0.5'>
-        <span>{reading_time}</span>
-        {'・'}
+        <span className='hidden sm:block'>{reading_time}</span>
+        <span className='hidden sm:block'>{'・'}</span>
         <TimeStamp time={published_timestamp as string} />
       </div>
     </div>
