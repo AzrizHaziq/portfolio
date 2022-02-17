@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { Canvas, createCanvas, loadImage, NodeCanvasRenderingContext2D } from 'canvas'
+import { Canvas, createCanvas, loadImage, CanvasRenderingContext2D } from 'canvas'
 
 const getColor = (n: number): string =>
   ['#EEF2FF', '#E0E7FF', '#C7D2FE', '#A5B4FC', '#818CF8', '#6366F1', '#4F46E5', '#4338CA', '#3730A3', '#312E81'][n - 1]
@@ -41,7 +41,7 @@ const breakLines = (texts: string[]) =>
 
 const textToWrite = pipe(removeDash, toCapitalize, breakWords, breakLines) // , throwIfMoreThanItems(2))
 
-const writeTextInCanvas = (context: NodeCanvasRenderingContext2D, text: string, y: number) => {
+const writeTextInCanvas = (context: CanvasRenderingContext2D, text: string, y: number) => {
   context.font = 'bold 70pt Menlo'
 
   const metrics = context.measureText(text)
@@ -53,13 +53,13 @@ const writeTextInCanvas = (context: NodeCanvasRenderingContext2D, text: string, 
   context.fillText(text, 600, y)
 }
 
-const writeTagInCanvas = (context: NodeCanvasRenderingContext2D, texts: string[], y: number) => {
+const writeTagInCanvas = (context: CanvasRenderingContext2D, texts: string[], y: number) => {
   context.fillStyle = config.font
   context.font = 'normal 20pt Menlo'
   context.fillText(texts.join(', '), 600, y)
 }
 
-const writeFooterInCanvas = async (context: NodeCanvasRenderingContext2D, y: number) => {
+const writeFooterInCanvas = async (context: CanvasRenderingContext2D, y: number) => {
   context.fillStyle = getColor(7)
   context.font = 'bold 30pt Menlo'
   context.fillText('azrizhaziq.com', 640, 530)

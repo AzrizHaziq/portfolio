@@ -81,7 +81,7 @@ export default function BlogPost({ post }: { post: Post.Devto | Post.Custom }) {
           </a>
         )}
 
-        <article className='prose dark:prose-dark lg:prose-xl ah-article'>
+        <article className='prose dark:prose-invert lg:prose-xl ah-article'>
           <header>
             <h1 className='flex !my-2 space-x-2'>{post.title}</h1>
           </header>
