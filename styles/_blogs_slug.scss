@@ -1,4 +1,19 @@
+// force pre to be dark mode
+//.dark .ah-article.prose pre {
+//  @apply text-white bg-gray-800;
+//}
+.prose :where(a):not(:where([class~='not-prose'] *)) {
+  overflow-wrap: break-word;
+}
+
+.dark .ah-article .code-line {
+  border-color: #0b0b0b !important;
+  //border-color: var(--tw-prose-pre-bg) !important;
+}
+
 .ah-article {
+  @apply overflow-hidden;
+
   // single backticks
   &.prose code {
     &::before,
@@ -9,16 +24,7 @@
     &:not([class]) {
       white-space: nowrap;
       @apply rounded font-bold py-1 px-2 bg-gray-800 text-primary-200;
-
-      .dark & {
-        @apply bg-primary-200 text-gray-800;
-      }
     }
-  }
-
-  // force pre to be dark mode
-  .dark &.prose pre {
-    @apply text-white bg-gray-800;
   }
 
   // for header to be clickable
@@ -64,23 +70,21 @@
   }
 
   // make sure highlight line expand till end
-  pre > code {
-    float: left;
-    min-width: 100%;
-  }
+  //pre > code {
+  //  float: left;
+  //  min-width: 100%;
+  //}
 
   .code-line {
     @apply pl-4 -mx-4 border-l-4 border-gray-800;
-
-    .dark & {
-      @apply border-gray-800;
-    }
   }
 
   .highlight-line {
-    @apply -mx-4 bg-gray-700 bg-opacity-50 border-l-4 border-primary-500;
+    border-color: #6366f1 !important;
+    @apply -mx-4 bg-gray-700 bg-opacity-50 border-l-4;
 
     .dark & {
+      border-color: #6366f1 !important;
       @apply bg-opacity-10;
     }
   }

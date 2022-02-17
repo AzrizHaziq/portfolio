@@ -50,10 +50,9 @@ export const markdownTransform = async (source: string) => {
     process.env.ESBUILD_BINARY_PATH = path.join(process.cwd(), 'node_modules', 'esbuild', 'bin', 'esbuild')
   }
 
-  return await bundleMDX(source, {
-    files: {
-      './RenderMediaQuery.tsx': asMdxBundler_RenderMediaQueries,
-    },
+  return await bundleMDX({
+    source,
+    files: { './RenderMediaQuery.tsx': asMdxBundler_RenderMediaQueries },
     xdmOptions(options) {
       options.remarkPlugins = [
         ...(options?.remarkPlugins ?? []),
